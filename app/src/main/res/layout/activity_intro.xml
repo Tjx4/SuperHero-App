@@ -19,7 +19,7 @@
 
     <TextView
         android:id="@+id/tvAppname"
-        style="@style/LightMediumTextView"
+        style="@style/LightLargeTextView"
         android:text="@string/app_name"
         android:gravity="center"
         android:alpha="0"
