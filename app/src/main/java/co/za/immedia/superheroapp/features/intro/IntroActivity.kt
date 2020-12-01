@@ -1,44 +1,50 @@
 package co.za.immedia.superheroapp.features.intro
 
-import android.media.AudioManager
 import android.media.MediaPlayer
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.view.animation.Animation
-import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import co.za.immedia.superheroapp.R
 import co.za.immedia.superheroapp.extensions.FADE_IN_ACTIVITY
-import co.za.immedia.superheroapp.extensions.blinkView
 import co.za.immedia.superheroapp.extensions.fadeIn
 import co.za.immedia.superheroapp.extensions.navigateToActivity
 import co.za.immedia.superheroapp.features.dashboard.DashboardActivity
+import java.io.IOException
 
-class IntroActivity : AppCompatActivity() {
+class IntroActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_intro)
 
-            findViewById<TextView>(R.id.tvAppname).fadeIn(7000) {
 
-            }
+            //var mediaPlayer: MediaPlayer? = MediaPlayer.create(this, R.raw.theme)
+        val resID: Int = resources.getIdentifier("theme", "raw", packageName)
+        val mediaPlayer = MediaPlayer.create(this, resID)
 
-            var mediaPlayer: MediaPlayer? = MediaPlayer.create(this, R.raw.theme)
-            mediaPlayer?.setVolume(70f,70f)
-            mediaPlayer?.isLooping = false
-            mediaPlayer?.setAudioStreamType(AudioManager.STREAM_MUSIC)
-            mediaPlayer?.reset()
-
-
+        try {
             mediaPlayer?.setOnPreparedListener {
-                mediaPlayer?.start()
+                Handler().postDelayed({
+                    findViewById<TextView>(R.id.tvAppname).fadeIn(7000) {}
+                    mediaPlayer?.start()
+                }, 1500)
             }
             mediaPlayer?.setOnCompletionListener {
                 navigateToActivity(DashboardActivity::class.java, null, FADE_IN_ACTIVITY)
                 finish()
             }
 
-            mediaPlayer?.prepareAsync()
+        } catch (e: IllegalArgumentException) {
+            e.printStackTrace()
+        } catch (e: SecurityException) {
+            print("SecurityException: $e")
+        } catch (e: IllegalStateException) {
+            print("IllegalStateException: $e")
+        } catch (e: IOException) {
+            print("IOException: $e")
+        }
+        //mediaPlayer?.prepareAsync()
     }
+
 }
