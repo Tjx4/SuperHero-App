@@ -19,21 +19,20 @@ class IntroActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_intro)
 
-        //findViewById<ImageView>(R.id.imgLogo).blinkView(0.6f, 1.0f, 1000, 2, Animation.ABSOLUTE, 0)
-
         Handler().postDelayed(Runnable {
-            findViewById<TextView>(R.id.tvAppname).fadeIn(5000) {
+            findViewById<TextView>(R.id.tvAppname).fadeIn(7000) {
 
             }
 
             var mediaPlayer: MediaPlayer? = MediaPlayer.create(this, R.raw.theme)
             mediaPlayer?.isLooping = false;
-            //mediaPlayer?.setVolume(100f,100f);
+            mediaPlayer?.setVolume(70f,70f)
             mediaPlayer?.start()
             mediaPlayer?.setOnCompletionListener {
-                // navigateToActivity(DashboardActivity::class.java, null, FADE_IN_ACTIVITY)
+                navigateToActivity(DashboardActivity::class.java, null, FADE_IN_ACTIVITY)
+                finish()
             }
-        }, 1500)
+        }, 1300)
 
     }
 }
