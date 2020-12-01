@@ -6,13 +6,11 @@ import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import co.za.immedia.superheroapp.R
 
-
 class DashboardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
 
-
-
+        supportActionBar?.title = "Heros"
     }
 }

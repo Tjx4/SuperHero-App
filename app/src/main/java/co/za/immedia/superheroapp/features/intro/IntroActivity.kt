@@ -36,16 +36,10 @@ class IntroActivity : AppCompatActivity(){
                 finish()
             }
 
-        } catch (e: IllegalArgumentException) {
-            e.printStackTrace()
-        } catch (e: SecurityException) {
-            print("SecurityException: $e")
-        } catch (e: IllegalStateException) {
-            print("IllegalStateException: $e")
-        } catch (e: IOException) {
-            print("IOException: $e")
+        } catch (e: Exception) {
+            navigateToActivity(DashboardActivity::class.java, null, FADE_IN_ACTIVITY)
+            finish()
         }
-        //mediaPlayer?.prepareAsync()
     }
 
 }
