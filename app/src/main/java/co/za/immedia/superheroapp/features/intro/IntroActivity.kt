@@ -1,5 +1,6 @@
 package co.za.immedia.superheroapp.features.intro
 
+import android.media.AudioManager
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -19,20 +20,25 @@ class IntroActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_intro)
 
-        Handler().postDelayed(Runnable {
             findViewById<TextView>(R.id.tvAppname).fadeIn(7000) {
 
             }
 
             var mediaPlayer: MediaPlayer? = MediaPlayer.create(this, R.raw.theme)
-            mediaPlayer?.isLooping = false;
             mediaPlayer?.setVolume(70f,70f)
-            mediaPlayer?.start()
+            mediaPlayer?.isLooping = false
+            mediaPlayer?.setAudioStreamType(AudioManager.STREAM_MUSIC)
+            mediaPlayer?.reset()
+
+
+            mediaPlayer?.setOnPreparedListener {
+                mediaPlayer?.start()
+            }
             mediaPlayer?.setOnCompletionListener {
                 navigateToActivity(DashboardActivity::class.java, null, FADE_IN_ACTIVITY)
                 finish()
             }
-        }, 1300)
 
+            mediaPlayer?.prepareAsync()
     }
 }
