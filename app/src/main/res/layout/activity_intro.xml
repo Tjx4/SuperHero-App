@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".features.intro.IntroActivity"
-    android:background="@color/splash_background">
+    android:background="@drawable/splash_background_gradient">
 
     <ImageView
         android:id="@+id/imgLogo"
