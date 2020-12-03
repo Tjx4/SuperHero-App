@@ -50,7 +50,7 @@
         <item name="android:background">@drawable/search_background</item>
         <item name="android:paddingLeft">45dp</item>
         <item name="android:paddingRight">@dimen/small_margin</item>
-        <item name="android:paddingTop">@dimen/small_margin</item>
-        <item name="android:paddingBottom">@dimen/small_margin</item>
+        <item name="android:paddingTop">@dimen/xsmall_margin</item>
+        <item name="android:paddingBottom">@dimen/xsmall_margin</item>
     </style>
 </resources>
