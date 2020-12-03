@@ -31,15 +31,11 @@ class IntroActivity : AppCompatActivity(){
                     mediaPlayer?.start()
                 }, 1500)
 
-                Handler().postDelayed({
-                    navigateToActivity(DashboardActivity::class.java, null, FADE_IN_ACTIVITY)
-                    finish()
-                }, 9200)
             }
 
             mediaPlayer?.setOnCompletionListener {
-               // navigateToActivity(DashboardActivity::class.java, null, FADE_IN_ACTIVITY)
-                // finish()
+               navigateToActivity(DashboardActivity::class.java, null, FADE_IN_ACTIVITY)
+               finish()
             }
 
         } catch (e: Exception) {
