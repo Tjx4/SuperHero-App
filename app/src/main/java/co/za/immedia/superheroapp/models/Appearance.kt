@@ -7,7 +7,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 class Appearance(
     @SerializedName("gender") var gender: String? = null,
-    @SerializedName("gender") var race: String? = null,
+    @SerializedName("race") var race: String? = null,
     @SerializedName("height") var height: List<String>? = null,
     @SerializedName("weight") var weight: List<String>? = null,
     @SerializedName("eye-color") var eyeColor: String? = null,
