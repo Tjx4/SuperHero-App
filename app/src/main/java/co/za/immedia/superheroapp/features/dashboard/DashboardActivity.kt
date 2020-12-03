@@ -64,7 +64,6 @@ class DashboardActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
         rvHeroes.adapter = superheroesAdapter
 */
         txtSearch.onTextUpdatedCallBackFunction = {
-            //hideKeyboard(txtSearch)
             dashboardViewModel.searchForHero(it)
         }
     }
@@ -73,6 +72,8 @@ class DashboardActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
         avlHeroLoader.visibility = View.GONE
         tvNoMessage.visibility = View.GONE
         rvHeroes.visibility = View.VISIBLE
+
+        //hideKeyboard(txtSearch)
 
         //rvHeroes.adapter?.notifyDataSetChanged()
         val searchTypeLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false)
