@@ -45,17 +45,23 @@ class DashboardActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
 
     private fun onShowLoading(isBusy: Boolean) {
         avlHeroLoader.visibility = View.VISIBLE
+        rvHeroes.visibility = View.GONE
     }
 
     private fun onNoHeroesFound(message: String) {
         avlHeroLoader.visibility = View.GONE
+        tvNoMessage.visibility = View.VISIBLE
     }
 
     private fun init() {
-        //val superheroesAdapter = SuperheroesAdapter(this, R.layout.hero_layout, dashboardViewModel.superheroes.value)
-        //superheroesAdapter.setOnHeroClickListener(this)
-       // rvHeroes.adapter = superheroesAdapter
-
+/*
+        val searchTypeLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false)
+        //searchTypeLayoutManager.initialPrefetchItemCount = dashboardViewModel.superheroes.value?.size ?: 0
+        rvHeroes?.layoutManager = searchTypeLayoutManager
+        val superheroesAdapter = SuperheroesAdapter(this, R.layout.hero_layout, dashboardViewModel.superheroes.value)
+        superheroesAdapter.setOnHeroClickListener(this)
+        rvHeroes.adapter = superheroesAdapter
+*/
         txtSearch.onTextUpdatedCallBackFunction = {
             hideKeyboard(txtSearch)
             dashboardViewModel.searchForHero(it)
@@ -64,6 +70,7 @@ class DashboardActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
 
     private fun onHeroesFound(superheroes: List<SuperHero?>?) {
         avlHeroLoader.visibility = View.GONE
+        tvNoMessage.visibility = View.GONE
         rvHeroes.visibility = View.VISIBLE
 
         //rvHeroes.adapter?.notifyDataSetChanged()

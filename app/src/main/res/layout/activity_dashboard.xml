@@ -63,6 +63,8 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
             app:indicatorColor="@color/black"/>
 
         <TextView
+            android:visibility="gone"
+            android:id="@+id/tvNoMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{dashboardViewModel.noHeroesMessage}"
