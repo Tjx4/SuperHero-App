@@ -38,7 +38,7 @@ class SearchEditText(context: Context, attrs: AttributeSet?) : AppCompatEditText
                         }
                     }
 
-                }, 500)
+                }, 900)
 
                 oldText = newText
             }
