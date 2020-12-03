@@ -52,6 +52,7 @@ class DashboardActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
     private fun onNoHeroesFound(message: String) {
         avlHeroLoader.visibility = View.GONE
         tvNoMessage.visibility = View.VISIBLE
+        rvHeroes.visibility = View.GONE
     }
 
     private fun init() {
