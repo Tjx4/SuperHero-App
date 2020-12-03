@@ -46,6 +46,7 @@ class DashboardActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
     private fun onShowLoading(isBusy: Boolean) {
         avlHeroLoader.visibility = View.VISIBLE
         rvHeroes.visibility = View.GONE
+        tvNoMessage.visibility = View.GONE
     }
 
     private fun onNoHeroesFound(message: String) {
@@ -63,7 +64,7 @@ class DashboardActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
         rvHeroes.adapter = superheroesAdapter
 */
         txtSearch.onTextUpdatedCallBackFunction = {
-            hideKeyboard(txtSearch)
+            //hideKeyboard(txtSearch)
             dashboardViewModel.searchForHero(it)
         }
     }
