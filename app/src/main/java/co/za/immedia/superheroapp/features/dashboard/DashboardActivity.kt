@@ -5,6 +5,7 @@ import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import co.za.immedia.superheroapp.R
 import co.za.immedia.superheroapp.adapters.SuperheroesAdapter
 import co.za.immedia.superheroapp.databinding.ActivityDashboardBinding
@@ -12,7 +13,7 @@ import co.za.immedia.superheroapp.features.base.activities.BaseActivity
 import co.za.immedia.superheroapp.models.SuperHero
 import kotlinx.android.synthetic.main.activity_dashboard.*
 
-class DashboardActivity : BaseActivity() {
+class DashboardActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
     // https://superheroapi.com/api/3899774550042021
 
     private lateinit var binding: ActivityDashboardBinding
@@ -33,7 +34,7 @@ class DashboardActivity : BaseActivity() {
         supportActionBar?.elevation = 0f
         supportActionBar?.title = "Heroes"
 
-        setHeroesList()
+        init()
     }
 
     private fun addObservers() {
@@ -44,16 +45,16 @@ class DashboardActivity : BaseActivity() {
 
     private fun onShowLoading(isBusy: Boolean) {
         avlHeroLoader.visibility = View.VISIBLE
-        rvHeroes.visibility = View.GONE
     }
 
     private fun onNoHeroesFound(message: String) {
         avlHeroLoader.visibility = View.GONE
     }
 
-    private fun setHeroesList() {
-        val superheroesAdapter = SuperheroesAdapter(this, R.layout.hero_layout, dashboardViewModel.superheroes.value)
-        rvHeroes.adapter = superheroesAdapter
+    private fun init() {
+        //val superheroesAdapter = SuperheroesAdapter(this, R.layout.hero_layout, dashboardViewModel.superheroes.value)
+        //superheroesAdapter.setOnHeroClickListener(this)
+       // rvHeroes.adapter = superheroesAdapter
 
         txtSearch.onTextUpdatedCallBackFunction = {
             hideKeyboard(txtSearch)
@@ -62,8 +63,20 @@ class DashboardActivity : BaseActivity() {
     }
 
     private fun onHeroesFound(superheroes: List<SuperHero?>?) {
+        avlHeroLoader.visibility = View.GONE
         rvHeroes.visibility = View.VISIBLE
-        rvHeroes.adapter?.notifyDataSetChanged()
+
+        //rvHeroes.adapter?.notifyDataSetChanged()
+        val searchTypeLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false)
+        searchTypeLayoutManager.initialPrefetchItemCount = superheroes?.size ?: 0
+        rvHeroes?.layoutManager = searchTypeLayoutManager
+        val superheroesAdapter = SuperheroesAdapter(this, R.layout.hero_layout, superheroes)
+        superheroesAdapter.setOnHeroClickListener(this)
+        rvHeroes.adapter = superheroesAdapter
+    }
+
+    override fun onHostClicked(view: View, position: Int) {
+
     }
 
 }

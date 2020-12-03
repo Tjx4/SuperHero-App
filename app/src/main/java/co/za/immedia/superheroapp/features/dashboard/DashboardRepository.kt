@@ -10,6 +10,7 @@ class DashboardRepository(var retrofit: RetrofitHelper) {
             retrofit.searchSuperHero(url)
         }
         catch (ex: Exception){
+            val dfd = ex
             null
         }
     }

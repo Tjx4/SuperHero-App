@@ -4,10 +4,12 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import co.za.immedia.superheroapp.R
 import co.za.immedia.superheroapp.features.dashboard.DashboardActivity
+import co.za.immedia.superheroapp.helpers.loadImageFromInternet
 import co.za.immedia.superheroapp.models.SuperHero
 
 class SuperheroesAdapter(context: Context, private val layout: Int, private val superHeroes: List<SuperHero?>?) : RecyclerView.Adapter<SuperheroesAdapter.ViewHolder>() {
@@ -24,14 +26,14 @@ class SuperheroesAdapter(context: Context, private val layout: Int, private val 
         val superHero = superHeroes?.get(position)
         holder.heroNameTv.text = superHero?.name
 
-        superHero?.image?.let {
-           //  loadImageFromInternet(dashboardActivity,  imageURL, holder.heroImgv, R.drawable.ic_splash)
+        superHero?.image?.url?.let {
+          loadImageFromInternet(dashboardActivity,  it, holder.heroImgv, R.drawable.ic_place_holde_dark)
         }
     }
 
     inner class ViewHolder internal constructor(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
         internal var heroNameTv = itemView.findViewById<TextView>(R.id.tvHeroName)
-        internal var heroImgv = itemView.findViewById<TextView>(R.id.imgvHero)
+        internal var heroImgv = itemView.findViewById<ImageView>(R.id.imgvHero)
 
         init {
             itemView.setOnClickListener(this)
@@ -50,7 +52,7 @@ class SuperheroesAdapter(context: Context, private val layout: Int, private val 
         fun onHostClicked(view: View, position: Int)
     }
 
-    fun setLocationClickListener(heroClickListener: HeroClickListener) {
+    fun setOnHeroClickListener(heroClickListener: HeroClickListener) {
         this.heroClickListener = heroClickListener
     }
 
