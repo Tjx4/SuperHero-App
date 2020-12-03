@@ -9,5 +9,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="splash_background">#1F1F1C</color>
     <color name="dark_text">#111111</color>
+    <color name="grey_text">#888888</color>
     <color name="light_text">#ffffff</color>
+    <color name="editTextBackground">#E9E9E9</color>
+    <color name="editTextBackgroundOutline">#E5E5E5</color>
+    <color name="greyBackground">#F1F1F1</color>
 </resources>

@@ -11,8 +11,12 @@ class DashboardViewModel(application: Application, val dashboardRepository: Dash
     val superHero: MutableLiveData<SuperHero>
         get() = _superHero
 
+    private var _searchKeyWord: MutableLiveData<String> = MutableLiveData()
+    val searchKeyWord: MutableLiveData<String>
+        get() = _searchKeyWord
+
     init {
-        _superHero.value = SuperHero("Iron man")
+
     }
 
 }

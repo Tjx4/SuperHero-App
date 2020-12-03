@@ -43,4 +43,14 @@
     <style name="SmallTextView" parent="BaseTextView">
         <item name="android:textSize">@dimen/small_text</item>
     </style>
+    <style name="SearchEditText">
+        <item name="android:textColorHint">@color/grey_text</item>
+        <item name="android:textSize">@dimen/medium_text</item>
+        <item name="android:textColor">@color/dark_text</item>
+        <item name="android:background">@drawable/search_background</item>
+        <item name="android:paddingLeft">45dp</item>
+        <item name="android:paddingRight">@dimen/small_margin</item>
+        <item name="android:paddingTop">@dimen/small_margin</item>
+        <item name="android:paddingBottom">@dimen/small_margin</item>
+    </style>
 </resources>
