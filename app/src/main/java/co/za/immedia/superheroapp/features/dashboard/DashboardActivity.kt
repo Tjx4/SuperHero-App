@@ -43,7 +43,7 @@ class DashboardActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
         init()
 
         supportActionBar?.elevation = 0f
-        supportActionBar?.title = " Heroes"
+        supportActionBar?.title = " Superheroes"
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setIcon(R.drawable.ic_superheroes_light)
     }
@@ -116,7 +116,7 @@ class DashboardActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_favourites -> {
-
+                Toast.makeText(this, "View fav",  Toast.LENGTH_SHORT).show()
             }
         }
         return super.onOptionsItemSelected(item)
