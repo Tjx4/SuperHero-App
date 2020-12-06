@@ -5,7 +5,7 @@
     <item
         android:id="@+id/action_favourites"
         android:icon="@drawable/ic_favourites_light"
-        android:title="View favourites"
+        android:title="@string/view_favourites"
         app:showAsAction="always"/>
 
 </menu>
