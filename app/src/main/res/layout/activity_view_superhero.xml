@@ -51,7 +51,7 @@
                     android:scaleType="centerCrop"
                     android:src="@drawable/ic_place_holde_dark"
                     app:layout_collapseMode="parallax"
-                    android:layout_marginBottom="50dp"/>
+                    android:layout_marginBottom="45dp"/>
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -97,7 +97,8 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:background="@color/lightBackground">
+                    android:background="@color/lightBackground"
+                    android:elevation="1dp">
 
                     <TextView
                         style="@style/DarkMediumTextView"
@@ -110,21 +111,21 @@
 
                 </LinearLayout>
 
+
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/cvP1"
+                    android:id="@+id/cvPowerStats"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:cardCornerRadius="5dp"
-                    android:elevation="0dp"
+                    android:elevation="1dp"
                     android:layout_margin="@dimen/xsmall_margin"
                     app:layout_constraintTop_toBottomOf="@+id/llDiscription">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/ccProduct"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/xsmall_margin"
-                        android:background="@color/lightBackground">
+                        android:background="@color/lightBackground"
+                        android:padding="@dimen/xsmall_margin">
 
                         <TextView
                             android:id="@+id/tvPowerStats"
@@ -143,7 +144,7 @@
                             android:id="@+id/flDivider"
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:background="@color/greyBackground"
+                            android:background="@color/divider"
                             android:layout_marginTop="@dimen/xsmall_margin"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/tvPowerStats"/>
@@ -211,6 +212,106 @@
 
                 </androidx.cardview.widget.CardView>
 
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvBiography"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="5dp"
+                    android:elevation="1dp"
+                    android:layout_margin="@dimen/xsmall_margin"
+                    app:layout_constraintTop_toBottomOf="@+id/cvPowerStats">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/lightBackground"
+                        android:padding="@dimen/xsmall_margin">
+
+                        <TextView
+                            android:id="@+id/tvBiography"
+                            style="@style/DarkMediumTextView"
+                            android:layout_width="0dp"
+                            android:text="Biography"
+                            android:textStyle="bold"
+                            android:maxLines="1"
+                            android:gravity="left"
+                            android:layout_marginRight="@dimen/xsmall_margin"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"/>
+
+                        <FrameLayout
+                            android:id="@+id/flBioDivider"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/divider"
+                            android:layout_marginTop="@dimen/xsmall_margin"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tvBiography"/>
+
+                        <TextView
+                            style="@style/DarkMediumTextView"
+                            android:id="@+id/tvFullNameLabel"
+                            android:layout_width="wrap_content"
+                            android:text="Full names:"
+                            android:layout_marginTop="@dimen/xsmall_margin"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/flBioDivider"/>
+
+                        <TextView
+                            style="@style/GreyMediumTextView"
+                            android:id="@+id/tvFullName"
+                            android:layout_width="wrap_content"
+                            tools:text="0"
+                            android:text="@{viewSuperheroViewModel.superhero.biography.fullName}"
+                            android:layout_marginLeft="@dimen/xsmall_margin"
+                            app:layout_constraintLeft_toRightOf="@+id/tvFullNameLabel"
+                            app:layout_constraintTop_toTopOf="@+id/tvFullNameLabel"
+                            app:layout_constraintBottom_toBottomOf="@+id/tvFullNameLabel"/>
+
+                        <TextView
+                            style="@style/DarkMediumTextView"
+                            android:id="@+id/tvAlterEgosLabel"
+                            android:layout_width="wrap_content"
+                            android:text="Alter Egos:"
+                            app:layout_constraintHorizontal_bias="0"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tvFullNameLabel"/>
+
+                        <TextView
+                            style="@style/GreyMediumTextView"
+                            android:id="@+id/tvAlterEgos"
+                            android:layout_width="wrap_content"
+                            tools:text="0"
+                            android:text="@{viewSuperheroViewModel.superhero.biography.alterEgos}"
+                            android:layout_marginLeft="@dimen/xsmall_margin"
+                            app:layout_constraintLeft_toRightOf="@+id/tvAlterEgosLabel"
+                            app:layout_constraintTop_toTopOf="@+id/tvAlterEgosLabel"
+                            app:layout_constraintBottom_toBottomOf="@+id/tvAlterEgosLabel"/>
+
+                        <TextView
+                            style="@style/DarkMediumTextView"
+                            android:id="@+id/tvPlaceOfBirthLabel"
+                            android:layout_width="wrap_content"
+                            android:text="Place of birth:"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tvAlterEgosLabel"/>
+
+                        <TextView
+                            style="@style/GreyMediumTextView"
+                            android:id="@+id/tvPlaceOfBirth"
+                            android:layout_width="wrap_content"
+                            tools:text="0"
+                            android:text="@{viewSuperheroViewModel.superhero.biography.placeOfBirth}"
+                            android:layout_marginLeft="@dimen/xsmall_margin"
+                            app:layout_constraintLeft_toRightOf="@+id/tvPlaceOfBirthLabel"
+                            app:layout_constraintTop_toTopOf="@+id/tvPlaceOfBirthLabel"
+                            app:layout_constraintBottom_toBottomOf="@+id/tvPlaceOfBirthLabel"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+                
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.core.widget.NestedScrollView>
