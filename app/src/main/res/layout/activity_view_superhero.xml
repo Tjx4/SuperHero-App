@@ -127,7 +127,7 @@
                         android:background="@color/lightBackground">
 
                         <TextView
-                            android:id="@+id/tvLocationName"
+                            android:id="@+id/tvPowerStats"
                             style="@style/DarkMediumTextView"
                             android:layout_width="0dp"
                             android:text="Power stats"
@@ -141,38 +141,38 @@
 
                         <TextView
                             style="@style/DarkMediumTextView"
-                            android:id="@+id/tvInteligenceLabel"
+                            android:id="@+id/tvIntelligenceLabel"
                             android:layout_width="wrap_content"
-                            tools:text="intelligence:"
+                            android:text="Intelligence:"
                             app:layout_constraintHorizontal_bias="0"
                             app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/tvLocationName"/>
+                            app:layout_constraintTop_toBottomOf="@+id/tvPowerStats"/>
 
                         <TextView
                             style="@style/DarkMediumTextView"
                             android:id="@+id/tvInteligence"
                             android:layout_width="wrap_content"
-                            tools:text="intelligence"
+                            tools:text="0"
                             android:text="@{viewSuperheroViewModel.superhero.powerstats.intelligence}"
                             android:layout_marginLeft="@dimen/xsmall_margin"
-                            app:layout_constraintLeft_toRightOf="@+id/tvInteligenceLabel"
-                            app:layout_constraintTop_toTopOf="@+id/tvInteligenceLabel"
-                            app:layout_constraintBottom_toBottomOf="@+id/tvInteligenceLabel"/>
+                            app:layout_constraintLeft_toRightOf="@+id/tvIntelligenceLabel"
+                            app:layout_constraintTop_toTopOf="@+id/tvIntelligenceLabel"
+                            app:layout_constraintBottom_toBottomOf="@+id/tvIntelligenceLabel"/>
 
                         <TextView
                             style="@style/DarkMediumTextView"
                             android:id="@+id/tvStrengthLabel"
                             android:layout_width="wrap_content"
-                            tools:text="Strength:"
+                            android:text="Strength:"
                             app:layout_constraintHorizontal_bias="0"
                             app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/tvInteligenceLabel"/>
+                            app:layout_constraintTop_toBottomOf="@+id/tvIntelligenceLabel"/>
 
                         <TextView
                             style="@style/DarkMediumTextView"
                             android:id="@+id/tvStrength"
                             android:layout_width="wrap_content"
-                            tools:text="Strength"
+                            tools:text="0"
                             android:text="@{viewSuperheroViewModel.superhero.powerstats.strength}"
                             android:layout_marginLeft="@dimen/xsmall_margin"
                             app:layout_constraintLeft_toRightOf="@+id/tvStrengthLabel"
@@ -183,8 +183,7 @@
                             style="@style/DarkMediumTextView"
                             android:id="@+id/tvSpeedLabel"
                             android:layout_width="wrap_content"
-                            tools:text="Speed:"
-                            app:layout_constraintHorizontal_bias="0"
+                            android:text="Speed:"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/tvStrengthLabel"/>
 
@@ -192,7 +191,7 @@
                             style="@style/DarkMediumTextView"
                             android:id="@+id/tvSpeed"
                             android:layout_width="wrap_content"
-                            tools:text="Speed"
+                            tools:text="0"
                             android:text="@{viewSuperheroViewModel.superhero.powerstats.speed}"
                             android:layout_marginLeft="@dimen/xsmall_margin"
                             app:layout_constraintLeft_toRightOf="@+id/tvSpeedLabel"
