@@ -163,12 +163,10 @@
                             android:layout_width="0dp"
                             tools:text="0"
                             android:text="@{viewSuperheroViewModel.superhero.powerstats.intelligence}"
-                            android:layout_marginTop="@dimen/xsmall_margin"
                             android:layout_marginLeft="@dimen/xsmall_margin"
                             app:layout_constraintRight_toRightOf="parent"
                             app:layout_constraintLeft_toRightOf="@+id/tvIntelligenceLabel"
-                            app:layout_constraintTop_toBottomOf="@+id/flDivider"
-                            app:layout_constraintBottom_toTopOf="@+id/tvStrengthLabel"/>
+                            app:layout_constraintTop_toTopOf="@+id/tvIntelligenceLabel"/>
 
                         <TextView
                             style="@style/DarkMediumTextView"
@@ -177,7 +175,7 @@
                             android:text="Strength:"
                             app:layout_constraintHorizontal_bias="0"
                             app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/tvIntelligenceLabel"/>
+                            app:layout_constraintTop_toBottomOf="@+id/tvInteligence"/>
 
                         <TextView
                             style="@style/GreyMediumTextView"
@@ -188,8 +186,7 @@
                             android:layout_marginLeft="@dimen/xsmall_margin"
                             app:layout_constraintRight_toRightOf="parent"
                             app:layout_constraintLeft_toRightOf="@+id/tvStrengthLabel"
-                            app:layout_constraintTop_toBottomOf="@+id/tvIntelligenceLabel"
-                            app:layout_constraintBottom_toTopOf="@+id/tvSpeedLabel"/>
+                            app:layout_constraintTop_toTopOf="@+id/tvStrengthLabel"/>
 
                         <TextView
                             style="@style/DarkMediumTextView"
@@ -197,7 +194,7 @@
                             android:layout_width="wrap_content"
                             android:text="Speed:"
                             app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/tvStrengthLabel"/>
+                            app:layout_constraintTop_toBottomOf="@+id/tvStrength"/>
 
                         <TextView
                             style="@style/GreyMediumTextView"
@@ -208,7 +205,7 @@
                             android:layout_marginLeft="@dimen/xsmall_margin"
                             app:layout_constraintRight_toRightOf="parent"
                             app:layout_constraintLeft_toRightOf="@+id/tvSpeedLabel"
-                            app:layout_constraintTop_toBottomOf="@+id/tvStrengthLabel"/>
+                            app:layout_constraintTop_toTopOf="@+id/tvSpeedLabel"/>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -266,12 +263,10 @@
                             android:layout_width="0dp"
                             tools:text="0"
                             android:text="@{viewSuperheroViewModel.superhero.biography.fullName}"
-                            android:layout_marginTop="@dimen/xsmall_margin"
                             android:layout_marginLeft="@dimen/xsmall_margin"
                             app:layout_constraintRight_toRightOf="parent"
                             app:layout_constraintLeft_toRightOf="@+id/tvFullNameLabel"
-                            app:layout_constraintTop_toBottomOf="@+id/flBioDivider"
-                            app:layout_constraintBottom_toTopOf="@+id/tvAlterEgosLabel"/>
+                            app:layout_constraintTop_toTopOf="@+id/tvFullNameLabel"/>
 
                         <TextView
                             style="@style/DarkMediumTextView"
@@ -280,7 +275,7 @@
                             android:text="Alter Egos:"
                             app:layout_constraintHorizontal_bias="0"
                             app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/tvFullNameLabel"/>
+                            app:layout_constraintTop_toBottomOf="@+id/tvFullName"/>
 
                         <TextView
                             style="@style/GreyMediumTextView"
@@ -291,8 +286,7 @@
                             android:layout_marginLeft="@dimen/xsmall_margin"
                             app:layout_constraintRight_toRightOf="parent"
                             app:layout_constraintLeft_toRightOf="@+id/tvAlterEgosLabel"
-                            app:layout_constraintTop_toBottomOf="@+id/tvFullNameLabel"
-                            app:layout_constraintBottom_toTopOf="@+id/tvPlaceOfBirthLabel"/>
+                            app:layout_constraintTop_toTopOf="@+id/tvAlterEgosLabel"/>
 
                         <TextView
                             style="@style/DarkMediumTextView"
@@ -311,7 +305,7 @@
                             android:layout_marginLeft="@dimen/xsmall_margin"
                             app:layout_constraintRight_toRightOf="parent"
                             app:layout_constraintLeft_toRightOf="@+id/tvPlaceOfBirthLabel"
-                            app:layout_constraintTop_toBottomOf="@+id/tvAlterEgosLabel"/>
+                            app:layout_constraintTop_toTopOf="@+id/tvPlaceOfBirthLabel"/>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
