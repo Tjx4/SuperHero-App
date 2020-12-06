@@ -12,7 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SuperHeroApp">
-        <activity android:name=".features.superhero.ViewSuperheroActivity"></activity>
+        <activity android:name=".features.superhero.ViewSuperheroActivity">
+            <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".features.dashboard.DashboardActivity" /></activity>
         <activity
             android:name=".features.intro.IntroActivity"
             android:theme="@style/NoActionBarTheme" />
@@ -22,7 +25,6 @@
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

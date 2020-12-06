@@ -14,4 +14,6 @@
     <color name="editTextBackground">#E9E9E9</color>
     <color name="editTextBackgroundOutline">#E5E5E5</color>
     <color name="greyBackground">#F1F1F1</color>
+    <color name="lightBackground">#FFFFFF</color>
+    <color name="darkBackground">#000000</color>
 </resources>

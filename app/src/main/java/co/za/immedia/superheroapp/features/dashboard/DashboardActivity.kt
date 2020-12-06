@@ -13,6 +13,7 @@ import co.za.immedia.superheroapp.databinding.ActivityDashboardBinding
 import co.za.immedia.superheroapp.extensions.FADE_IN_ACTIVITY
 import co.za.immedia.superheroapp.extensions.navigateToActivity
 import co.za.immedia.superheroapp.features.base.activities.BaseActivity
+import co.za.immedia.superheroapp.features.superhero.ViewSuperheroActivity
 import co.za.immedia.superheroapp.models.Superhero
 import kotlinx.android.synthetic.main.activity_dashboard.*
 
@@ -92,7 +93,7 @@ class DashboardActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
         val superhero = dashboardViewModel.superheroes.value?.get(position)
         val payload = Bundle()
         payload.putParcelable(SUPERHERO, superhero)
-        navigateToActivity(DashboardActivity::class.java, payload, FADE_IN_ACTIVITY)
+        navigateToActivity(ViewSuperheroActivity::class.java, payload, FADE_IN_ACTIVITY)
     }
 
 }
