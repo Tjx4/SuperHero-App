@@ -123,7 +123,9 @@ class DashboardActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
-        moveTaskToBack(true)
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            moveTaskToBack(true)
+        }
         return super.onKeyDown(keyCode, event)
     }
 
