@@ -93,7 +93,6 @@ class DashboardActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
         val payload = Bundle()
         payload.putParcelable(SUPERHERO, superhero)
         navigateToActivity(DashboardActivity::class.java, payload, FADE_IN_ACTIVITY)
-
     }
 
 }

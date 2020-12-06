@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="co.za.immedia.superheroapp">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -12,9 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SuperHeroApp">
-
-        <activity android:name=".features.intro.IntroActivity"
-            android:theme="@style/NoActionBarTheme"></activity>
+        <activity android:name=".features.superhero.ViewSuperheroActivity"></activity>
+        <activity
+            android:name=".features.intro.IntroActivity"
+            android:theme="@style/NoActionBarTheme" />
         <activity android:name=".features.dashboard.DashboardActivity" />
         <activity
             android:name=".features.splash.SplashActivity"

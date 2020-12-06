@@ -32,6 +32,7 @@ class DashboardViewModel(application: Application, val dashboardRepository: Dash
 
     }
 
+
     fun searchForHero(searchKeywords: String){
         busyMessage = "fetching outlets, please wait..."
        _showLoading.value = true
@@ -52,4 +53,7 @@ class DashboardViewModel(application: Application, val dashboardRepository: Dash
         }
     }
 
+    fun addSuperheroToFavourites(superHero: SuperHero){
+
+    }
 }
