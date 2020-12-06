@@ -1,6 +1,9 @@
 package co.za.immedia.superheroapp.features.dashboard
 
 import android.os.Bundle
+import android.view.KeyEvent
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
@@ -37,10 +40,12 @@ class DashboardActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
 
         addObservers()
 
+        init()
+
         supportActionBar?.elevation = 0f
         supportActionBar?.title = "Heroes"
-
-        init()
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setIcon(R.drawable.logo)
     }
 
     private fun addObservers() {
@@ -101,6 +106,25 @@ class DashboardActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
         val payload = Bundle()
         payload.putParcelable(SUPERHERO, superhero)
         navigateToActivity(ViewSuperheroActivity::class.java, payload, SLIDE_IN_ACTIVITY)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.dashboard_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_favourites -> {
+
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
+        moveTaskToBack(true)
+        return super.onKeyDown(keyCode, event)
     }
 
 }
