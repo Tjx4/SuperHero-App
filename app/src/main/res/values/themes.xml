@@ -46,6 +46,12 @@
     <style name="SmallTextView" parent="BaseTextView">
         <item name="android:textSize">@dimen/small_text</item>
     </style>
+    <style name="DarkSmallTextView" parent="SmallTextView">
+        <item name="android:textColor">@color/dark_text</item>
+    </style>
+    <style name="LightSmallTextView" parent="SmallTextView">
+        <item name="android:textColor">@color/light_text</item>
+    </style>
     <style name="SearchEditText">
         <item name="android:textColorHint">@color/grey_text</item>
         <item name="android:textSize">@dimen/medium_text</item>

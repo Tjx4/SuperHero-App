@@ -22,6 +22,7 @@
         app:layout_constraintBottom_toBottomOf="parent"/>
 
     <TextView
+        style="@style/DarkMediumTextView"
         android:id="@+id/tvHeroName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -29,24 +30,45 @@
         android:textStyle="bold"
         android:layout_marginLeft="@dimen/xsmall_margin"
         app:layout_constraintLeft_toRightOf="@+id/imgvHero"
-        app:layout_constraintRight_toLeftOf="@+id/imgbAddToFavourites"
+        app:layout_constraintRight_toLeftOf="@+id/llAddToFav"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
-    <ImageButton
-        android:id="@+id/imgbAddToFavourites"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:padding="5dp"
-        android:background="@android:color/transparent"
-        android:src="@drawable/ic_add_to_fav_dark"
-        android:scaleType="centerCrop"
+    <LinearLayout
+        android:id="@+id/llAddToFav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/xsmall_margin"
+        android:paddingVertical="@dimen/xsmall_margin"
+        android:background="@drawable/add_fav_background"
         android:layout_marginRight="@dimen/xsmall_margin"
         android:layout_marginTop="@dimen/xsmall_margin"
         android:layout_marginBottom="@dimen/xsmall_margin"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageButton
+            android:id="@+id/imgbAddToFavourites"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_add_to_fav_light"
+            android:scaleType="centerCrop"
+            android:layout_gravity="center"/>
+
+        <TextView
+            style="@style/LightSmallTextView"
+            android:id="@+id/tvAddFav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Favourite"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/xxsmall_margin"/>
+
+    </LinearLayout>
+
 
     <FrameLayout
         android:layout_width="match_parent"
