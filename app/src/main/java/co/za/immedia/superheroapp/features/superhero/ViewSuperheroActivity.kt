@@ -1,6 +1,7 @@
 package co.za.immedia.superheroapp.features.superhero
 
 import android.os.Bundle
+import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -11,6 +12,7 @@ import co.za.immedia.superheroapp.databinding.ActivityViewSuperheroBinding
 import co.za.immedia.superheroapp.features.base.activities.BaseChildActivity
 import co.za.immedia.superheroapp.helpers.loadImageFromInternet
 import co.za.immedia.superheroapp.models.Superhero
+import com.google.android.material.appbar.AppBarLayout
 import kotlinx.android.synthetic.main.activity_view_superhero.*
 
 class ViewSuperheroActivity : BaseChildActivity() {
@@ -38,6 +40,21 @@ class ViewSuperheroActivity : BaseChildActivity() {
         superhero?.image?.url?.let {
             loadImageFromInternet(this, it, imgSuperheroPic, R.drawable.ic_place_holde_dark)
         }
+
+
+        app_bar_layout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
+
+            if ((collapsing_toolbar!!.height + verticalOffset) < (2 * ViewCompat.getMinimumHeight(collapsing_toolbar))) {
+                //toolbar?.setNavigationIcon(R.drawable.rounde_back_no_out_line)
+            } else {
+                //toolbar?.setNavigationIcon(R.drawable.rounde_back)
+            }
+
+        })
+
+        toolbar?.setNavigationOnClickListener { onBackPressed() }
+        //toolbar?.inflateMenu(R.menu.view_host_menu)
+        setSupportActionBar(toolbar)
     }
 
     private fun addObservers() {

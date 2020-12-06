@@ -12,6 +12,7 @@ import co.za.immedia.superheroapp.adapters.SuperheroesAdapter
 import co.za.immedia.superheroapp.constants.SUPERHERO
 import co.za.immedia.superheroapp.databinding.ActivityDashboardBinding
 import co.za.immedia.superheroapp.extensions.FADE_IN_ACTIVITY
+import co.za.immedia.superheroapp.extensions.SLIDE_IN_ACTIVITY
 import co.za.immedia.superheroapp.extensions.navigateToActivity
 import co.za.immedia.superheroapp.features.base.activities.BaseActivity
 import co.za.immedia.superheroapp.features.superhero.ViewSuperheroActivity
@@ -99,7 +100,7 @@ class DashboardActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
         val superhero = dashboardViewModel.superheroes.value?.get(position)
         val payload = Bundle()
         payload.putParcelable(SUPERHERO, superhero)
-        navigateToActivity(ViewSuperheroActivity::class.java, payload, FADE_IN_ACTIVITY)
+        navigateToActivity(ViewSuperheroActivity::class.java, payload, SLIDE_IN_ACTIVITY)
     }
 
 }
