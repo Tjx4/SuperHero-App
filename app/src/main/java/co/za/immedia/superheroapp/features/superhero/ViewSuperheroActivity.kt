@@ -41,13 +41,12 @@ class ViewSuperheroActivity : BaseChildActivity() {
             loadImageFromInternet(this, it, imgSuperheroPic, R.drawable.ic_place_holde_dark)
         }
 
-
         app_bar_layout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
 
             if ((collapsing_toolbar!!.height + verticalOffset) < (2 * ViewCompat.getMinimumHeight(collapsing_toolbar))) {
-                //toolbar?.setNavigationIcon(R.drawable.rounde_back_no_out_line)
+                toolbar?.setNavigationIcon(R.drawable.ic_action_back_dark)
             } else {
-                //toolbar?.setNavigationIcon(R.drawable.rounde_back)
+                toolbar?.setNavigationIcon(R.drawable.ic_action_back_light)
             }
 
         })
