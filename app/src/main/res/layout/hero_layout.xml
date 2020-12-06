@@ -35,8 +35,8 @@
 
     <ImageButton
         android:id="@+id/imgbAddToFavourites"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:background="@android:color/transparent"
         android:src="@drawable/ic_add_dark"
         android:scaleType="centerCrop"

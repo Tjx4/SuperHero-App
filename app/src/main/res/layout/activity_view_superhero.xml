@@ -14,7 +14,7 @@
         android:animateLayoutChanges="true"
         android:fitsSystemWindows="true"
         tools:context=".features.superhero.ViewSuperheroActivity"
-        android:background="@color/lightBackground">
+        android:background="@color/greyBackground">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/app_bar_layout"
@@ -110,6 +110,98 @@
 
                 </LinearLayout>
 
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvP1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="5dp"
+                    android:elevation="0dp"
+                    android:layout_margin="@dimen/xsmall_margin"
+                    app:layout_constraintTop_toBottomOf="@+id/llDiscription">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/ccProduct"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/xsmall_margin"
+                        android:background="@color/lightBackground">
+
+                        <TextView
+                            android:id="@+id/tvLocationName"
+                            style="@style/DarkMediumTextView"
+                            android:layout_width="0dp"
+                            android:text="Power stats"
+                            android:textStyle="bold"
+                            android:maxLines="1"
+                            android:gravity="left"
+                            android:layout_marginRight="@dimen/xsmall_margin"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"/>
+
+                        <TextView
+                            style="@style/DarkMediumTextView"
+                            android:id="@+id/tvInteligenceLabel"
+                            android:layout_width="wrap_content"
+                            tools:text="intelligence:"
+                            app:layout_constraintHorizontal_bias="0"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tvLocationName"/>
+
+                        <TextView
+                            style="@style/DarkMediumTextView"
+                            android:id="@+id/tvInteligence"
+                            android:layout_width="wrap_content"
+                            tools:text="intelligence"
+                            android:text="@{viewSuperheroViewModel.superhero.powerstats.intelligence}"
+                            android:layout_marginLeft="@dimen/xsmall_margin"
+                            app:layout_constraintLeft_toRightOf="@+id/tvInteligenceLabel"
+                            app:layout_constraintTop_toTopOf="@+id/tvInteligenceLabel"
+                            app:layout_constraintBottom_toBottomOf="@+id/tvInteligenceLabel"/>
+
+                        <TextView
+                            style="@style/DarkMediumTextView"
+                            android:id="@+id/tvStrengthLabel"
+                            android:layout_width="wrap_content"
+                            tools:text="Strength:"
+                            app:layout_constraintHorizontal_bias="0"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tvInteligenceLabel"/>
+
+                        <TextView
+                            style="@style/DarkMediumTextView"
+                            android:id="@+id/tvStrength"
+                            android:layout_width="wrap_content"
+                            tools:text="Strength"
+                            android:text="@{viewSuperheroViewModel.superhero.powerstats.strength}"
+                            android:layout_marginLeft="@dimen/xsmall_margin"
+                            app:layout_constraintLeft_toRightOf="@+id/tvStrengthLabel"
+                            app:layout_constraintTop_toTopOf="@+id/tvStrengthLabel"
+                            app:layout_constraintBottom_toBottomOf="@+id/tvStrengthLabel"/>
+
+                        <TextView
+                            style="@style/DarkMediumTextView"
+                            android:id="@+id/tvSpeedLabel"
+                            android:layout_width="wrap_content"
+                            tools:text="Speed:"
+                            app:layout_constraintHorizontal_bias="0"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tvStrengthLabel"/>
+
+                        <TextView
+                            style="@style/DarkMediumTextView"
+                            android:id="@+id/tvSpeed"
+                            android:layout_width="wrap_content"
+                            tools:text="Speed"
+                            android:text="@{viewSuperheroViewModel.superhero.powerstats.speed}"
+                            android:layout_marginLeft="@dimen/xsmall_margin"
+                            app:layout_constraintLeft_toRightOf="@+id/tvSpeedLabel"
+                            app:layout_constraintTop_toTopOf="@+id/tvSpeedLabel"
+                            app:layout_constraintBottom_toBottomOf="@+id/tvSpeedLabel"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
