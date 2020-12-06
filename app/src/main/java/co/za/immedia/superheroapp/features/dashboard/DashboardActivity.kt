@@ -2,6 +2,7 @@ package co.za.immedia.superheroapp.features.dashboard
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -45,12 +46,17 @@ class DashboardActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
         dashboardViewModel.showLoading.observe(this, Observer { onShowLoading(it) })
         dashboardViewModel.noHeroesMessage.observe(this, Observer { onNoHeroesFound(it) })
         dashboardViewModel.superheroes.observe(this, Observer { onHeroesFound(it) })
+        dashboardViewModel.isHeroAdded.observe(this, Observer { onHeroAddedToFavourites(it) })
     }
 
     private fun onShowLoading(isBusy: Boolean) {
         avlHeroLoader.visibility = View.VISIBLE
         rvHeroes.visibility = View.GONE
         tvNoMessage.visibility = View.GONE
+    }
+
+    private fun onHeroAddedToFavourites(isBusy: Boolean) {
+        Toast.makeText(this, "onHeroAddedToFavourites",  Toast.LENGTH_SHORT).show()
     }
 
     private fun onNoHeroesFound(message: String) {

@@ -1,6 +1,5 @@
 package co.za.immedia.superheroapp.features.superhero
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -10,7 +9,9 @@ import co.za.immedia.superheroapp.constants.PAYLOAD_KEY
 import co.za.immedia.superheroapp.constants.SUPERHERO
 import co.za.immedia.superheroapp.databinding.ActivityViewSuperheroBinding
 import co.za.immedia.superheroapp.features.base.activities.BaseChildActivity
+import co.za.immedia.superheroapp.helpers.loadImageFromInternet
 import co.za.immedia.superheroapp.models.Superhero
+import kotlinx.android.synthetic.main.activity_view_superhero.*
 
 class ViewSuperheroActivity : BaseChildActivity() {
     private lateinit var binding: ActivityViewSuperheroBinding
@@ -33,6 +34,10 @@ class ViewSuperheroActivity : BaseChildActivity() {
 
         var ab = supportActionBar
         ab?.title = superhero?.name
+
+        superhero?.image?.url?.let {
+            loadImageFromInternet(this, it, imgSuperheroPic, R.drawable.ic_place_holde_dark)
+        }
     }
 
     private fun addObservers() {

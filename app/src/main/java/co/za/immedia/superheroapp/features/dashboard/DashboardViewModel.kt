@@ -25,6 +25,11 @@ class DashboardViewModel(application: Application, val dashboardRepository: Dash
     val noHeroesMessage: MutableLiveData<String>
         get() = _noHeroesMessage
 
+    private var _isHeroAdded: MutableLiveData<Boolean> = MutableLiveData()
+    val isHeroAdded: MutableLiveData<Boolean>
+        get() = _isHeroAdded
+
+
 
     var busyMessage: String = ""
 
@@ -54,6 +59,6 @@ class DashboardViewModel(application: Application, val dashboardRepository: Dash
     }
 
     fun addSuperheroToFavourites(superhero: Superhero){
-
+        _isHeroAdded.value = true
     }
 }
