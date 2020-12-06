@@ -52,7 +52,7 @@ class DashboardActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
         dashboardViewModel.showLoading.observe(this, Observer { onShowLoading(it) })
         dashboardViewModel.noHeroesMessage.observe(this, Observer { onNoHeroesFound(it) })
         dashboardViewModel.superheroes.observe(this, Observer { onHeroesFound(it) })
-        dashboardViewModel.isHeroAdded.observe(this, Observer { onHeroAddedToFavourites(it) })
+        dashboardViewModel.newFavHero.observe(this, Observer { onHeroAddedToFavourites(it) })
     }
 
     private fun onShowLoading(isBusy: Boolean) {
@@ -61,8 +61,8 @@ class DashboardActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
         tvNoMessage.visibility = View.GONE
     }
 
-    private fun onHeroAddedToFavourites(isBusy: Boolean) {
-        Toast.makeText(this, "onHeroAddedToFavourites",  Toast.LENGTH_SHORT).show()
+    private fun onHeroAddedToFavourites(superhero: Superhero) {
+        Toast.makeText(this, "${superhero.name} added to favourites",  Toast.LENGTH_SHORT).show()
     }
 
     private fun onNoHeroesFound(message: String) {

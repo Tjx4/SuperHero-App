@@ -6,7 +6,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 class Superhero(
-    @SerializedName("id")var id: String? = null,
+    @SerializedName("id")var id: Long = 0,
     @SerializedName("name")var name: String? = null,
     @SerializedName("powerstats") var powerstats: PowerStats? = null,
     @SerializedName("biography") var biography: Biography? = null,

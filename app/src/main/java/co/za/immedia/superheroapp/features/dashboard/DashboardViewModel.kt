@@ -7,7 +7,7 @@ import co.za.immedia.superheroapp.features.base.viewmodels.BaseVieModel
 import co.za.immedia.superheroapp.models.Superhero
 import kotlinx.coroutines.launch
 
-class DashboardViewModel(application: Application, val dashboardRepository: DashboardRepository) : BaseVieModel(application) {
+class DashboardViewModel(application: Application, private val dashboardRepository: DashboardRepository) : BaseVieModel(application) {
 
     private var _showLoading: MutableLiveData<Boolean> = MutableLiveData()
     val showLoading: MutableLiveData<Boolean>
@@ -25,18 +25,15 @@ class DashboardViewModel(application: Application, val dashboardRepository: Dash
     val noHeroesMessage: MutableLiveData<String>
         get() = _noHeroesMessage
 
-    private var _isHeroAdded: MutableLiveData<Boolean> = MutableLiveData()
-    val isHeroAdded: MutableLiveData<Boolean>
-        get() = _isHeroAdded
-
-
+    private var _newFavHero: MutableLiveData<Superhero> = MutableLiveData()
+    val newFavHero: MutableLiveData<Superhero>
+        get() = _newFavHero
 
     var busyMessage: String = ""
 
     init {
 
     }
-
 
     fun searchForHero(searchKeywords: String){
         busyMessage = "fetching outlets, please wait..."
@@ -53,12 +50,23 @@ class DashboardViewModel(application: Application, val dashboardRepository: Dash
                 else{
                     _noHeroesMessage.value = "No heroes found that match :${_searchKeyWord.value}"
                 }
-
             }
         }
     }
 
     fun addSuperheroToFavourites(superhero: Superhero){
-        _isHeroAdded.value = true
+        ioScope.launch {
+            var saveOperation = dashboardRepository.addSuperheroToFavDB(superhero)
+
+            uiScope.launch {
+                if(saveOperation.isSuccessful){
+                    _newFavHero.value = superhero
+                }
+                else{
+                   // Do something on save to DB fail
+                }
+
+            }
+        }
     }
 }
