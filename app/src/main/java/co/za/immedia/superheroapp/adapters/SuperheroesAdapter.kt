@@ -10,9 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import co.za.immedia.superheroapp.R
 import co.za.immedia.superheroapp.features.dashboard.DashboardActivity
 import co.za.immedia.superheroapp.helpers.loadImageFromInternet
-import co.za.immedia.superheroapp.models.SuperHero
+import co.za.immedia.superheroapp.models.Superhero
 
-class SuperheroesAdapter(context: Context, private val layout: Int, private val superHeroes: List<SuperHero?>?) : RecyclerView.Adapter<SuperheroesAdapter.ViewHolder>() {
+class SuperheroesAdapter(context: Context, private val layout: Int, private val superheroes: List<Superhero?>?) : RecyclerView.Adapter<SuperheroesAdapter.ViewHolder>() {
     private val dashboardActivity = context as DashboardActivity
     private val layoutInflater: LayoutInflater = LayoutInflater.from(context)
     private var heroClickListener: HeroClickListener? = null
@@ -23,7 +23,7 @@ class SuperheroesAdapter(context: Context, private val layout: Int, private val 
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val superHero = superHeroes?.get(position)
+        val superHero = superheroes?.get(position)
         holder.heroNameTv.text = superHero?.name
 
         superHero?.image?.url?.let {
@@ -51,8 +51,8 @@ class SuperheroesAdapter(context: Context, private val layout: Int, private val 
         }
     }
 
-    internal fun getItem(id: Int): SuperHero? {
-        return superHeroes?.get(id)
+    internal fun getItem(id: Int): Superhero? {
+        return superheroes?.get(id)
     }
 
     interface HeroClickListener {
@@ -63,6 +63,6 @@ class SuperheroesAdapter(context: Context, private val layout: Int, private val 
         this.heroClickListener = heroClickListener
     }
 
-    override fun getItemCount() = superHeroes?.size ?: 0
+    override fun getItemCount() = superheroes?.size ?: 0
 
 }

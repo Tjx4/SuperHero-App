@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import co.za.immedia.superheroapp.enums.Hosts
 import co.za.immedia.superheroapp.features.base.viewmodels.BaseVieModel
-import co.za.immedia.superheroapp.models.SuperHero
+import co.za.immedia.superheroapp.models.Superhero
 import kotlinx.coroutines.launch
 
 class DashboardViewModel(application: Application, val dashboardRepository: DashboardRepository) : BaseVieModel(application) {
@@ -13,8 +13,8 @@ class DashboardViewModel(application: Application, val dashboardRepository: Dash
     val showLoading: MutableLiveData<Boolean>
         get() = _showLoading
 
-    private var _superheroes: MutableLiveData<List<SuperHero?>?> = MutableLiveData()
-    val superheroes: MutableLiveData<List<SuperHero?>?>
+    private var _superheroes: MutableLiveData<List<Superhero?>?> = MutableLiveData()
+    val superheroes: MutableLiveData<List<Superhero?>?>
         get() = _superheroes
 
     private var _searchKeyWord: MutableLiveData<String> = MutableLiveData()
@@ -53,7 +53,7 @@ class DashboardViewModel(application: Application, val dashboardRepository: Dash
         }
     }
 
-    fun addSuperheroToFavourites(superHero: SuperHero){
+    fun addSuperheroToFavourites(superhero: Superhero){
 
     }
 }

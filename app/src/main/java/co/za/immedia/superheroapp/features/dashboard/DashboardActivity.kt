@@ -13,7 +13,7 @@ import co.za.immedia.superheroapp.databinding.ActivityDashboardBinding
 import co.za.immedia.superheroapp.extensions.FADE_IN_ACTIVITY
 import co.za.immedia.superheroapp.extensions.navigateToActivity
 import co.za.immedia.superheroapp.features.base.activities.BaseActivity
-import co.za.immedia.superheroapp.models.SuperHero
+import co.za.immedia.superheroapp.models.Superhero
 import kotlinx.android.synthetic.main.activity_dashboard.*
 
 class DashboardActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
@@ -72,7 +72,7 @@ class DashboardActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
         }
     }
 
-    private fun onHeroesFound(superheroes: List<SuperHero?>?) {
+    private fun onHeroesFound(superheroes: List<Superhero?>?) {
         avlHeroLoader.visibility = View.GONE
         tvNoMessage.visibility = View.GONE
         rvHeroes.visibility = View.VISIBLE

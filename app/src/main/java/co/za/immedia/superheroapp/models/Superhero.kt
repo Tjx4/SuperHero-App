@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-class SuperHero(
+class Superhero(
     @SerializedName("id")var id: String? = null,
     @SerializedName("name")var name: String? = null,
     @SerializedName("powerstats") var powerstats: PowerStats? = null,
