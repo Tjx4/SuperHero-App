@@ -40,6 +40,9 @@
     <style name="DarkMediumTextView" parent="MediumTextView">
         <item name="android:textColor">@color/dark_text</item>
     </style>
+    <style name="GreyMediumTextView" parent="MediumTextView">
+        <item name="android:textColor">@color/grey_text</item>
+    </style>
     <style name="SmallTextView" parent="BaseTextView">
         <item name="android:textSize">@dimen/small_text</item>
     </style>

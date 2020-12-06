@@ -36,7 +36,7 @@
                 app:contentScrim="@color/lightBackground"
                 app:expandedTitleMarginStart="20dp"
                 app:expandedTitleMarginEnd="64dp"
-                app:expandedTitleMarginBottom="15dp"
+                app:expandedTitleMarginBottom="@dimen/xsmall_margin"
                 app:expandedTitleTextAppearance="@style/CollapsedAppBarLargeDark"
                 app:title="@{viewSuperheroViewModel.superhero.name}"
                 android:fitsSystemWindows="true"
@@ -92,7 +92,7 @@
                     android:id="@+id/llDiscription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="@dimen/small_margin"
+                    android:paddingBottom="@dimen/xsmall_margin"
                     app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
@@ -139,17 +139,26 @@
                             app:layout_constraintRight_toRightOf="parent"
                             app:layout_constraintLeft_toLeftOf="parent"/>
 
-                        <TextView
-                            style="@style/DarkMediumTextView"
-                            android:id="@+id/tvIntelligenceLabel"
-                            android:layout_width="wrap_content"
-                            android:text="Intelligence:"
-                            app:layout_constraintHorizontal_bias="0"
+                        <FrameLayout
+                            android:id="@+id/flDivider"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/greyBackground"
+                            android:layout_marginTop="@dimen/xsmall_margin"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/tvPowerStats"/>
 
                         <TextView
                             style="@style/DarkMediumTextView"
+                            android:id="@+id/tvIntelligenceLabel"
+                            android:layout_width="wrap_content"
+                            android:text="Intelligence:"
+                            android:layout_marginTop="@dimen/xsmall_margin"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/flDivider"/>
+
+                        <TextView
+                            style="@style/GreyMediumTextView"
                             android:id="@+id/tvInteligence"
                             android:layout_width="wrap_content"
                             tools:text="0"
@@ -169,7 +178,7 @@
                             app:layout_constraintTop_toBottomOf="@+id/tvIntelligenceLabel"/>
 
                         <TextView
-                            style="@style/DarkMediumTextView"
+                            style="@style/GreyMediumTextView"
                             android:id="@+id/tvStrength"
                             android:layout_width="wrap_content"
                             tools:text="0"
@@ -188,7 +197,7 @@
                             app:layout_constraintTop_toBottomOf="@+id/tvStrengthLabel"/>
 
                         <TextView
-                            style="@style/DarkMediumTextView"
+                            style="@style/GreyMediumTextView"
                             android:id="@+id/tvSpeed"
                             android:layout_width="wrap_content"
                             tools:text="0"
