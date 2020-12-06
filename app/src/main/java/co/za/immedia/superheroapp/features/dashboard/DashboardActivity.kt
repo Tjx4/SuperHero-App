@@ -45,7 +45,7 @@ class DashboardActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
         supportActionBar?.elevation = 0f
         supportActionBar?.title = "Heroes"
         supportActionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.setIcon(R.drawable.logo)
+        supportActionBar?.setIcon(R.drawable.ic_superheroes_light)
     }
 
     private fun addObservers() {
