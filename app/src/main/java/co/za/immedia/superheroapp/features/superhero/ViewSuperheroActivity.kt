@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.activity_view_superhero.*
 
 class ViewSuperheroActivity : BaseChildActivity() {
     private lateinit var binding: ActivityViewSuperheroBinding
-    lateinit var viewSuperheroViewModel: ViewSuperheroViewModel
+    private lateinit var viewSuperheroViewModel: ViewSuperheroViewModel
     var addFavourite: MenuItem? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,19 +64,24 @@ class ViewSuperheroActivity : BaseChildActivity() {
 
     private fun addObservers() {
         viewSuperheroViewModel.superhero.observe(this, Observer { onSuperheroSet(it) })
+        viewSuperheroViewModel.isAddToFav.observe(this, Observer { onHeroAddedToFavourites(it) })
     }
 
     fun onSuperheroSet(superhero: Superhero){
 
     }
 
+    private fun onHeroAddedToFavourites(isAddToFav: Boolean) {
+        Toast.makeText(this, "Added to favourites",  Toast.LENGTH_SHORT).show()
+    }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_fav ->  {
-                Toast.makeText(this,  "Favourite", Toast.LENGTH_SHORT).show()
+                viewSuperheroViewModel.addSuperheroToFavourites()
                 //addFavourite?.setIcon(R.drawable.ic_set_fav)
-                //addFavourite?.isEnabled = false
+                addFavourite?.isVisible = false
             }
         }
 
