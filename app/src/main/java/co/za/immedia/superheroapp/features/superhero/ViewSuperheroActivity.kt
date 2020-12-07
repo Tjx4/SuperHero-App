@@ -75,7 +75,6 @@ class ViewSuperheroActivity : BaseChildActivity() {
         Toast.makeText(this, "Added to favourites",  Toast.LENGTH_SHORT).show()
     }
 
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_fav ->  {
