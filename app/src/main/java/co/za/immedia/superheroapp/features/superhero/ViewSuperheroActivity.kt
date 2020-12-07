@@ -49,10 +49,14 @@ class ViewSuperheroActivity : BaseChildActivity() {
 
             if ((collapsing_toolbar!!.height + verticalOffset) < (2 * ViewCompat.getMinimumHeight(collapsing_toolbar))) {
                 toolbar?.setNavigationIcon(R.drawable.ic_action_back_dark)
-                addFavourite?.setIcon(R.drawable.ic_favourites_dark)
+
+                val icon = if (addFavourite?.isEnabled == true) R.drawable.ic_favourites_dark else R.drawable.ic_set_fav
+                addFavourite?.setIcon(icon)
             } else {
                 toolbar?.setNavigationIcon(R.drawable.ic_action_back_light)
-                addFavourite?.setIcon(R.drawable.ic_favourites_light)
+
+                val icon = if (addFavourite?.isEnabled == true) R.drawable.ic_favourites_light else R.drawable.ic_set_fav
+                addFavourite?.setIcon(icon)
             }
 
         })
@@ -80,8 +84,7 @@ class ViewSuperheroActivity : BaseChildActivity() {
         when (item.itemId) {
             R.id.action_fav ->  {
                 viewSuperheroViewModel.addSuperheroToFavourites()
-                //addFavourite?.setIcon(R.drawable.ic_set_fav)
-                addFavourite?.isVisible = false
+                addFavourite?.isEnabled = false
             }
         }
 

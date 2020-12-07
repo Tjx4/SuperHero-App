@@ -6,7 +6,7 @@ import co.za.immedia.superheroapp.features.base.viewmodels.BaseVieModel
 import co.za.immedia.superheroapp.models.Superhero
 import kotlinx.coroutines.launch
 
-class ViewSuperheroViewModel(application: Application, val viewSuperheroRepository: ViewSuperheroRepository) : BaseVieModel(application) {
+class ViewSuperheroViewModel(application: Application, private val viewSuperheroRepository: ViewSuperheroRepository) : BaseVieModel(application) {
 
     private var _superhero: MutableLiveData<Superhero> = MutableLiveData()
     val superhero: MutableLiveData<Superhero>
@@ -24,9 +24,6 @@ class ViewSuperheroViewModel(application: Application, val viewSuperheroReposito
                 uiScope.launch {
                     if(saveOperation.isSuccessful){
                         _isAddToFav.value = true
-                    }
-                    else{
-                        // Do something on save to DB fail
                     }
                 }
             }
