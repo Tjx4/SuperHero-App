@@ -27,7 +27,7 @@
                 app:riv_corner_radius="45dp"
                 android:src="@drawable/ic_place_holde_dark"
                 android:scaleType="centerCrop"
-                android:layout_marginBottom="@dimen/xsmall_margin"
+                android:layout_marginTop="@dimen/xsmall_margin"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
