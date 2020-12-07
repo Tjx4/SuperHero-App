@@ -3,7 +3,7 @@ package co.za.immedia.superheroapp.features.superhero
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
+import android.widget.Toast
 import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -58,12 +58,8 @@ class ViewSuperheroActivity : BaseChildActivity() {
         })
 
         toolbar?.setNavigationOnClickListener { onBackPressed() }
-        //toolbar?.inflateMenu(R.menu.view_host_menu)
+        //toolbar?.inflateMenu(R.menu.view_superhero_menu)
         setSupportActionBar(toolbar)
-    }
-
-    fun onFavouriteClicked(view: View) {
-
     }
 
     private fun addObservers() {
@@ -72,6 +68,19 @@ class ViewSuperheroActivity : BaseChildActivity() {
 
     fun onSuperheroSet(superhero: Superhero){
 
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_fav ->  {
+                Toast.makeText(this,  "Favourite", Toast.LENGTH_SHORT).show()
+                //addFavourite?.setIcon(R.drawable.ic_set_fav)
+                //addFavourite?.isEnabled = false
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

@@ -107,6 +107,7 @@
                         tools:text="Host description"
                         android:text="@{viewSuperheroViewModel.superhero.biography.fullName}"
                         android:gravity="left"
+                        android:maxLines="1"
                         android:layout_marginHorizontal="@dimen/medium_margin"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toLeftOf="@+id/tvPublisher"
@@ -114,7 +115,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"/>
 
                     <TextView
-                        style="@style/DarkMediumTextView"
+                        style="@style/GreyMediumTextView"
                         android:id="@+id/tvPublisher"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
