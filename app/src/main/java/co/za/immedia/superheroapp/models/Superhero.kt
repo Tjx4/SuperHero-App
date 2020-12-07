@@ -13,7 +13,7 @@ class Superhero(
     @SerializedName("appearance") var appearance: Appearance? = null,
     @SerializedName("work") var work: Work? = null,
     @SerializedName("connections")var Connections: Work? = null,
-    @SerializedName("image")var image: Image? = null
+    @SerializedName("image")var image: Image? = null,
 ): Parcelable
 
 

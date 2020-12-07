@@ -30,10 +30,19 @@ class SuperheroesAdapter(context: Context, private val layout: Int, private val 
           loadImageFromInternet(dashboardActivity,  it, holder.heroImgv, R.drawable.ic_place_holde_dark)
         }
 
-        holder.setFavImg.setOnClickListener {
-            superHero?.let { hero ->
-                showFav(it, holder.favouriteImg)
-                dashboardActivity.dashboardViewModel.addSuperheroToFavourites(hero)
+        val isFavourite = dashboardActivity.dashboardViewModel?.favSuperheroes?.value?.any { currentHero ->
+            currentHero?.id == superHero?.id
+        } ?: false
+
+        if(isFavourite) {
+            showFav(holder.setFavImg, holder.favouriteImg)
+        }
+        else {
+            holder.setFavImg.setOnClickListener {
+                superHero?.let { hero ->
+                    showFav(it, holder.favouriteImg)
+                    dashboardActivity.dashboardViewModel.addSuperheroToFavourites(hero)
+                }
             }
         }
     }

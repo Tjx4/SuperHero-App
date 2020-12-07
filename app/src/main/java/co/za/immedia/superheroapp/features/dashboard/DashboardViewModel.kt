@@ -36,7 +36,7 @@ class DashboardViewModel(application: Application, private val dashboardReposito
     var busyMessage: String = ""
 
     init {
-
+        setFavSuperheroes()
     }
 
     fun searchForHero(searchKeywords: String){
@@ -74,8 +74,18 @@ class DashboardViewModel(application: Application, private val dashboardReposito
         }
     }
 
+
+    private fun setFavSuperheroes() {
+        ioScope.launch {
+            val favSuperheroes = getFavouriteHeroes()
+
+            uiScope.launch {
+                _favSuperheroes.value = favSuperheroes
+            }
+        }
+    }
+
     suspend fun getFavouriteHeroes(): List<Superhero?>?  {
-        var favSuperHeroes = dashboardRepository.getFavHeroesFromDB()
-        return favSuperHeroes
+        return dashboardRepository.getFavHeroesFromDB()
     }
 }
