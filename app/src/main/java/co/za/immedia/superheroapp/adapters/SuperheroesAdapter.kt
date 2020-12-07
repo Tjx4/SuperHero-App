@@ -30,7 +30,7 @@ class SuperheroesAdapter(context: Context, private val layout: Int, private val 
           loadImageFromInternet(dashboardActivity,  it, holder.heroImgv, R.drawable.ic_place_holde_dark)
         }
 
-        holder.addToFavourites.setOnClickListener {
+        holder.setFavImg.setOnClickListener {
             superHero?.let { hero ->
                 showFav(it, holder.favouriteImg)
                 dashboardActivity.dashboardViewModel.addSuperheroToFavourites(hero)
@@ -38,15 +38,15 @@ class SuperheroesAdapter(context: Context, private val layout: Int, private val 
         }
     }
 
-    fun showFav(addItem: View, favImg: View){
-        addItem.visibility = View.INVISIBLE
+    fun showFav(setFavImg: View, favImg: View){
+        setFavImg.visibility = View.INVISIBLE
         favImg.visibility = View.VISIBLE
     }
 
     inner class ViewHolder internal constructor(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
         internal var heroNameTv = itemView.findViewById<TextView>(R.id.tvHeroName)
         internal var heroImgv = itemView.findViewById<ImageView>(R.id.imgvHero)
-        internal var addToFavourites = itemView.findViewById<View>(R.id.llAddToFav)
+        internal var setFavImg = itemView.findViewById<View>(R.id.imgSetFav)
         internal var favouriteImg = itemView.findViewById<View>(R.id.imgFavourite)
 
         init {
