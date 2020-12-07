@@ -67,5 +67,8 @@
         <item name="android:textColor">@color/dark_text</item>
         <item name="android:textStyle">bold</item>
     </style>
-
+    <style name="DialogTheme">
+        <item name="android:windowEnterAnimation">@anim/fade_in</item>
+        <item name="android:windowExitAnimation">@anim/fade_out</item>
+    </style>
 </resources>

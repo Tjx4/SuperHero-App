@@ -17,7 +17,9 @@ import co.za.immedia.superheroapp.databinding.ActivityDashboardBinding
 import co.za.immedia.superheroapp.extensions.FADE_IN_ACTIVITY
 import co.za.immedia.superheroapp.extensions.SLIDE_IN_ACTIVITY
 import co.za.immedia.superheroapp.extensions.navigateToActivity
+import co.za.immedia.superheroapp.extensions.showDialogFragment
 import co.za.immedia.superheroapp.features.base.activities.BaseActivity
+import co.za.immedia.superheroapp.features.favourites.FavouritesFragment
 import co.za.immedia.superheroapp.features.superhero.ViewSuperheroActivity
 import co.za.immedia.superheroapp.models.Superhero
 import kotlinx.android.synthetic.main.activity_dashboard.*
@@ -103,6 +105,10 @@ class DashboardActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
 
     override fun onHostClicked(view: View, position: Int) {
         val superhero = dashboardViewModel.superheroes.value?.get(position)
+        viewSuperhero(superhero)
+    }
+
+    fun viewSuperhero(superhero: Superhero?) {
         val payload = Bundle()
         payload.putParcelable(SUPERHERO, superhero)
         navigateToActivity(ViewSuperheroActivity::class.java, payload, SLIDE_IN_ACTIVITY)
@@ -116,7 +122,9 @@ class DashboardActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_favourites -> {
-                Toast.makeText(this, "View fav",  Toast.LENGTH_SHORT).show()
+                val favouritesFragment = FavouritesFragment.newInstance()
+                favouritesFragment?.isCancelable = true
+                showDialogFragment("Superheroes", R.layout.fragment_favourites, favouritesFragment)
             }
         }
         return super.onOptionsItemSelected(item)

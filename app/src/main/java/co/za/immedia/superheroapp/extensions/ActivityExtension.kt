@@ -2,10 +2,14 @@ package co.za.immedia.superheroapp.extensions
 
 import android.content.Intent
 import android.os.Bundle
+import android.provider.ContactsContract.CommonDataKinds.Organization.TITLE
 import androidx.appcompat.app.AppCompatActivity
 import co.za.immedia.superheroapp.R
 import co.za.immedia.superheroapp.constants.ACTIVITY_TRANSITION
+import co.za.immedia.superheroapp.constants.LAYOUT
 import co.za.immedia.superheroapp.constants.PAYLOAD_KEY
+import co.za.immedia.superheroapp.features.base.activities.BaseActivity
+import co.za.immedia.superheroapp.features.base.fragments.BaseDialogFragment
 
 val SLIDE_IN_ACTIVITY = getTransitionAnimation(R.anim.slide_right, R.anim.no_transition)
 val SLIDE_OUT_ACTIVITY =  getTransitionAnimation(R.anim.no_transition, R.anim.slide_left)
@@ -35,4 +39,21 @@ private fun AppCompatActivity.goToActivity(activity: Class<*>, transitionAnimati
     startActivity(intent)
 }
 
+
+fun BaseActivity.showDialogFragment(title: String, layout: Int, newFragmentBaseBase: BaseDialogFragment) {
+    val ft = this.supportFragmentManager.beginTransaction()
+    var newFragment = getFragmentDialog(title, layout, newFragmentBaseBase)
+    newFragment.show(ft, "dialog")
+}
+
+private fun getFragmentDialog(title: String, layout: Int, newFragmentBaseBase: BaseDialogFragment) : BaseDialogFragment {
+    val payload = newFragmentBaseBase.arguments
+    payload?.putString(TITLE, title)
+    payload?.putInt(LAYOUT, layout)
+
+    newFragmentBaseBase.arguments = payload
+    return newFragmentBaseBase
+}
+
 data class Transition (var inAnimation: Int = 0, var outAnimation: Int = 0)
+

@@ -17,6 +17,10 @@ class DashboardViewModel(application: Application, private val dashboardReposito
     val superheroes: MutableLiveData<List<Superhero?>?>
         get() = _superheroes
 
+    private var _favSuperheroes: MutableLiveData<List<Superhero?>?> = MutableLiveData()
+    val favSuperheroes: MutableLiveData<List<Superhero?>?>
+        get() = _favSuperheroes
+
     private var _searchKeyWord: MutableLiveData<String> = MutableLiveData()
     val searchKeyWord: MutableLiveData<String>
         get() = _searchKeyWord
@@ -68,5 +72,11 @@ class DashboardViewModel(application: Application, private val dashboardReposito
 
             }
         }
+    }
+
+    suspend fun getFavouriteHeroes(): List<Superhero?>?  {
+        var favSuperHeroes = dashboardRepository.getFavHeroesFromDB()
+        _favSuperheroes.value = favSuperHeroes
+        return favSuperHeroes
     }
 }

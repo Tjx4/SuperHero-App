@@ -1,6 +1,7 @@
 package co.za.immedia.superheroapp.features.dashboard
 
 import co.za.immedia.superheroapp.database.SuperheroDB
+import co.za.immedia.superheroapp.extensions.toSuperhero
 import co.za.immedia.superheroapp.extensions.toSuperheroesTable
 import co.za.immedia.superheroapp.helpers.RetrofitHelper
 import co.za.immedia.superheroapp.models.DbOperation
@@ -24,6 +25,20 @@ class DashboardRepository(private val retrofit: RetrofitHelper, private val data
         }
         catch (ex: Exception){
             DbOperation(false)
+        }
+    }
+
+    suspend fun getFavHeroesFromDB(): List<Superhero?>? {
+        return try {
+            val favHeroes = ArrayList<Superhero?>()
+            database.superheroesDAO.getAllHeroes()?.forEach { superheroTable ->
+                favHeroes.add(superheroTable.toSuperhero())
+            }
+
+            favHeroes
+        }
+        catch (ex: Exception){
+            null
         }
     }
 }

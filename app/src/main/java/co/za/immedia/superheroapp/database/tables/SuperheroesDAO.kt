@@ -24,7 +24,7 @@ interface SuperheroesDAO {
     fun getAllUsersLiveData(): LiveData<List<SuperheroesTable>>
 
     @Query("SELECT * FROM superheroes ORDER BY id DESC")
-    fun getAllUsers():List<SuperheroesTable>?
+    fun getAllHeroes():List<SuperheroesTable>?
 
     @Query("DELETE  FROM superheroes")
     fun clear()
