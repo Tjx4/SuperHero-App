@@ -57,11 +57,9 @@ class  FavouritesFragment : BaseDialogFragment(), FavouriteHeroesAdapter.HeroCli
         showLoading()
 
         ioScope.launch {
-            favSuperheroes = dashboardActivity?.dashboardViewModel?.getFavouriteHeroes()
+            favSuperheroes = dashboardActivity?.dashboardViewModel?.favSuperheroes?.value
 
             uiScope.launch {
-                dashboardActivity?.dashboardViewModel?.favSuperheroes?.value = favSuperheroes
-
                 hideLoading()
 
                 if(favSuperheroes.isNullOrEmpty()){
