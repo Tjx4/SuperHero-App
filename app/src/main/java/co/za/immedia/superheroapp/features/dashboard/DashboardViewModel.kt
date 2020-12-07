@@ -65,6 +65,7 @@ class DashboardViewModel(application: Application, private val dashboardReposito
             uiScope.launch {
                 if(saveOperation.isSuccessful){
                     _newFavHero.value = superhero
+                    ((_favSuperheroes.value) as ArrayList)?.add(superhero)
                 }
                 else{
                    // Do something on save to DB fail
