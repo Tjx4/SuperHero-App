@@ -1,6 +1,8 @@
 package co.za.immedia.superheroapp.features.superhero
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
@@ -19,6 +21,7 @@ import kotlinx.android.synthetic.main.activity_view_superhero.*
 class ViewSuperheroActivity : BaseChildActivity() {
     private lateinit var binding: ActivityViewSuperheroBinding
     lateinit var viewSuperheroViewModel: ViewSuperheroViewModel
+    var addFavourite: MenuItem? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,8 +49,10 @@ class ViewSuperheroActivity : BaseChildActivity() {
 
             if ((collapsing_toolbar!!.height + verticalOffset) < (2 * ViewCompat.getMinimumHeight(collapsing_toolbar))) {
                 toolbar?.setNavigationIcon(R.drawable.ic_action_back_dark)
+                addFavourite?.setIcon(R.drawable.ic_favourites_dark)
             } else {
                 toolbar?.setNavigationIcon(R.drawable.ic_action_back_light)
+                addFavourite?.setIcon(R.drawable.ic_favourites_light)
             }
 
         })
@@ -67,5 +72,11 @@ class ViewSuperheroActivity : BaseChildActivity() {
 
     fun onSuperheroSet(superhero: Superhero){
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.view_superhero_menu, menu)
+        addFavourite = menu.findItem(R.id.action_fav)
+        return super.onCreateOptionsMenu(menu)
     }
 }
