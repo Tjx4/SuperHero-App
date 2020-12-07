@@ -76,7 +76,6 @@ class DashboardViewModel(application: Application, private val dashboardReposito
 
     suspend fun getFavouriteHeroes(): List<Superhero?>?  {
         var favSuperHeroes = dashboardRepository.getFavHeroesFromDB()
-        _favSuperheroes.value = favSuperHeroes
         return favSuperHeroes
     }
 }
