@@ -52,7 +52,7 @@ class DashboardViewModel(application: Application, private val dashboardReposito
                     _superheroes.value = superheroes.results
                 }
                 else{
-                    _noHeroesMessage.value = "No heroes found that match :${_searchKeyWord.value}"
+                    _noHeroesMessage.value = "No heroes found that match - ${_searchKeyWord.value}"
                 }
             }
         }
