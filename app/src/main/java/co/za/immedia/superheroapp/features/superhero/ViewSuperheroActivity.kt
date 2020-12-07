@@ -1,6 +1,7 @@
 package co.za.immedia.superheroapp.features.superhero
 
 import android.os.Bundle
+import android.view.View
 import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -54,6 +55,10 @@ class ViewSuperheroActivity : BaseChildActivity() {
         toolbar?.setNavigationOnClickListener { onBackPressed() }
         //toolbar?.inflateMenu(R.menu.view_host_menu)
         setSupportActionBar(toolbar)
+    }
+
+    fun onFavouriteClicked(view: View) {
+
     }
 
     private fun addObservers() {
