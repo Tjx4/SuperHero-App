@@ -12,23 +12,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@color/lightBackground">
+        android:background="@color/greyBackground">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clUserSelectTopBanner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
-            android:elevation="1dp">
+            android:background="@color/lightBackground">
 
             <ImageView
                 android:id="@+id/imgFav"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:layout_margin="5dp"
                 android:background="@android:color/transparent"
                 android:scaleType="fitXY"
                 android:src="@drawable/ic_favourites_dark"
+                android:layout_marginLeft="@dimen/xsmall_margin"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
@@ -38,7 +38,7 @@
                 android:id="@+id/tvFavHeroesHeading"
                 android:gravity="center"
                 android:layout_width="0dp"
-                android:text="Your favourite superheroes"
+                android:text="Favourite superheroes"
                 android:textStyle="bold"
                 android:paddingLeft="@dimen/small_margin"
                 android:paddingRight="@dimen/small_margin"
@@ -66,9 +66,8 @@
             android:id="@+id/rvUsers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/xxsmall_margin"
-            app:layout_constraintTop_toBottomOf="@+id/clUserSelectTopBanner"
-            android:background="@color/greyBackground"/>
+            android:layout_margin="@dimen/xxsmall_margin"
+            app:layout_constraintTop_toBottomOf="@+id/clUserSelectTopBanner"/>
 
         <TextView
             android:visibility="gone"
