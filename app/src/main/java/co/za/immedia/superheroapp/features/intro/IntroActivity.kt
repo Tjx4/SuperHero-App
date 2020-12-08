@@ -3,6 +3,7 @@ package co.za.immedia.superheroapp.features.intro
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
+import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -11,17 +12,18 @@ import co.za.immedia.superheroapp.extensions.FADE_IN_ACTIVITY
 import co.za.immedia.superheroapp.extensions.fadeIn
 import co.za.immedia.superheroapp.extensions.navigateToActivity
 import co.za.immedia.superheroapp.features.dashboard.DashboardActivity
+import co.za.immedia.superheroapp.helpers.SharedPrefs
 import java.io.IOException
 
 class IntroActivity : AppCompatActivity(){
+    private var mediaPlayer: MediaPlayer? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_intro)
 
-
-            //var mediaPlayer: MediaPlayer? = MediaPlayer.create(this, R.raw.theme)
         val resID: Int = resources.getIdentifier("theme", "raw", packageName)
-        val mediaPlayer = MediaPlayer.create(this, resID)
+        mediaPlayer = MediaPlayer.create(this, resID)
 
         try {
             mediaPlayer?.setVolume(70f, 70f)
@@ -42,6 +44,13 @@ class IntroActivity : AppCompatActivity(){
             navigateToActivity(DashboardActivity::class.java, null, FADE_IN_ACTIVITY)
             finish()
         }
+    }
+
+    fun onSkipIntroClicked(view: View){
+        val sharedPrefs = SharedPrefs.getInstance(application)
+        sharedPrefs.skipIntro = true
+        navigateToActivity(DashboardActivity::class.java, null, FADE_IN_ACTIVITY)
+        finish()
     }
 
 }
