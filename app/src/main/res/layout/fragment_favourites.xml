@@ -7,11 +7,11 @@
     android:padding="@dimen/medium_margin"
     tools:context=".features.favourites.FavouritesFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/rlParent"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:orientation="vertical"
         android:background="@color/greyBackground">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -62,38 +62,46 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvUsers"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/rlParent"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/xxsmall_margin"
-            android:layout_marginVertical="@dimen/medium_margin"
-            app:layout_constraintTop_toBottomOf="@+id/clUserSelectTopBanner"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:visibility="gone"
-            android:id="@+id/tvNoStats"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/no_superheroes"
-            android:padding="@dimen/medium_margin"
-            app:layout_constraintTop_toBottomOf="@+id/clUserSelectTopBanner"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvUsers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/xxsmall_margin"
+                android:layout_marginVertical="@dimen/medium_margin"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
-        <com.wang.avi.AVLoadingIndicatorView
-            android:id="@+id/avlLoading"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:indicatorName="BallScaleRippleIndicator"
-            app:indicatorColor="@color/dark_text"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/clUserSelectTopBanner"
-            android:layout_marginVertical="@dimen/large_margin"/>
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/tvNoStats"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/no_superheroes"
+                android:padding="@dimen/medium_margin"
+                app:layout_constraintTop_toTopOf="parent"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.wang.avi.AVLoadingIndicatorView
+                android:id="@+id/avlLoading"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:indicatorName="BallScaleRippleIndicator"
+                app:indicatorColor="@color/dark_text"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginVertical="@dimen/large_margin"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
 
 </FrameLayout>
 
