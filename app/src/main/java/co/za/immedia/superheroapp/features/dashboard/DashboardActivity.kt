@@ -26,8 +26,6 @@ import co.za.immedia.superheroapp.models.Superhero
 import kotlinx.android.synthetic.main.activity_dashboard.*
 
 class DashboardActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
-    // https://superheroapi.com/api/3899774550042021
-
     private lateinit var binding: ActivityDashboardBinding
     lateinit var dashboardViewModel: DashboardViewModel
 
@@ -49,6 +47,12 @@ class DashboardActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
         supportActionBar?.title = " Superheroes"
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setIcon(R.drawable.ic_superheroes_light)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        dashboardViewModel.setFavSuperheroes()
+        rvHeroes.adapter?.notifyDataSetChanged()
     }
 
     private fun addObservers() {
@@ -94,8 +98,8 @@ class DashboardActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
         rvHeroes.visibility = View.VISIBLE
 
         //hideKeyboard(txtSearch)
-
         //rvHeroes.adapter?.notifyDataSetChanged()
+
         val searchTypeLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false)
         searchTypeLayoutManager.initialPrefetchItemCount = superheroes?.size ?: 0
         rvHeroes?.layoutManager = searchTypeLayoutManager

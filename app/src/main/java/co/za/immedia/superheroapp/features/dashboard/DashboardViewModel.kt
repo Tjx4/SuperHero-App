@@ -35,10 +35,6 @@ class DashboardViewModel(application: Application, private val dashboardReposito
 
     var busyMessage: String = ""
 
-    init {
-        setFavSuperheroes()
-    }
-
     fun searchForHero(searchKeywords: String){
         busyMessage = "fetching outlets, please wait..."
        _showLoading.value = true
@@ -76,7 +72,7 @@ class DashboardViewModel(application: Application, private val dashboardReposito
     }
 
 
-    private fun setFavSuperheroes() {
+    fun setFavSuperheroes() {
         ioScope.launch {
             val favSuperheroes = getFavouriteHeroes()
 
