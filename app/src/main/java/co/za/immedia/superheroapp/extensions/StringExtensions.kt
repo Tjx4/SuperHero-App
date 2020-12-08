@@ -1,5 +1,5 @@
 package co.za.immedia.superheroapp.extensions
 
-fun defValue(value: String?): String {
-    return value ?: "Uknown"
+fun nullToDefValue(value: String?, defValue: String = "Unknown"): String {
+    return if(value == "null")  "$defValue" else "$value"
 }
