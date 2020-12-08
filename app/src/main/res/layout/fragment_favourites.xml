@@ -66,8 +66,10 @@
             android:id="@+id/rvUsers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/xxsmall_margin"
-            app:layout_constraintTop_toBottomOf="@+id/clUserSelectTopBanner"/>
+            android:layout_marginHorizontal="@dimen/xxsmall_margin"
+            android:layout_marginVertical="@dimen/medium_margin"
+            app:layout_constraintTop_toBottomOf="@+id/clUserSelectTopBanner"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
         <TextView
             android:visibility="gone"

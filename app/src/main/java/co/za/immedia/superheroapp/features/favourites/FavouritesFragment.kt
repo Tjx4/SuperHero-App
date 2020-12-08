@@ -23,7 +23,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class  FavouritesFragment : BaseDialogFragment(), FavouriteHeroesAdapter.HeroClickListener {
+class FavouritesFragment : BaseDialogFragment(), FavouriteHeroesAdapter.HeroClickListener {
     private var dashboardActivity: DashboardActivity? = null
     private var parentCl: ConstraintLayout? = null
     private var avlProgressBarLoading: AVLoadingIndicatorView? = null
