@@ -52,13 +52,13 @@ class DashboardActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
     override fun onResume() {
         super.onResume()
         dashboardViewModel.setFavSuperheroes()
-        rvHeroes.adapter?.notifyDataSetChanged()
     }
 
     private fun addObservers() {
         dashboardViewModel.showLoading.observe(this, Observer { onShowLoading(it) })
         dashboardViewModel.noHeroesMessage.observe(this, Observer { onNoHeroesFound(it) })
         dashboardViewModel.superheroes.observe(this, Observer { onHeroesFound(it) })
+        dashboardViewModel.favSuperheroes.observe(this, Observer { onHeroesUpdated(it) })
         dashboardViewModel.newFavHero.observe(this, Observer { onHeroAddedToFavourites(it) })
     }
 
@@ -106,6 +106,10 @@ class DashboardActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
         val superheroesAdapter = SuperheroesAdapter(this, R.layout.hero_layout, superheroes)
         superheroesAdapter.setOnHeroClickListener(this)
         rvHeroes.adapter = superheroesAdapter
+    }
+
+    private fun onHeroesUpdated(superheroes: List<Superhero?>?) {
+        rvHeroes.adapter?.notifyDataSetChanged()
     }
 
     override fun onHostClicked(view: View, position: Int) {
