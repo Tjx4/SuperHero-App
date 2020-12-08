@@ -50,6 +50,7 @@ class IntroActivity : AppCompatActivity(){
         val sharedPrefs = SharedPrefs.getInstance(application)
         sharedPrefs.skipIntro = true
         navigateToActivity(DashboardActivity::class.java, null, FADE_IN_ACTIVITY)
+        mediaPlayer?.stop()
         finish()
     }
 
