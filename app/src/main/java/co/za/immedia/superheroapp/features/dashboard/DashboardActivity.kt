@@ -10,12 +10,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import co.za.immedia.features.MainActivity
 import co.za.immedia.superheroapp.R
 import co.za.immedia.superheroapp.adapters.SuperheroesAdapter
 import co.za.immedia.superheroapp.constants.FAV
 import co.za.immedia.superheroapp.constants.SUPERHERO
 import co.za.immedia.superheroapp.databinding.ActivityDashboardBinding
-import co.za.immedia.superheroapp.extensions.FADE_IN_ACTIVITY
 import co.za.immedia.superheroapp.extensions.SLIDE_IN_ACTIVITY
 import co.za.immedia.superheroapp.extensions.navigateToActivity
 import co.za.immedia.superheroapp.extensions.showDialogFragment
