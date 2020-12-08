@@ -31,27 +31,34 @@ class SuperheroesAdapter(context: Context, private val layout: Int, private val 
         }
 
         val isFavourite = dashboardActivity.dashboardViewModel?.favSuperheroes?.value?.any { currentHero ->
-            currentHero?.id == superHero?.id
+            currentHero?.id == superHero?.id && currentHero?.name == superHero?.name
         } ?: false
 
         superHero?.isFav = isFavourite
 
         if(isFavourite) {
-            showFav(holder.setFavImg, holder.favouriteImg)
+            setFav(holder.setFavImg, holder.favouriteImg)
         }
         else {
+            setDef(holder.setFavImg, holder.favouriteImg)
+
             holder.setFavImg.setOnClickListener {
                 superHero?.let { hero ->
-                    showFav(it, holder.favouriteImg)
+                    setFav(it, holder.favouriteImg)
                     dashboardActivity.dashboardViewModel.addSuperheroToFavourites(hero)
                 }
             }
         }
     }
 
-    fun showFav(setFavImg: View, favImg: View){
-        setFavImg.visibility = View.INVISIBLE
+    private fun setFav(setFavImg: View, favImg: View){
+        setFavImg.visibility = View.GONE
         favImg.visibility = View.VISIBLE
+    }
+
+    private fun setDef(setFavImg: View, favImg: View){
+        setFavImg.visibility = View.VISIBLE
+        favImg.visibility = View.GONE
     }
 
     inner class ViewHolder internal constructor(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
