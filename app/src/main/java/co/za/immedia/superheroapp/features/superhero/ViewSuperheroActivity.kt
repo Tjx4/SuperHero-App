@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import co.za.immedia.superheroapp.R
+import co.za.immedia.superheroapp.constants.FAV
 import co.za.immedia.superheroapp.constants.PAYLOAD_KEY
 import co.za.immedia.superheroapp.constants.SUPERHERO
 import co.za.immedia.superheroapp.databinding.ActivityViewSuperheroBinding
@@ -89,6 +90,11 @@ class ViewSuperheroActivity : BaseChildActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.view_superhero_menu, menu)
         addFavourite = menu.findItem(R.id.action_fav)
+
+        viewSuperheroViewModel.superhero.value?.isFav?.let {
+            addFavourite?.isVisible = !it
+        }
+
         return super.onCreateOptionsMenu(menu)
     }
 }

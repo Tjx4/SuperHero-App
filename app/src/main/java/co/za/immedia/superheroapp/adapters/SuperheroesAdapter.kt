@@ -34,6 +34,8 @@ class SuperheroesAdapter(context: Context, private val layout: Int, private val 
             currentHero?.id == superHero?.id
         } ?: false
 
+        superHero?.isFav = isFavourite
+
         if(isFavourite) {
             showFav(holder.setFavImg, holder.favouriteImg)
         }
