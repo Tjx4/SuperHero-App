@@ -48,8 +48,9 @@
 
         <ImageButton
             android:id="@+id/imgSetFav"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:padding="6dp"
             android:background="@android:color/transparent"
             android:src="@drawable/ic_set_fav"
             android:scaleType="centerCrop"
@@ -58,8 +59,9 @@
         <ImageView
             android:visibility="gone"
             android:id="@+id/imgFavourite"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:padding="6dp"
             android:background="@android:color/transparent"
             android:src="@drawable/ic_favourites_dark"
             android:scaleType="centerCrop"
