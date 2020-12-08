@@ -62,6 +62,7 @@ class DashboardViewModel(application: Application, private val dashboardReposito
                 if(saveOperation.isSuccessful){
                     _newFavHero.value = superhero
                     ((_favSuperheroes.value) as ArrayList)?.add(superhero)
+                    _favSuperheroes.value = _favSuperheroes.value
                 }
                 else{
                    // Do something on save to DB fail
