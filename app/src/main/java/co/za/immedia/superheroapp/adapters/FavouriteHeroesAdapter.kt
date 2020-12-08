@@ -29,6 +29,8 @@ class FavouriteHeroesAdapter(context: Context, private val superheroes: List<Sup
         superHero?.image?.url?.let {
             loadImageFromInternet(dashboardActivity,  it, holder.heroImgv, R.drawable.ic_place_holde_dark)
         }
+
+        superHero?.isFav = true
     }
 
     fun showFav(addItem: View, favImg: View){
@@ -45,7 +47,7 @@ class FavouriteHeroesAdapter(context: Context, private val superheroes: List<Sup
         }
 
         override fun onClick(view: View) {
-            heroClickListener?.onHostClicked(view, adapterPosition)
+            heroClickListener?.onSuperheroClicked(view, adapterPosition)
         }
     }
 
@@ -54,7 +56,7 @@ class FavouriteHeroesAdapter(context: Context, private val superheroes: List<Sup
     }
 
     interface HeroClickListener {
-        fun onHostClicked(view: View, position: Int)
+        fun onSuperheroClicked(view: View, position: Int)
     }
 
     fun setOnHeroClickListener(heroClickListener: HeroClickListener) {

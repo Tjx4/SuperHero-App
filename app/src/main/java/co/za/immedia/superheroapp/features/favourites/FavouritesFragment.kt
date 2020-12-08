@@ -96,7 +96,7 @@ class FavouritesFragment : BaseDialogFragment(), FavouriteHeroesAdapter.HeroClic
         avlProgressBarLoading?.visibility = View.INVISIBLE
     }
 
-    override fun onHostClicked(view: View, position: Int) {
+    override fun onSuperheroClicked(view: View, position: Int) {
         val superhero = dashboardActivity?.dashboardViewModel?.favSuperheroes?.value?.get(position)
         dashboardActivity?.viewSuperhero(superhero)
         dismiss()

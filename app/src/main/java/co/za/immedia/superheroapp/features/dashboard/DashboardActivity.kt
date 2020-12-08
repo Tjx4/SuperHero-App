@@ -112,7 +112,7 @@ class DashboardActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
         rvHeroes.adapter?.notifyDataSetChanged()
     }
 
-    override fun onHostClicked(view: View, position: Int) {
+    override fun onSuperheroClicked(view: View, position: Int) {
         val superhero = dashboardViewModel.superheroes.value?.get(position)
         viewSuperhero(superhero)
     }

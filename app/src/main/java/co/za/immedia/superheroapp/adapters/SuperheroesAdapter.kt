@@ -65,7 +65,7 @@ class SuperheroesAdapter(context: Context, private val layout: Int, private val 
         }
 
         override fun onClick(view: View) {
-            heroClickListener?.onHostClicked(view, adapterPosition)
+            heroClickListener?.onSuperheroClicked(view, adapterPosition)
         }
     }
 
@@ -74,7 +74,7 @@ class SuperheroesAdapter(context: Context, private val layout: Int, private val 
     }
 
     interface HeroClickListener {
-        fun onHostClicked(view: View, position: Int)
+        fun onSuperheroClicked(view: View, position: Int)
     }
 
     fun setOnHeroClickListener(heroClickListener: HeroClickListener) {
