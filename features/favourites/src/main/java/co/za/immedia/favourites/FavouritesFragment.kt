@@ -1,4 +1,4 @@
-package co.za.immedia.superheroapp.features.favourites
+package co.za.immedia.favourites
 
 import android.content.Context
 import android.os.Bundle
@@ -10,7 +10,6 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import co.za.immedia.superheroapp.R
 import co.za.immedia.superheroapp.adapters.FavouriteHeroesAdapter
 import co.za.immedia.superheroapp.features.base.fragments.BaseDialogFragment
 import co.za.immedia.dashboard.DashboardActivity
@@ -101,7 +100,7 @@ class FavouritesFragment : BaseDialogFragment(), FavouriteHeroesAdapter.HeroClic
     }
 
     companion object {
-        fun newInstance():  FavouritesFragment {
+        fun newInstance(): FavouritesFragment {
             val  favouritesFragment = FavouritesFragment()
             favouritesFragment.arguments = Bundle()
             return  favouritesFragment

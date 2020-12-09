@@ -1,3 +1,4 @@
+include ':features:favourites'
 include ':features:superhero'
 include ':features:intro'
 include ':commons'
