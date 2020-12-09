@@ -75,4 +75,5 @@ dependencies {
     //Modules
     implementation project(':networking')
     implementation project(':models')
+    implementation project(':commons')
 }
