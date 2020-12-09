@@ -1,4 +1,4 @@
-package co.za.immedia.superheroapp.features.dashboard
+package co.za.immedia.dashboard
 
 import android.app.Application
 import androidx.lifecycle.ViewModel

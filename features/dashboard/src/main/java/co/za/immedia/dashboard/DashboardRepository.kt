@@ -1,4 +1,4 @@
-package co.za.immedia.superheroapp.features.dashboard
+package co.za.immedia.dashboard
 
 import co.za.immedia.models.SearchResult
 import co.za.immedia.superheroapp.database.SuperheroDB

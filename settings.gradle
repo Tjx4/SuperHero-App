@@ -1,3 +1,5 @@
+include ':commons'
+include ':libraries'
 include ':models'
 include ':heroRating'
 include ':features:dashboard'

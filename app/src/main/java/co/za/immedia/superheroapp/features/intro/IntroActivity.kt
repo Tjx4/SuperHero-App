@@ -5,15 +5,13 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import co.za.immedia.superheroapp.R
 import co.za.immedia.superheroapp.extensions.FADE_IN_ACTIVITY
 import co.za.immedia.superheroapp.extensions.fadeIn
 import co.za.immedia.superheroapp.extensions.navigateToActivity
-import co.za.immedia.superheroapp.features.dashboard.DashboardActivity
+import co.za.immedia.dashboard.DashboardActivity
 import co.za.immedia.superheroapp.helpers.SharedPrefs
-import java.io.IOException
 
 class IntroActivity : AppCompatActivity(){
     private var mediaPlayer: MediaPlayer? = null
@@ -36,12 +34,12 @@ class IntroActivity : AppCompatActivity(){
             }
 
             mediaPlayer?.setOnCompletionListener {
-               navigateToActivity(DashboardActivity::class.java, null, FADE_IN_ACTIVITY)
+               navigateToActivity(co.za.immedia.dashboard.DashboardActivity::class.java, null, FADE_IN_ACTIVITY)
                finish()
             }
 
         } catch (e: Exception) {
-            navigateToActivity(DashboardActivity::class.java, null, FADE_IN_ACTIVITY)
+            navigateToActivity(co.za.immedia.dashboard.DashboardActivity::class.java, null, FADE_IN_ACTIVITY)
             finish()
         }
     }
@@ -49,7 +47,7 @@ class IntroActivity : AppCompatActivity(){
     fun onSkipIntroClicked(view: View){
         val sharedPrefs = SharedPrefs.getInstance(application)
         sharedPrefs.skipIntro = true
-        navigateToActivity(DashboardActivity::class.java, null, FADE_IN_ACTIVITY)
+        navigateToActivity(co.za.immedia.dashboard.DashboardActivity::class.java, null, FADE_IN_ACTIVITY)
         mediaPlayer?.stop()
         finish()
     }

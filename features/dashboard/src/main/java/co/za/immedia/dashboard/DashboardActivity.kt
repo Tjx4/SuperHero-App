@@ -1,4 +1,4 @@
-package co.za.immedia.superheroapp.features.dashboard
+package co.za.immedia.dashboard
 
 import android.os.Bundle
 import android.view.KeyEvent
@@ -10,7 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import co.za.immedia.superheroapp.R
+import co.za.immedia.dashboard.adapter.SuperheroesAdapter
 import co.za.immedia.superheroapp.adapters.SuperheroesAdapter
 import co.za.immedia.superheroapp.constants.SUPERHERO
 import co.za.immedia.superheroapp.databinding.ActivityDashboardBinding

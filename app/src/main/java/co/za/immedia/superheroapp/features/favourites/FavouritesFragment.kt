@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import co.za.immedia.superheroapp.R
 import co.za.immedia.superheroapp.adapters.FavouriteHeroesAdapter
 import co.za.immedia.superheroapp.features.base.fragments.BaseDialogFragment
-import co.za.immedia.superheroapp.features.dashboard.DashboardActivity
+import co.za.immedia.dashboard.DashboardActivity
 import co.za.immedia.models.Superhero
 import com.wang.avi.AVLoadingIndicatorView
 import kotlinx.coroutines.CoroutineScope
@@ -22,7 +22,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class FavouritesFragment : BaseDialogFragment(), FavouriteHeroesAdapter.HeroClickListener {
-    private var dashboardActivity: DashboardActivity? = null
+    private var dashboardActivity: co.za.immedia.dashboard.DashboardActivity? = null
     private var parentCl: ConstraintLayout? = null
     private var avlProgressBarLoading: AVLoadingIndicatorView? = null
     private var btnCloseUsersImg: ImageButton? = null
@@ -81,7 +81,7 @@ class FavouritesFragment : BaseDialogFragment(), FavouriteHeroesAdapter.HeroClic
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        dashboardActivity = context as DashboardActivity
+        dashboardActivity = context as co.za.immedia.dashboard.DashboardActivity
     }
 
     fun showLoading() {

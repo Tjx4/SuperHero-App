@@ -1,4 +1,4 @@
-package co.za.immedia.superheroapp.adapters
+package co.za.immedia.dashboard.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,13 +7,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import co.za.immedia.superheroapp.R
-import co.za.immedia.superheroapp.features.dashboard.DashboardActivity
-import co.za.immedia.superheroapp.helpers.loadImageFromInternet
+import co.za.immedia.dashboard.R
 import co.za.immedia.models.Superhero
 
 class SuperheroesAdapter(context: Context, private val layout: Int, private val superheroes: List<Superhero?>?) : RecyclerView.Adapter<SuperheroesAdapter.ViewHolder>() {
-    private val dashboardActivity = context as DashboardActivity
+    private val dashboardActivity = context as co.za.immedia.dashboard.DashboardActivity
     private val layoutInflater: LayoutInflater = LayoutInflater.from(context)
     private var heroClickListener: HeroClickListener? = null
 

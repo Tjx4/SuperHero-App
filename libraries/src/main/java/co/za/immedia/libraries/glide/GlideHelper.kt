@@ -1,4 +1,4 @@
-package co.za.immedia.superheroapp.helpers
+package co.za.immedia.libraries.glide
 
 import android.content.Context
 import android.widget.ImageView
