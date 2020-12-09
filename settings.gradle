@@ -1,3 +1,5 @@
+include ':herorating'
+include ':features:dashboard'
 include ':mylib'
 include ':features'
 include ':app'

@@ -35,6 +35,8 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    dynamicFeatures = [":features", ':herorating']
 }
 
 dependencies {
@@ -75,6 +77,5 @@ dependencies {
     def multidex_version = "2.0.1"
     implementation "androidx.multidex:multidex:$multidex_version"
 
-    implementation project(":features")
     implementation project(":mylib")
 }
