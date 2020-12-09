@@ -9,14 +9,12 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import co.za.immedia.superheroapp.R
 import co.za.immedia.superheroapp.adapters.FavouriteHeroesAdapter
-import co.za.immedia.superheroapp.constants.TITLE
 import co.za.immedia.superheroapp.features.base.fragments.BaseDialogFragment
 import co.za.immedia.superheroapp.features.dashboard.DashboardActivity
-import co.za.immedia.superheroapp.models.Superhero
+import co.za.immedia.models.Superhero
 import com.wang.avi.AVLoadingIndicatorView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

@@ -1,6 +1,7 @@
-include ':herorating'
+include ':models'
+include ':heroRating'
 include ':features:dashboard'
-include ':mylib'
+include ':networking'
 include ':features'
 include ':app'
 rootProject.name = "SuperHero App"

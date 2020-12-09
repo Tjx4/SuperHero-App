@@ -2,9 +2,9 @@ package co.za.immedia.superheroapp.features.superhero
 
 import co.za.immedia.superheroapp.database.SuperheroDB
 import co.za.immedia.superheroapp.extensions.toSuperheroesTable
-import co.za.immedia.superheroapp.helpers.RetrofitHelper
-import co.za.immedia.superheroapp.models.DbOperation
-import co.za.immedia.superheroapp.models.Superhero
+import co.za.immedia.mylib.RetrofitHelper
+import co.za.immedia.models.DbOperation
+import co.za.immedia.models.Superhero
 
 class ViewSuperheroRepository(private val retrofit: RetrofitHelper, private val database: SuperheroDB) {
 
