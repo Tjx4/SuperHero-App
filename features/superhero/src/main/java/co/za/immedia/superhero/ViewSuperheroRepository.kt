@@ -1,4 +1,4 @@
-package co.za.immedia.superheroapp.features.superhero
+package co.za.immedia.superhero
 
 import co.za.immedia.superheroapp.database.SuperheroDB
 import co.za.immedia.commons.extensions.toSuperheroesTable

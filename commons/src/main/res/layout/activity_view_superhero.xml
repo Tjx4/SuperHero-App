@@ -9,7 +9,7 @@
 
         <variable
             name="viewSuperheroViewModel"
-            type="co.za.immedia.superheroapp.features.superhero.ViewSuperheroViewModel"/>
+            type="co.za.immedia.superhero.ViewSuperheroViewModel"/>
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

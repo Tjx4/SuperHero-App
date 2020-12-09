@@ -1,4 +1,4 @@
-package co.za.immedia.superheroapp.features.superhero
+package co.za.immedia.superhero
 
 import android.os.Bundle
 import android.view.Menu
@@ -8,7 +8,6 @@ import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import co.za.immedia.superheroapp.R
 import co.za.immedia.commons.constants.PAYLOAD_KEY
 import co.za.immedia.commons.constants.SUPERHERO
 import co.za.immedia.superheroapp.databinding.ActivityViewSuperheroBinding
@@ -28,7 +27,8 @@ class ViewSuperheroActivity : BaseChildActivity() {
         var application = requireNotNull(this).application
         var viewModelFactory = ViewSuperheroViewModelFactory(application)
 
-        viewSuperheroViewModel = ViewModelProviders.of(this, viewModelFactory).get(ViewSuperheroViewModel::class.java)
+        viewSuperheroViewModel = ViewModelProviders.of(this, viewModelFactory).get(
+            ViewSuperheroViewModel::class.java)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_view_superhero)
         binding.viewSuperheroViewModel = viewSuperheroViewModel
         binding.lifecycleOwner = this

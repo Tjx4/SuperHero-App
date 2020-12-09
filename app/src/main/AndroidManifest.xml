@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SuperHeroApp">
-        <activity android:name=".features.superhero.ViewSuperheroActivity"
+        <activity android:name="co.za.immedia.superhero.ViewSuperheroActivity"
             android:theme="@style/NoActionBarTheme">
             <meta-data
             android:name="android.support.PARENT_ACTIVITY"

@@ -1,4 +1,4 @@
-package co.za.immedia.superheroapp.features.superhero
+package co.za.immedia.superhero
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
