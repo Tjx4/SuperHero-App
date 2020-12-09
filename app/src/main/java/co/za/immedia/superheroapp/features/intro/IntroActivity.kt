@@ -26,7 +26,7 @@ class IntroActivity : AppCompatActivity(){
         mediaPlayer = MediaPlayer.create(this, resID)
 
         try {
-            mediaPlayer?.setVolume(70f, 70f)
+            mediaPlayer?.setVolume(30f, 30f)
             mediaPlayer?.setOnPreparedListener {
                 Handler().postDelayed({
                     findViewById<TextView>(R.id.tvAppname).fadeIn(8000) {}
@@ -50,6 +50,7 @@ class IntroActivity : AppCompatActivity(){
         val sharedPrefs = SharedPrefs.getInstance(application)
         sharedPrefs.skipIntro = true
         navigateToActivity(DashboardActivity::class.java, null, FADE_IN_ACTIVITY)
+        mediaPlayer?.stop()
         finish()
     }
 
