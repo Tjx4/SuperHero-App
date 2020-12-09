@@ -3,7 +3,7 @@ package co.za.immedia.dashboard
 import co.za.immedia.commons.extensions.toSuperhero
 import co.za.immedia.commons.extensions.toSuperheroesTable
 import co.za.immedia.commons.models.SearchResult
-import co.za.immedia.mylib.RetrofitHelper
+import co.za.immedia.networking.RetrofitHelper
 import co.za.immedia.commons.models.DbOperation
 import co.za.immedia.commons.models.Superhero
 import co.za.immedia.persistence.room.SuperheroDB

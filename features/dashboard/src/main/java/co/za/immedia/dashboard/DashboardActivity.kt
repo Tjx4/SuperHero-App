@@ -18,6 +18,8 @@ import co.za.immedia.commons.extensions.showDialogFragment
 import co.za.immedia.commons.models.Superhero
 import co.za.immedia.dashboard.adapter.SuperheroesAdapter
 import co.za.immedia.dashboard.databinding.ActivityDashboardBinding
+import co.za.immedia.favourites.FavouritesFragment
+import co.za.immedia.superhero.ViewSuperheroActivity
 import kotlinx.android.synthetic.main.activity_dashboard.*
 
 class DashboardActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
@@ -128,7 +130,7 @@ class DashboardActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
             R.id.action_favourites -> {
                 val favouritesFragment = FavouritesFragment.newInstance()
                 favouritesFragment?.isCancelable = true
-                showDialogFragment("Superheroes", R.layout.fragment_favourites, favouritesFragment)
+                showDialogFragment("Superheroes", co.za.immedia.favourites.R.layout.fragment_favourites, favouritesFragment)
             }
         }
         return super.onOptionsItemSelected(item)

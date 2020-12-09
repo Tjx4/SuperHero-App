@@ -1,4 +1,4 @@
-package co.za.immedia.mylib
+package co.za.immedia.networking
 
 import org.junit.Test
 

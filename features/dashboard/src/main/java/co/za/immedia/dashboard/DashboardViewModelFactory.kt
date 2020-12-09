@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import co.za.immedia.superheroapp.database.SuperheroDB
-import co.za.immedia.mylib.API
+import co.za.immedia.networking.API
 import java.lang.IllegalArgumentException
 
 class DashboardViewModelFactory(private val application: Application) : ViewModelProvider.Factory {

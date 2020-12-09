@@ -1,4 +1,4 @@
-package co.za.immedia.mylib
+package co.za.immedia.networking
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

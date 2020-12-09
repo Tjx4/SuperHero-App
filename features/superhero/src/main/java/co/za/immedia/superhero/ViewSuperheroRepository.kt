@@ -2,7 +2,7 @@ package co.za.immedia.superhero
 
 import co.za.immedia.superheroapp.database.SuperheroDB
 import co.za.immedia.commons.extensions.toSuperheroesTable
-import co.za.immedia.mylib.RetrofitHelper
+import co.za.immedia.networking.RetrofitHelper
 import co.za.immedia.commons.models.DbOperation
 import co.za.immedia.commons.models.Superhero
 
