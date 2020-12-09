@@ -10,9 +10,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import co.za.immedia.commons.constants.PAYLOAD_KEY
 import co.za.immedia.commons.constants.SUPERHERO
-import co.za.immedia.superheroapp.databinding.ActivityViewSuperheroBinding
-import co.za.immedia.superheroapp.features.base.activities.BaseChildActivity
-import co.za.immedia.superheroapp.helpers.loadImageFromInternet
 import co.za.immedia.models.Superhero
 import com.google.android.material.appbar.AppBarLayout
 import kotlinx.android.synthetic.main.activity_view_superhero.*
