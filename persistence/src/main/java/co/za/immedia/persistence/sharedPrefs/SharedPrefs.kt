@@ -1,4 +1,4 @@
-package co.za.immedia.superheroapp.helpers
+package co.za.immedia.persistence.sharedPrefs
 
 import android.app.Application
 import android.content.SharedPreferences

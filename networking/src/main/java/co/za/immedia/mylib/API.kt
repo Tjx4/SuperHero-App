@@ -1,6 +1,5 @@
 package co.za.immedia.mylib
 
-import co.za.immedia.mylib.enums.Hosts
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

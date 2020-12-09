@@ -1,4 +1,4 @@
-package co.za.immedia.superheroapp.features.base.viewmodels
+package co.za.immedia.commons.base.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

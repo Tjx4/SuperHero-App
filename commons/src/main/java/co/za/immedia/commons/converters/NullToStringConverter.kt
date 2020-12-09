@@ -1,4 +1,4 @@
-package co.za.immedia.superheroapp.converters
+package co.za.immedia.commons.converters
 
 class NullToStringConverter {
 

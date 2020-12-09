@@ -1,4 +1,4 @@
-package co.za.immedia.superheroapp.database.tables
+package co.za.immedia.persistence.room.tables
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo

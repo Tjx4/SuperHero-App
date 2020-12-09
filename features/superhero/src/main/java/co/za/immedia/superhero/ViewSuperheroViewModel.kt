@@ -2,7 +2,7 @@ package co.za.immedia.superhero
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
-import co.za.immedia.superheroapp.features.base.viewmodels.BaseVieModel
+import co.za.immedia.commons.base.viewmodels.BaseVieModel
 import co.za.immedia.commons.models.Superhero
 import kotlinx.coroutines.launch
 

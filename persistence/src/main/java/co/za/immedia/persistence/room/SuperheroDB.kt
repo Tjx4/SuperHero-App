@@ -1,11 +1,11 @@
-package co.za.immedia.superheroapp.database
+package co.za.immedia.persistence.room
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import co.za.immedia.superheroapp.database.tables.SuperheroesDAO
-import co.za.immedia.superheroapp.database.tables.SuperheroesTable
+import co.za.immedia.persistence.room.tables.SuperheroesDAO
+import co.za.immedia.persistence.room.tables.SuperheroesTable
 
 @Database(entities = [SuperheroesTable::class], version = 1, exportSchema = false)
 abstract class SuperheroDB : RoomDatabase() {

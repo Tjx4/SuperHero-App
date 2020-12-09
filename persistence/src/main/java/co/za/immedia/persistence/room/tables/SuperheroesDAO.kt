@@ -1,4 +1,4 @@
-package co.za.immedia.superheroapp.database.tables
+package co.za.immedia.persistence.room.tables
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
