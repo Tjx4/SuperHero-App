@@ -1,8 +1,6 @@
 package co.za.immedia.commons.extensions
 
-import co.za.immedia.superheroapp.database.tables.SuperheroesTable
-import co.za.immedia.models.Image
-import co.za.immedia.models.Superhero
+import co.za.immedia.commons.models.Superhero
 
 fun Superhero.toSuperheroesTable() : SuperheroesTable {
     return SuperheroesTable(this.id, this.name, this.image?.url)

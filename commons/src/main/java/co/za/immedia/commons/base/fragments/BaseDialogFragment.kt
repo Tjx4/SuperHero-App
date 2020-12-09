@@ -8,8 +8,8 @@ import android.view.*
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
-import co.za.immedia.superheroapp.R
-import co.za.immedia.superheroapp.constants.LAYOUT
+import co.za.immedia.commons.R
+import co.za.immedia.commons.constants.LAYOUT
 
 abstract class BaseDialogFragment : DialogFragment() {
     protected var clickedView: View? = null
