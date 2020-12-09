@@ -3,8 +3,8 @@ package co.za.immedia.superhero
 import co.za.immedia.superheroapp.database.SuperheroDB
 import co.za.immedia.commons.extensions.toSuperheroesTable
 import co.za.immedia.mylib.RetrofitHelper
-import co.za.immedia.models.DbOperation
-import co.za.immedia.models.Superhero
+import co.za.immedia.commons.models.DbOperation
+import co.za.immedia.commons.models.Superhero
 
 class ViewSuperheroRepository(private val retrofit: RetrofitHelper, private val database: SuperheroDB) {
 

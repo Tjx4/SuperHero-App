@@ -1,11 +1,9 @@
-package co.za.immedia.superheroapp.features.splash
+package co.za.immedia.superheroapp
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import co.za.immedia.commons.extensions.FADE_IN_ACTIVITY
 import co.za.immedia.commons.extensions.navigateToActivity
-import co.za.immedia.dashboard.DashboardActivity
-import co.za.immedia.intro.IntroActivity
 import co.za.immedia.superheroapp.helpers.SharedPrefs
 
 class SplashActivity : AppCompatActivity() {
@@ -16,12 +14,12 @@ class SplashActivity : AppCompatActivity() {
 
         if(sharedPrefs.skipIntro)
             navigateToActivity(co.za.immedia.dashboard.DashboardActivity::class.java, null,
-                co.za.immedia.commons.extensions.FADE_IN_ACTIVITY
+                FADE_IN_ACTIVITY
             )
         else
             navigateToActivity(
                 co.za.immedia.intro.IntroActivity::class.java, null,
-                co.za.immedia.commons.extensions.FADE_IN_ACTIVITY
+                FADE_IN_ACTIVITY
             )
 
         finish()

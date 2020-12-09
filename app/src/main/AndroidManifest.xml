@@ -22,7 +22,7 @@
             android:theme="@style/NoActionBarTheme" />
         <activity android:name="co.za.immedia.dashboard.DashboardActivity" />
         <activity
-            android:name=".features.splash.SplashActivity"
+            android:name=".SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

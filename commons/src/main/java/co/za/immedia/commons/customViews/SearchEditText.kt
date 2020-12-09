@@ -1,4 +1,4 @@
-package co.za.immedia.superheroapp.customViews
+package co.za.immedia.commons.customViews
 
 import android.content.Context
 import android.text.Editable

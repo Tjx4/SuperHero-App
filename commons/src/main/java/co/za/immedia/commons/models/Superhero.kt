@@ -1,4 +1,4 @@
-package co.za.immedia.models
+package co.za.immedia.commons.models
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

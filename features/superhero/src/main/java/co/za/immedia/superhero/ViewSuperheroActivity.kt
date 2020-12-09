@@ -8,9 +8,7 @@ import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import co.za.immedia.commons.constants.PAYLOAD_KEY
-import co.za.immedia.commons.constants.SUPERHERO
-import co.za.immedia.models.Superhero
+import co.za.immedia.commons.models.Superhero
 import com.google.android.material.appbar.AppBarLayout
 import kotlinx.android.synthetic.main.activity_view_superhero.*
 

@@ -3,7 +3,7 @@ package co.za.immedia.superhero
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import co.za.immedia.superheroapp.features.base.viewmodels.BaseVieModel
-import co.za.immedia.models.Superhero
+import co.za.immedia.commons.models.Superhero
 import kotlinx.coroutines.launch
 
 class ViewSuperheroViewModel(application: Application, private val viewSuperheroRepository: ViewSuperheroRepository) : BaseVieModel(application) {

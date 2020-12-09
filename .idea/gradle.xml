@@ -20,8 +20,8 @@
             <option value="$PROJECT_DIR$/features/superhero" />
             <option value="$PROJECT_DIR$/heroRating" />
             <option value="$PROJECT_DIR$/libraries" />
-            <option value="$PROJECT_DIR$/models" />
             <option value="$PROJECT_DIR$/networking" />
+            <option value="$PROJECT_DIR$/persistence" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

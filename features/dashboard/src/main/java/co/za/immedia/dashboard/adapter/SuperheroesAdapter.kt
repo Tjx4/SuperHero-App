@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import co.za.immedia.dashboard.R
-import co.za.immedia.models.Superhero
+import co.za.immedia.commons.models.Superhero
 
 class SuperheroesAdapter(context: Context, private val layout: Int, private val superheroes: List<Superhero?>?) : RecyclerView.Adapter<SuperheroesAdapter.ViewHolder>() {
     private val dashboardActivity = context as co.za.immedia.dashboard.DashboardActivity

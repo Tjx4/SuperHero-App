@@ -8,20 +8,11 @@ import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.LinearLayoutManager
+import co.za.immedia.commons.base.activities.BaseActivity
+import co.za.immedia.commons.extensions.showDialogFragment
+import co.za.immedia.commons.models.Superhero
 import co.za.immedia.dashboard.adapter.SuperheroesAdapter
-import co.za.immedia.superheroapp.adapters.SuperheroesAdapter
-import co.za.immedia.superheroapp.constants.SUPERHERO
-import co.za.immedia.superheroapp.databinding.ActivityDashboardBinding
-import co.za.immedia.superheroapp.extensions.SLIDE_IN_ACTIVITY
-import co.za.immedia.superheroapp.extensions.navigateToActivity
-import co.za.immedia.superheroapp.extensions.showDialogFragment
-import co.za.immedia.superheroapp.features.base.activities.BaseActivity
-import co.za.immedia.superheroapp.features.favourites.FavouritesFragment
-import co.za.immedia.superheroapp.features.superhero.ViewSuperheroActivity
-import co.za.immedia.models.Superhero
-import kotlinx.android.synthetic.main.activity_dashboard.*
+import co.za.immedia.dashboard.databinding.ActivityDashboardBinding
 
 class DashboardActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
     private lateinit var binding: ActivityDashboardBinding

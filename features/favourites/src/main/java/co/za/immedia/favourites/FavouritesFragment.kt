@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import co.za.immedia.superheroapp.adapters.FavouriteHeroesAdapter
 import co.za.immedia.superheroapp.features.base.fragments.BaseDialogFragment
 import co.za.immedia.dashboard.DashboardActivity
-import co.za.immedia.models.Superhero
+import co.za.immedia.commons.models.Superhero
 import com.wang.avi.AVLoadingIndicatorView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

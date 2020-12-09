@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import co.za.immedia.mylib.enums.Hosts
 import co.za.immedia.superheroapp.features.base.viewmodels.BaseVieModel
-import co.za.immedia.models.Superhero
+import co.za.immedia.commons.models.Superhero
 import kotlinx.coroutines.launch
 
 class DashboardViewModel(application: Application, private val dashboardRepository: DashboardRepository) : BaseVieModel(application) {
