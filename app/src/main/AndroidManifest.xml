@@ -18,7 +18,7 @@
             android:name="android.support.PARENT_ACTIVITY"
             android:value="co.za.immedia.dashboard.DashboardActivity" /></activity>
         <activity
-            android:name=".features.intro.IntroActivity"
+            android:name="co.za.immedia.intro.IntroActivity"
             android:theme="@style/NoActionBarTheme" />
         <activity android:name="co.za.immedia.dashboard.DashboardActivity" />
         <activity

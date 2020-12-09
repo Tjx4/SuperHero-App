@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import co.za.immedia.commons.extensions.FADE_IN_ACTIVITY
 import co.za.immedia.commons.extensions.navigateToActivity
 import co.za.immedia.dashboard.DashboardActivity
-import co.za.immedia.superheroapp.features.intro.IntroActivity
+import co.za.immedia.intro.IntroActivity
 import co.za.immedia.superheroapp.helpers.SharedPrefs
 
 class SplashActivity : AppCompatActivity() {
@@ -19,7 +19,8 @@ class SplashActivity : AppCompatActivity() {
                 co.za.immedia.commons.extensions.FADE_IN_ACTIVITY
             )
         else
-            navigateToActivity(IntroActivity::class.java, null,
+            navigateToActivity(
+                co.za.immedia.intro.IntroActivity::class.java, null,
                 co.za.immedia.commons.extensions.FADE_IN_ACTIVITY
             )
 

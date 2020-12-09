@@ -1,4 +1,4 @@
-package co.za.immedia.superheroapp.features.intro
+package co.za.immedia.intro
 
 import android.media.MediaPlayer
 import android.os.Bundle
