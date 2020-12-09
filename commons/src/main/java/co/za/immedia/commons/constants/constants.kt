@@ -1,4 +1,4 @@
-package co.za.immedia.superheroapp.constants
+package co.za.immedia.commons.constants
 
 
 const val PAYLOAD_KEY = "payload"

@@ -9,8 +9,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import co.za.immedia.superheroapp.R
-import co.za.immedia.superheroapp.constants.PAYLOAD_KEY
-import co.za.immedia.superheroapp.constants.SUPERHERO
+import co.za.immedia.commons.constants.PAYLOAD_KEY
+import co.za.immedia.commons.constants.SUPERHERO
 import co.za.immedia.superheroapp.databinding.ActivityViewSuperheroBinding
 import co.za.immedia.superheroapp.features.base.activities.BaseChildActivity
 import co.za.immedia.superheroapp.helpers.loadImageFromInternet
@@ -35,7 +35,9 @@ class ViewSuperheroActivity : BaseChildActivity() {
 
         addObservers()
 
-        val superhero = intent.extras?.getBundle(PAYLOAD_KEY)?.getParcelable<Superhero>(SUPERHERO)
+        val superhero = intent.extras?.getBundle(co.za.immedia.commons.constants.PAYLOAD_KEY)?.getParcelable<Superhero>(
+            co.za.immedia.commons.constants.SUPERHERO
+        )
         viewSuperheroViewModel.superhero.value = superhero
 
         var ab = supportActionBar

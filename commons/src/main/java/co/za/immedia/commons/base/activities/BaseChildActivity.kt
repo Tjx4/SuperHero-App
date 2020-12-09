@@ -2,7 +2,8 @@ package co.za.immedia.superheroapp.features.base.activities
 
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBar
-import co.za.immedia.superheroapp.extensions.SLIDE_OUT_ACTIVITY
+import co.za.immedia.commons.base.activities.BaseActivity
+import co.za.immedia.commons.extensions.SLIDE_OUT_ACTIVITY
 
 abstract class BaseChildActivity : BaseActivity() {
     protected var childActionBar: ActionBar? = null

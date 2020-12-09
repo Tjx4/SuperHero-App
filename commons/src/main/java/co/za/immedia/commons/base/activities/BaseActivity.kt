@@ -1,4 +1,4 @@
-package co.za.immedia.superheroapp.features.base.activities
+package co.za.immedia.commons.base.activities
 
 import android.app.Activity
 import android.os.Bundle
@@ -6,8 +6,8 @@ import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
-import co.za.immedia.superheroapp.constants.ACTIVITY_TRANSITION
-import co.za.immedia.superheroapp.constants.PAYLOAD_KEY
+import co.za.immedia.commons.constants.ACTIVITY_TRANSITION
+import co.za.immedia.commons.constants.PAYLOAD_KEY
 
 abstract class BaseActivity : AppCompatActivity() {
     var isNewActivity: Boolean = false

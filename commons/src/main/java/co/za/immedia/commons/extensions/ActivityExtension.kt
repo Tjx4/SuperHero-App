@@ -1,14 +1,15 @@
-package co.za.immedia.superheroapp.extensions
+package co.za.immedia.commons.extensions
 
 import android.content.Intent
 import android.os.Bundle
 import android.provider.ContactsContract.CommonDataKinds.Organization.TITLE
 import androidx.appcompat.app.AppCompatActivity
-import co.za.immedia.superheroapp.R
-import co.za.immedia.superheroapp.constants.ACTIVITY_TRANSITION
-import co.za.immedia.superheroapp.constants.LAYOUT
-import co.za.immedia.superheroapp.constants.PAYLOAD_KEY
-import co.za.immedia.superheroapp.features.base.activities.BaseActivity
+import co.za.immedia.commons.R
+import co.za.immedia.commons.base.activities.BaseActivity
+import co.za.immedia.commons.constants.ACTIVITY_TRANSITION
+import co.za.immedia.commons.constants.LAYOUT
+import co.za.immedia.commons.constants.PAYLOAD_KEY
+
 import co.za.immedia.superheroapp.features.base.fragments.BaseDialogFragment
 
 val SLIDE_IN_ACTIVITY = getTransitionAnimation(R.anim.slide_right, R.anim.no_transition)
@@ -38,7 +39,6 @@ private fun AppCompatActivity.goToActivity(activity: Class<*>, transitionAnimati
     intent.putExtra(PAYLOAD_KEY, fullPayload)
     startActivity(intent)
 }
-
 
 fun BaseActivity.showDialogFragment(title: String, layout: Int, newFragmentBaseBase: BaseDialogFragment) {
     val ft = this.supportFragmentManager.beginTransaction()

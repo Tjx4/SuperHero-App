@@ -1,4 +1,4 @@
-package co.za.immedia.superheroapp.extensions
+package co.za.immedia.commons.extensions
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
