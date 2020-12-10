@@ -13,12 +13,14 @@ class SplashActivity : AppCompatActivity() {
         val sharedPrefs = SharedPrefs.getInstance(application)
 
         if(sharedPrefs.skipIntro)
-            navigateToActivity(co.za.immedia.dashboard.DashboardActivity::class.java, null,
+            navigateToActivity("co.za.immedia", "co.za.immedia.dashboard.DashboardActivity", null,
                 FADE_IN_ACTIVITY
             )
         else
             navigateToActivity(
-                co.za.immedia.intro.IntroActivity::class.java, null,
+                "co.za.immedia",
+                "co.za.immedia.intro.IntroActivity:",
+                null,
                 FADE_IN_ACTIVITY
             )
 

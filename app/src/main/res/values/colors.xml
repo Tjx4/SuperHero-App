@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#003750</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#FFBB86</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="transBlack">#2445484d</color>
+    <color name="transBlack2">#cc45484d</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="splash_background">#1F1F1C</color>
+    <color name="dark_text">#111111</color>
+    <color name="grey_text">#888888</color>
+    <color name="light_text">#ffffff</color>
+    <color name="divider">#EEEEEE</color>
+    <color name="skipBorder">#AAAAAA</color>
+    <color name="editTextBackground">#E9E9E9</color>
+    <color name="editTextBackgroundOutline">#E5E5E5</color>
+    <color name="greyBackground">#F1F1F1</color>
+    <color name="lightBackground">#FFFFFF</color>
+    <color name="darkBackground">#000000</color>
+</resources>
