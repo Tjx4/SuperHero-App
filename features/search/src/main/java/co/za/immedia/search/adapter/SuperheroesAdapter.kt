@@ -7,13 +7,13 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import co.za.immedia.dashboard.R
 import co.za.immedia.commons.models.Superhero
-import co.za.immedia.dashboard.DashboardActivity
 import co.za.immedia.libraries.glide.loadImageFromInternet
+import co.za.immedia.search.R
+import co.za.immedia.search.SearchActivity
 
 class SuperheroesAdapter(context: Context, private val layout: Int, private val superheroes: List<Superhero?>?) : RecyclerView.Adapter<SuperheroesAdapter.ViewHolder>() {
-    private val dashboardActivity = context as DashboardActivity
+    private val searchActivity = context as SearchActivity
     private val layoutInflater: LayoutInflater = LayoutInflater.from(context)
     private var heroClickListener: HeroClickListener? = null
 
@@ -27,10 +27,10 @@ class SuperheroesAdapter(context: Context, private val layout: Int, private val 
         holder.heroNameTv.text = superHero?.name
 
         superHero?.image?.url?.let {
-          loadImageFromInternet(dashboardActivity,  it, holder.heroImgv, R.drawable.ic_place_holde_dark)
+          loadImageFromInternet(searchActivity,  it, holder.heroImgv, R.drawable.ic_place_holde_dark)
         }
 
-        val isFavourite = dashboardActivity.dashboardViewModel?.favSuperheroes?.value?.any { currentHero ->
+        val isFavourite = searchActivity.dashboardViewModel?.favSuperheroes?.value?.any { currentHero ->
             currentHero?.id == superHero?.id && currentHero?.name == superHero?.name
         } ?: false
 
@@ -45,7 +45,7 @@ class SuperheroesAdapter(context: Context, private val layout: Int, private val 
             holder.setFavImg.setOnClickListener {
                 superHero?.let { hero ->
                     setFav(it, holder.favouriteImg)
-                    dashboardActivity.dashboardViewModel.addSuperheroToFavourites(hero)
+                    searchActivity.dashboardViewModel.addSuperheroToFavourites(hero)
                 }
             }
         }

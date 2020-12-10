@@ -26,10 +26,6 @@ android {
         }
     }
 
-    buildFeatures {
-        dataBinding = true
-    }
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -59,8 +55,15 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.6'
     //Modules
     implementation project(':features:splash')
+    implementation project(':features:intro')
     implementation project(':features:search')
+    implementation project(':features:superhero')
+    implementation project(':features:favourites')
     implementation project(':commons')
     implementation project(':networking')
     implementation project(':persistence')
+
+    //Dagger
+    kapt 'com.google.dagger:dagger-compiler:2.14.1'
+    kapt 'com.google.dagger:dagger-android-processor:2.14.1'
 }
