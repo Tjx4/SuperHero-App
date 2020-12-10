@@ -4,21 +4,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
-            name="dashboardViewModel"
-            type="co.za.immedia.search.DashboardViewModel"/>
+            name="searchViewModel"
+            type="co.za.immedia.search.SearchViewModel"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="co.za.immedia.dashboard.DashboardActivity">
+        tools:context="co.za.immedia.search.SearchActivity">
 
         <co.za.immedia.commons.customViews.SearchEditText
             android:id="@+id/txtSearch"
             style="@style/SearchEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@={dashboardViewModel.searchKeyWord}"
+            android:text="@={searchViewModel.searchKeyWord}"
             android:hint="@string/search_for_heroes"
             android:layout_marginTop="@dimen/small_margin"
             android:layout_marginHorizontal="@dimen/xsmall_margin"
@@ -67,7 +67,7 @@
                 android:id="@+id/tvNoMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{dashboardViewModel.noHeroesMessage}"
+                android:text="@{searchViewModel.noHeroesMessage}"
                 android:layout_gravity="top"
                 android:layout_margin="@dimen/medium_margin"/>
 

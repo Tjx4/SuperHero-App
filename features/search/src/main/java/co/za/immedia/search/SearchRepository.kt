@@ -8,7 +8,7 @@ import co.za.immedia.commons.models.DbOperation
 import co.za.immedia.commons.models.Superhero
 import co.za.immedia.persistence.room.SuperheroDB
 
-class DashboardRepository(private val retrofit: RetrofitHelper, private val database: SuperheroDB) {
+class SearchRepository(private val retrofit: RetrofitHelper, private val database: SuperheroDB) {
     suspend fun searchForSuperHero(url: String): SearchResult?{
         return try {
             retrofit.searchSuperHero(url)

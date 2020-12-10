@@ -7,13 +7,13 @@ import co.za.immedia.networking.API
 import co.za.immedia.persistence.room.SuperheroDB
 import java.lang.IllegalArgumentException
 
-class DashboardViewModelFactory(private val application: Application) : ViewModelProvider.Factory {
+class SearchViewModelFactory(private val application: Application) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if(modelClass.isAssignableFrom(DashboardViewModel::class.java)){
+        if(modelClass.isAssignableFrom(SearchViewModel::class.java)){
             val retrofitHelper = API.retrofit
             var database = SuperheroDB.getInstance(application)
-            val dashboardRepository = DashboardRepository(retrofitHelper, database)
-            return DashboardViewModel(application, dashboardRepository) as T
+            val searchRepository = SearchRepository(retrofitHelper, database)
+            return SearchViewModel(application, searchRepository) as T
         }
 
         throw IllegalArgumentException("Unknown ViewModel Class")

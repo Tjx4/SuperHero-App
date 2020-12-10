@@ -30,7 +30,7 @@ class SuperheroesAdapter(context: Context, private val layout: Int, private val 
           loadImageFromInternet(searchActivity,  it, holder.heroImgv, R.drawable.ic_place_holde_dark)
         }
 
-        val isFavourite = searchActivity.dashboardViewModel?.favSuperheroes?.value?.any { currentHero ->
+        val isFavourite = searchActivity.searchViewModel?.favSuperheroes?.value?.any { currentHero ->
             currentHero?.id == superHero?.id && currentHero?.name == superHero?.name
         } ?: false
 
@@ -45,7 +45,7 @@ class SuperheroesAdapter(context: Context, private val layout: Int, private val 
             holder.setFavImg.setOnClickListener {
                 superHero?.let { hero ->
                     setFav(it, holder.favouriteImg)
-                    searchActivity.dashboardViewModel.addSuperheroToFavourites(hero)
+                    searchActivity.searchViewModel.addSuperheroToFavourites(hero)
                 }
             }
         }

@@ -7,7 +7,7 @@ import co.za.immedia.commons.models.Superhero
 import co.za.immedia.networking.Hosts
 import kotlinx.coroutines.launch
 
-class DashboardViewModel(application: Application, private val dashboardRepository: DashboardRepository) : BaseVieModel(application) {
+class SearchViewModel(application: Application, private val searchRepository: SearchRepository) : BaseVieModel(application) {
 
     private var _showLoading: MutableLiveData<Boolean> = MutableLiveData()
     val showLoading: MutableLiveData<Boolean>
@@ -41,7 +41,7 @@ class DashboardViewModel(application: Application, private val dashboardReposito
 
         ioScope.launch {
             val url = "${Hosts.LiveHost.url}api/191417135981966/search/$searchKeywords"
-            var superheroes = dashboardRepository.searchForSuperHero(url)
+            var superheroes = searchRepository.searchForSuperHero(url)
 
             uiScope.launch {
                 if(superheroes != null && !superheroes.results.isNullOrEmpty()){
@@ -56,7 +56,7 @@ class DashboardViewModel(application: Application, private val dashboardReposito
 
     fun addSuperheroToFavourites(superhero: Superhero){
         ioScope.launch {
-            var saveOperation = dashboardRepository.addSuperheroToFavDB(superhero)
+            var saveOperation = searchRepository.addSuperheroToFavDB(superhero)
 
             uiScope.launch {
                 if(saveOperation.isSuccessful){
@@ -84,6 +84,6 @@ class DashboardViewModel(application: Application, private val dashboardReposito
     }
 
     suspend fun getFavouriteHeroes(): List<Superhero?>?  {
-        return dashboardRepository.getFavHeroesFromDB()
+        return searchRepository.getFavHeroesFromDB()
     }
 }

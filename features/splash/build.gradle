@@ -45,7 +45,4 @@ dependencies {
     //Modules
     implementation project(':persistence')
     implementation project(':commons')
-
-
-    implementation project(':features:intro')
 }

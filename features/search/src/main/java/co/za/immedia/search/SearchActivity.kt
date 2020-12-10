@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import co.za.immedia.commons.base.activities.BaseActivity
 import co.za.immedia.commons.constants.SUPERHERO
+import co.za.immedia.commons.constants.VIEW_SUPRERHERO_ACTIVITY
 import co.za.immedia.commons.extensions.SLIDE_IN_ACTIVITY
 import co.za.immedia.commons.extensions.navigateToActivity
 import co.za.immedia.commons.models.Superhero
@@ -21,16 +22,16 @@ import kotlinx.android.synthetic.main.activity_search.*
 
 class SearchActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
     private lateinit var binding: ActivitySearchBinding
-    lateinit var dashboardViewModel: DashboardViewModel
+    lateinit var searchViewModel: SearchViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         var application = requireNotNull(this).application
-        var viewModelFactory = co.za.immedia.search.DashboardViewModelFactory(application)
+        var viewModelFactory = SearchViewModelFactory(application)
 
-        dashboardViewModel = ViewModelProviders.of(this, viewModelFactory).get(co.za.immedia.search.DashboardViewModel::class.java)
+        searchViewModel = ViewModelProviders.of(this, viewModelFactory).get(SearchViewModel::class.java)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_search)
-        binding.dashboardViewModel = dashboardViewModel
+        binding.searchViewModel = searchViewModel
         binding.lifecycleOwner = this
 
         addObservers()
@@ -38,22 +39,22 @@ class SearchActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
         init()
 
         supportActionBar?.elevation = 0f
-        supportActionBar?.title = " Superheroes"
+        supportActionBar?.title = getString(R.string.search_title)
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setIcon(R.drawable.ic_superheroes_light)
     }
 
     override fun onResume() {
         super.onResume()
-        dashboardViewModel.setFavSuperheroes()
+        searchViewModel.setFavSuperheroes()
     }
 
     private fun addObservers() {
-        dashboardViewModel.showLoading.observe(this, Observer { onShowLoading(it) })
-        dashboardViewModel.noHeroesMessage.observe(this, Observer { onNoHeroesFound(it) })
-        dashboardViewModel.superheroes.observe(this, Observer { onHeroesFound(it) })
-        dashboardViewModel.favSuperheroes.observe(this, Observer { onHeroesUpdated(it) })
-        dashboardViewModel.newFavHero.observe(this, Observer { onHeroAddedToFavourites(it) })
+        searchViewModel.showLoading.observe(this, Observer { onShowLoading(it) })
+        searchViewModel.noHeroesMessage.observe(this, Observer { onNoHeroesFound(it) })
+        searchViewModel.superheroes.observe(this, Observer { onHeroesFound(it) })
+        searchViewModel.favSuperheroes.observe(this, Observer { onHeroesUpdated(it) })
+        searchViewModel.newFavHero.observe(this, Observer { onHeroAddedToFavourites(it) })
     }
 
     private fun onShowLoading(isBusy: Boolean) {
@@ -82,7 +83,7 @@ class SearchActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
         rvHeroes.adapter = superheroesAdapter
 */
         txtSearch.onTextUpdatedCallBackFunction = {
-            dashboardViewModel.searchForHero(it)
+            searchViewModel.searchForHero(it)
         }
     }
 
@@ -108,14 +109,14 @@ class SearchActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
     }
 
     override fun onSuperheroClicked(view: View, position: Int) {
-        val superhero = dashboardViewModel.superheroes.value?.get(position)
+        val superhero = searchViewModel.superheroes.value?.get(position)
         viewSuperhero(superhero)
     }
 
     fun viewSuperhero(superhero: Superhero?) {
         val payload = Bundle()
         payload.putParcelable(SUPERHERO, superhero)
-        navigateToActivity("co.za.immedia.superhero.ViewSuperheroActivity", payload, SLIDE_IN_ACTIVITY)
+        navigateToActivity(VIEW_SUPRERHERO_ACTIVITY, payload, SLIDE_IN_ACTIVITY)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

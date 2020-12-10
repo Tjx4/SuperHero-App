@@ -6,6 +6,8 @@ import android.os.Handler
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import co.za.immedia.commons.constants.SEARCH_ACTIVITY
+import co.za.immedia.commons.extensions.FADE_IN_ACTIVITY
 import co.za.immedia.commons.extensions.fadeIn
 import co.za.immedia.commons.extensions.navigateToActivity
 import co.za.immedia.persistence.sharedPrefs.SharedPrefs
@@ -31,27 +33,28 @@ class IntroActivity : AppCompatActivity(){
             }
 
             mediaPlayer?.setOnCompletionListener {
-               navigateToActivity("co.za.immedia.dashboard.DashboardActivity", null,
-                   co.za.immedia.commons.extensions.FADE_IN_ACTIVITY
-               )
-               finish()
+                navigateToSearchActivity()
             }
 
         } catch (e: Exception) {
-            navigateToActivity( "co.za.immedia.dashboard.DashboardActivity", null,
-                co.za.immedia.commons.extensions.FADE_IN_ACTIVITY
-            )
-            finish()
+            navigateToSearchActivity()
         }
     }
 
     fun onSkipIntroClicked(view: View){
         val sharedPrefs = SharedPrefs.getInstance(application)
         sharedPrefs.skipIntro = true
-        navigateToActivity(  "co.za.immedia.dashboard.DashboardActivity", null,
-            co.za.immedia.commons.extensions.FADE_IN_ACTIVITY
-        )
+
         mediaPlayer?.stop()
+
+        navigateToSearchActivity()
+    }
+
+    private fun navigateToSearchActivity() {
+        navigateToActivity(
+            SEARCH_ACTIVITY, null,
+            FADE_IN_ACTIVITY
+        )
         finish()
     }
 
