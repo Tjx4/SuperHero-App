@@ -13,9 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SuperHeroApp">
-      <activity
-          android:label="intro"
-          android:name="co.za.immedia.intro.IntroActivity"></activity>
+
         <activity
             android:name=".SplashActivity"
             android:theme="@style/SplashTheme">

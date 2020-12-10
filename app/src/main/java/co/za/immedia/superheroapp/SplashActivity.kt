@@ -4,9 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import co.za.immedia.commons.extensions.FADE_IN_ACTIVITY
 import co.za.immedia.commons.extensions.navigateToActivity
-import co.za.immedia.superheroapp.nav.Navigation
 import co.za.immedia.persistence.sharedPrefs.SharedPrefs
-import co.za.immedia.superheroapp.nav.SearchNavigation
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,7 +20,7 @@ class SplashActivity : AppCompatActivity() {
             )
         else
 
-           // SearchNavigation.getIntent()
+        // SearchNavigation.getIntent()
 
             navigateToActivity(
                 "co.za.immedia",
