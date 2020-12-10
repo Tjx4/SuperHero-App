@@ -1,4 +1,4 @@
-package co.za.immedia.dashboard
+package co.za.immedia.search
 
 import co.za.immedia.commons.extensions.toSuperhero
 import co.za.immedia.commons.extensions.toSuperheroesTable

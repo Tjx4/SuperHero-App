@@ -1,4 +1,4 @@
-package co.za.immedia.dashboard
+package co.za.immedia.search
 
 import android.os.Bundle
 import android.view.KeyEvent
@@ -15,21 +15,21 @@ import co.za.immedia.commons.constants.SUPERHERO
 import co.za.immedia.commons.extensions.SLIDE_IN_ACTIVITY
 import co.za.immedia.commons.extensions.navigateToActivity
 import co.za.immedia.commons.models.Superhero
-import co.za.immedia.dashboard.adapter.SuperheroesAdapter
-import co.za.immedia.dashboard.databinding.ActivityDashboardBinding
-import kotlinx.android.synthetic.main.activity_dashboard.*
+import co.za.immedia.search.adapter.SuperheroesAdapter
+import co.za.immedia.search.databinding.ActivitySearchBinding
+import kotlinx.android.synthetic.main.activity_search.*
 
-class DashboardActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
-    private lateinit var binding: ActivityDashboardBinding
+class SearchActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
+    private lateinit var binding: ActivitySearchBinding
     lateinit var dashboardViewModel: DashboardViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         var application = requireNotNull(this).application
-        var viewModelFactory = DashboardViewModelFactory(application)
+        var viewModelFactory = co.za.immedia.search.DashboardViewModelFactory(application)
 
-        dashboardViewModel = ViewModelProviders.of(this, viewModelFactory).get(DashboardViewModel::class.java)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_dashboard)
+        dashboardViewModel = ViewModelProviders.of(this, viewModelFactory).get(co.za.immedia.search.DashboardViewModel::class.java)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_search)
         binding.dashboardViewModel = dashboardViewModel
         binding.lifecycleOwner = this
 
@@ -97,7 +97,8 @@ class DashboardActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
         val searchTypeLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false)
         searchTypeLayoutManager.initialPrefetchItemCount = superheroes?.size ?: 0
         rvHeroes?.layoutManager = searchTypeLayoutManager
-        val superheroesAdapter = SuperheroesAdapter(this, R.layout.hero_layout, superheroes)
+        val superheroesAdapter =
+            co.za.immedia.search.adapter.SuperheroesAdapter(this, R.layout.hero_layout, superheroes)
         superheroesAdapter.setOnHeroClickListener(this)
         rvHeroes.adapter = superheroesAdapter
     }
@@ -126,7 +127,7 @@ class DashboardActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
         when (item.itemId) {
             R.id.action_favourites -> {
                 //val favouritesFragment = FavouritesFragment.newInstance()
-               // favouritesFragment?.isCancelable = true
+                // favouritesFragment?.isCancelable = true
                 //showDialogFragment("Superheroes", co.za.immedia.favourites.R.layout.fragment_favourites, favouritesFragment)
             }
         }

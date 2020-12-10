@@ -14,7 +14,6 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/commons" />
             <option value="$PROJECT_DIR$/features" />
-            <option value="$PROJECT_DIR$/features/dashboard" />
             <option value="$PROJECT_DIR$/features/favourites" />
             <option value="$PROJECT_DIR$/features/intro" />
             <option value="$PROJECT_DIR$/features/search" />

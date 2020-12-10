@@ -1,4 +1,4 @@
-package co.za.immedia.dashboard
+package co.za.immedia.search
 
 import android.app.Application
 import androidx.lifecycle.ViewModel

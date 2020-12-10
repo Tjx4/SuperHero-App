@@ -1,4 +1,4 @@
-package co.za.immedia.dashboard.adapter
+package co.za.immedia.search.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
