@@ -1,5 +1,6 @@
 package co.za.immedia.favourites
 
+import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,10 +11,10 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import co.za.immedia.superheroapp.adapters.FavouriteHeroesAdapter
+import co.za.immedia.commons.base.activities.BaseActivity
 import co.za.immedia.superheroapp.features.base.fragments.BaseDialogFragment
-import co.za.immedia.dashboard.DashboardActivity
 import co.za.immedia.commons.models.Superhero
+import co.za.immedia.favourites.adapters.FavouriteHeroesAdapter
 import com.wang.avi.AVLoadingIndicatorView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -21,7 +22,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class FavouritesFragment : BaseDialogFragment(), FavouriteHeroesAdapter.HeroClickListener {
-    private var dashboardActivity: co.za.immedia.dashboard.DashboardActivity? = null
+    private var dashboardActivity: BaseActivity? = null
     private var parentCl: ConstraintLayout? = null
     private var avlProgressBarLoading: AVLoadingIndicatorView? = null
     private var btnCloseUsersImg: ImageButton? = null
@@ -54,7 +55,7 @@ class FavouritesFragment : BaseDialogFragment(), FavouriteHeroesAdapter.HeroClic
         showLoading()
 
         ioScope.launch {
-            favSuperheroes = dashboardActivity?.dashboardViewModel?.favSuperheroes?.value
+            favSuperheroes = null //dashboardActivity?.dashboardViewModel?.favSuperheroes?.value
 
             uiScope.launch {
                 hideLoading()
@@ -80,7 +81,7 @@ class FavouritesFragment : BaseDialogFragment(), FavouriteHeroesAdapter.HeroClic
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        dashboardActivity = context as co.za.immedia.dashboard.DashboardActivity
+        // dashboardActivity = context as DashboardActivity
     }
 
     fun showLoading() {
@@ -94,8 +95,8 @@ class FavouritesFragment : BaseDialogFragment(), FavouriteHeroesAdapter.HeroClic
     }
 
     override fun onSuperheroClicked(view: View, position: Int) {
-        val superhero = dashboardActivity?.dashboardViewModel?.favSuperheroes?.value?.get(position)
-        dashboardActivity?.viewSuperhero(superhero)
+       // val superhero = dashboardActivity?.dashboardViewModel?.favSuperheroes?.value?.get(position)
+       // dashboardActivity?.viewSuperhero(superhero)
         dismiss()
     }
 

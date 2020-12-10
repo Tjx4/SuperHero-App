@@ -9,6 +9,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import co.za.immedia.commons.models.Superhero
+import co.za.immedia.libraries.glide.loadImageFromInternet
+import co.za.immedia.superhero.databinding.ActivityViewSuperheroBinding
+import co.za.immedia.superheroapp.features.base.activities.BaseChildActivity
 import com.google.android.material.appbar.AppBarLayout
 import kotlinx.android.synthetic.main.activity_view_superhero.*
 

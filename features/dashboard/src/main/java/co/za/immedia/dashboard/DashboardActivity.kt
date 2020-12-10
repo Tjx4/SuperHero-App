@@ -18,8 +18,6 @@ import co.za.immedia.commons.extensions.showDialogFragment
 import co.za.immedia.commons.models.Superhero
 import co.za.immedia.dashboard.adapter.SuperheroesAdapter
 import co.za.immedia.dashboard.databinding.ActivityDashboardBinding
-import co.za.immedia.favourites.FavouritesFragment
-import co.za.immedia.superhero.ViewSuperheroActivity
 import kotlinx.android.synthetic.main.activity_dashboard.*
 
 class DashboardActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
@@ -117,7 +115,7 @@ class DashboardActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
     fun viewSuperhero(superhero: Superhero?) {
         val payload = Bundle()
         payload.putParcelable(SUPERHERO, superhero)
-        navigateToActivity(ViewSuperheroActivity::class.java, payload, SLIDE_IN_ACTIVITY)
+        navigateToActivity("co.za.immedia", "co.za.immedia.superhero.ViewSuperheroActivity", payload, SLIDE_IN_ACTIVITY)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -128,9 +126,9 @@ class DashboardActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_favourites -> {
-                val favouritesFragment = FavouritesFragment.newInstance()
-                favouritesFragment?.isCancelable = true
-                showDialogFragment("Superheroes", co.za.immedia.favourites.R.layout.fragment_favourites, favouritesFragment)
+                //val favouritesFragment = FavouritesFragment.newInstance()
+               // favouritesFragment?.isCancelable = true
+                //showDialogFragment("Superheroes", co.za.immedia.favourites.R.layout.fragment_favourites, favouritesFragment)
             }
         }
         return super.onOptionsItemSelected(item)

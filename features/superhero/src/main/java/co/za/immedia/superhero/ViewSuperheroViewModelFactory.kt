@@ -3,8 +3,8 @@ package co.za.immedia.superhero
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import co.za.immedia.superheroapp.database.SuperheroDB
 import co.za.immedia.networking.API
+import co.za.immedia.persistence.room.SuperheroDB
 import java.lang.IllegalArgumentException
 
 class ViewSuperheroViewModelFactory(private val application: Application) : ViewModelProvider.Factory {
