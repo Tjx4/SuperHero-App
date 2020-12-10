@@ -58,6 +58,7 @@ dependencies {
     //gson
     implementation 'com.google.code.gson:gson:2.8.6'
     //Modules
+    implementation project(':features:dashboard')
     implementation project(':commons')
     implementation project(':networking')
     implementation project(':persistence')

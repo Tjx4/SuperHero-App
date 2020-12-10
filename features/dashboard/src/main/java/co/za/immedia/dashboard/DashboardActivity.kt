@@ -14,7 +14,6 @@ import co.za.immedia.commons.base.activities.BaseActivity
 import co.za.immedia.commons.constants.SUPERHERO
 import co.za.immedia.commons.extensions.SLIDE_IN_ACTIVITY
 import co.za.immedia.commons.extensions.navigateToActivity
-import co.za.immedia.commons.extensions.showDialogFragment
 import co.za.immedia.commons.models.Superhero
 import co.za.immedia.dashboard.adapter.SuperheroesAdapter
 import co.za.immedia.dashboard.databinding.ActivityDashboardBinding

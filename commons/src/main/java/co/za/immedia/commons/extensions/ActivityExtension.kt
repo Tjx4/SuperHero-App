@@ -1,16 +1,18 @@
 package co.za.immedia.commons.extensions
 
+import android.content.ComponentName
 import android.content.Intent
 import android.os.Bundle
 import android.provider.ContactsContract.CommonDataKinds.Organization.TITLE
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import co.za.immedia.commons.R
 import co.za.immedia.commons.base.activities.BaseActivity
 import co.za.immedia.commons.constants.ACTIVITY_TRANSITION
 import co.za.immedia.commons.constants.LAYOUT
 import co.za.immedia.commons.constants.PAYLOAD_KEY
-
 import co.za.immedia.superheroapp.features.base.fragments.BaseDialogFragment
+
 
 val SLIDE_IN_ACTIVITY = getTransitionAnimation(R.anim.slide_right, R.anim.no_transition)
 val SLIDE_OUT_ACTIVITY =  getTransitionAnimation(R.anim.no_transition, R.anim.slide_left)
@@ -68,8 +70,10 @@ private fun AppCompatActivity.goToActivity2(
     transitionAnimation: Transition,
     payload: Bundle?
 ) {
+
     val intent = Intent()
     intent.setClassName(packageName, className)
+
     val fullPayload = payload ?: Bundle()
     fullPayload.putIntArray(
         ACTIVITY_TRANSITION, intArrayOf(
@@ -78,7 +82,9 @@ private fun AppCompatActivity.goToActivity2(
         )
     )
     intent.putExtra(PAYLOAD_KEY, fullPayload)
+
     startActivity(intent)
+
 }
 
 fun BaseActivity.showDialogFragment(
