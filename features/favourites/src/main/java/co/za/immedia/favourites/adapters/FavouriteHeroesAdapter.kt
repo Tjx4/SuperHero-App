@@ -7,12 +7,13 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import co.za.immedia.commons.base.activities.BaseActivity
 import co.za.immedia.favourites.R
 import co.za.immedia.commons.models.Superhero
 import co.za.immedia.libraries.glide.loadImageFromInternet
 
 class FavouriteHeroesAdapter(context: Context, private val superheroes: List<Superhero?>?) : RecyclerView.Adapter<FavouriteHeroesAdapter.ViewHolder>() {
-    private val dashboardActivity = context as DashboardActivity
+    private val activity = context as BaseActivity
     private val layoutInflater: LayoutInflater = LayoutInflater.from(context)
     private var heroClickListener: HeroClickListener? = null
 
@@ -26,7 +27,7 @@ class FavouriteHeroesAdapter(context: Context, private val superheroes: List<Sup
         holder.heroNameTv.text = superHero?.name
 
         superHero?.image?.url?.let {
-            loadImageFromInternet(dashboardActivity,  it, holder.heroImgv, R.drawable.ic_place_holde_dark)
+            loadImageFromInternet(activity,  it, holder.heroImgv, R.drawable.ic_place_holde_dark)
         }
 
         superHero?.isFav = true
