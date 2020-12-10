@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.provider.ContactsContract.CommonDataKinds.Organization.TITLE
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import co.za.immedia.commons.R
 import co.za.immedia.commons.base.activities.BaseActivity
 import co.za.immedia.commons.constants.ACTIVITY_TRANSITION
@@ -28,12 +29,11 @@ fun AppCompatActivity.navigateToActivity(
 }
 
 fun AppCompatActivity.navigateToActivity(
-    packageName: String,
     className: String,
     payload: Bundle?,
     transitionAnimation: Transition
 ) {
-    goToActivity2(packageName, className, transitionAnimation, payload)
+    goToActivity2(className, transitionAnimation, payload)
 }
 
 private fun getTransitionAnimation(inAnimation: Int, outAnimation: Int): Transition {
@@ -63,14 +63,15 @@ private fun AppCompatActivity.goToActivity(
 }
 
 private fun AppCompatActivity.goToActivity2(
-    packageName: String,
     className: String,
     transitionAnimation: Transition,
     payload: Bundle?
 ) {
 
-    val intent = Intent()
-    intent.setClassName(packageName, className)
+    val intent = Intent(
+        this,
+        Class.forName(className)
+    )
 
     val fullPayload = payload ?: Bundle()
     fullPayload.putIntArray(
@@ -82,6 +83,7 @@ private fun AppCompatActivity.goToActivity2(
 
     intent.putExtra(PAYLOAD_KEY, fullPayload)
     startActivity(intent)
+
 }
 
 fun BaseActivity.showDialogFragment(

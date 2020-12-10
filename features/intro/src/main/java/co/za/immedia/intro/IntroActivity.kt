@@ -31,14 +31,14 @@ class IntroActivity : AppCompatActivity(){
             }
 
             mediaPlayer?.setOnCompletionListener {
-               navigateToActivity("co.za.immedia", "co.za.immedia.dashboard.DashboardActivity", null,
+               navigateToActivity("co.za.immedia.dashboard.DashboardActivity", null,
                    co.za.immedia.commons.extensions.FADE_IN_ACTIVITY
                )
                finish()
             }
 
         } catch (e: Exception) {
-            navigateToActivity("co.za.immedia", "co.za.immedia.dashboard.DashboardActivity", null,
+            navigateToActivity( "co.za.immedia.dashboard.DashboardActivity", null,
                 co.za.immedia.commons.extensions.FADE_IN_ACTIVITY
             )
             finish()
@@ -48,7 +48,7 @@ class IntroActivity : AppCompatActivity(){
     fun onSkipIntroClicked(view: View){
         val sharedPrefs = SharedPrefs.getInstance(application)
         sharedPrefs.skipIntro = true
-        navigateToActivity( "co.za.immedia", "co.za.immedia.dashboard.DashboardActivity", null,
+        navigateToActivity(  "co.za.immedia.dashboard.DashboardActivity", null,
             co.za.immedia.commons.extensions.FADE_IN_ACTIVITY
         )
         mediaPlayer?.stop()

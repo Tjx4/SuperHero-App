@@ -115,7 +115,7 @@ class SearchActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
     fun viewSuperhero(superhero: Superhero?) {
         val payload = Bundle()
         payload.putParcelable(SUPERHERO, superhero)
-        navigateToActivity("co.za.immedia", "co.za.immedia.superhero.ViewSuperheroActivity", payload, SLIDE_IN_ACTIVITY)
+        navigateToActivity("co.za.immedia.superhero.ViewSuperheroActivity", payload, SLIDE_IN_ACTIVITY)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

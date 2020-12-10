@@ -15,24 +15,17 @@ class SplashActivity : AppCompatActivity() {
 
         if (sharedPrefs.skipIntro){
             navigateToActivity(
-                "co.za.immedia",
                 "co.za.immedia.dashboard.DashboardActivity",
                 null,
                 FADE_IN_ACTIVITY
             )
         }
         else {
-            navigateToActivity(IntroActivity::class.java,null,
-                FADE_IN_ACTIVITY
-            )
-            /*
             navigateToActivity(
-                "co.za.immedia",
                 "co.za.immedia.intro.IntroActivity",
                 null,
                 FADE_IN_ACTIVITY
             )
-            */
         }
 
         finish()
