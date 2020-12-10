@@ -55,11 +55,10 @@ dependencies {
     //multidex
     def multidex_version = "2.0.1"
     implementation "androidx.multidex:multidex:$multidex_version"
-
     //gson
     implementation 'com.google.code.gson:gson:2.8.6'
     //Modules
+    implementation project(':commons')
     implementation project(':networking')
     implementation project(':persistence')
-    implementation project(':commons')
 }
