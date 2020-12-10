@@ -15,6 +15,7 @@ import co.za.immedia.superheroapp.features.base.fragments.BaseDialogFragment
 import co.za.immedia.commons.models.Superhero
 import co.za.immedia.favourites.adapters.FavouriteHeroesAdapter
 import co.za.immedia.search.R
+import co.za.immedia.search.SearchActivity
 import com.wang.avi.AVLoadingIndicatorView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -22,7 +23,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class FavouritesFragment : BaseDialogFragment(), FavouriteHeroesAdapter.HeroClickListener {
-    private var dashboardActivity: BaseActivity? = null
+    private var dashboardActivity: SearchActivity? = null
     private var parentCl: ConstraintLayout? = null
     private var avlProgressBarLoading: AVLoadingIndicatorView? = null
     private var btnCloseUsersImg: ImageButton? = null
@@ -55,7 +56,7 @@ class FavouritesFragment : BaseDialogFragment(), FavouriteHeroesAdapter.HeroClic
         showLoading()
 
         ioScope.launch {
-            favSuperheroes = null //dashboardActivity?.dashboardViewModel?.favSuperheroes?.value
+            favSuperheroes = dashboardActivity?.searchViewModel?.favSuperheroes?.value
 
             uiScope.launch {
                 hideLoading()
