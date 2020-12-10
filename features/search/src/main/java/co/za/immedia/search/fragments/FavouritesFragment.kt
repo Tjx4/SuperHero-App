@@ -1,6 +1,5 @@
-package co.za.immedia.favourites
+package co.za.immedia.search.fragments
 
-import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,6 +14,7 @@ import co.za.immedia.commons.base.activities.BaseActivity
 import co.za.immedia.superheroapp.features.base.fragments.BaseDialogFragment
 import co.za.immedia.commons.models.Superhero
 import co.za.immedia.favourites.adapters.FavouriteHeroesAdapter
+import co.za.immedia.search.R
 import com.wang.avi.AVLoadingIndicatorView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

@@ -15,9 +15,11 @@ import co.za.immedia.commons.constants.SUPERHERO
 import co.za.immedia.commons.constants.VIEW_SUPRERHERO_ACTIVITY
 import co.za.immedia.commons.extensions.SLIDE_IN_ACTIVITY
 import co.za.immedia.commons.extensions.navigateToActivity
+import co.za.immedia.commons.extensions.showDialogFragment
 import co.za.immedia.commons.models.Superhero
 import co.za.immedia.search.adapter.SuperheroesAdapter
 import co.za.immedia.search.databinding.ActivitySearchBinding
+import co.za.immedia.search.fragments.FavouritesFragment
 import kotlinx.android.synthetic.main.activity_search.*
 
 class SearchActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
@@ -127,9 +129,9 @@ class SearchActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_favourites -> {
-                //val favouritesFragment = FavouritesFragment.newInstance()
-                // favouritesFragment?.isCancelable = true
-                //showDialogFragment("Superheroes", co.za.immedia.favourites.R.layout.fragment_favourites, favouritesFragment)
+                val favouritesFragment = FavouritesFragment.newInstance()
+                favouritesFragment?.isCancelable = true
+                showDialogFragment("Superheroes", R.layout.fragment_favourites, favouritesFragment)
             }
         }
         return super.onOptionsItemSelected(item)

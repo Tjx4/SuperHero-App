@@ -71,6 +71,7 @@ dependencies {
     implementation project(':persistence')
     implementation project(':commons')
     implementation project(':libraries')
+    implementation project(':features:favourites')
 
 
 }
