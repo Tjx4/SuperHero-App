@@ -3,7 +3,9 @@
     package="co.za.immedia.intro">
 
     <application>
-        <activity android:name=".IntroActivity">
+        <activity
+            android:name=".IntroActivity"
+            android:theme="@style/NoActionBarTheme">
         </activity>
     </application>
 

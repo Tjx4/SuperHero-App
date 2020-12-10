@@ -1,11 +1,9 @@
 package co.za.immedia.commons.extensions
 
-import android.content.ComponentName
 import android.content.Intent
 import android.os.Bundle
 import android.provider.ContactsContract.CommonDataKinds.Organization.TITLE
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import co.za.immedia.commons.R
 import co.za.immedia.commons.base.activities.BaseActivity
 import co.za.immedia.commons.constants.ACTIVITY_TRANSITION
@@ -81,10 +79,9 @@ private fun AppCompatActivity.goToActivity2(
             transitionAnimation.outAnimation
         )
     )
+
     intent.putExtra(PAYLOAD_KEY, fullPayload)
-
     startActivity(intent)
-
 }
 
 fun BaseActivity.showDialogFragment(
