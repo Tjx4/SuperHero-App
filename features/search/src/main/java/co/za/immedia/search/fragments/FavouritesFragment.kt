@@ -23,7 +23,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class FavouritesFragment : BaseDialogFragment(), FavouriteHeroesAdapter.HeroClickListener {
-    private var dashboardActivity: SearchActivity? = null
+    private var searchActivity: SearchActivity? = null
     private var parentCl: ConstraintLayout? = null
     private var avlProgressBarLoading: AVLoadingIndicatorView? = null
     private var btnCloseUsersImg: ImageButton? = null
@@ -56,7 +56,7 @@ class FavouritesFragment : BaseDialogFragment(), FavouriteHeroesAdapter.HeroClic
         showLoading()
 
         ioScope.launch {
-            favSuperheroes = dashboardActivity?.searchViewModel?.favSuperheroes?.value
+            favSuperheroes = searchActivity?.searchViewModel?.favSuperheroes?.value
 
             uiScope.launch {
                 hideLoading()
@@ -70,11 +70,11 @@ class FavouritesFragment : BaseDialogFragment(), FavouriteHeroesAdapter.HeroClic
 
                 titleTv?.visibility = View.VISIBLE
 
-                favouriteHeroesAdapter = FavouriteHeroesAdapter(dashboardActivity as Context, favSuperheroes)
+                favouriteHeroesAdapter = FavouriteHeroesAdapter(searchActivity as Context, favSuperheroes)
                 favouriteHeroesAdapter.setOnHeroClickListener(favouritesFragment)
 
                 favSuperheroesRv = parentView.findViewById(R.id.rvUsers)
-                favSuperheroesRv?.layoutManager = GridLayoutManager(dashboardActivity, 2)
+                favSuperheroesRv?.layoutManager = GridLayoutManager(searchActivity, 2)
                 favSuperheroesRv?.adapter = favouriteHeroesAdapter
             }
         }
@@ -82,7 +82,7 @@ class FavouritesFragment : BaseDialogFragment(), FavouriteHeroesAdapter.HeroClic
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        // dashboardActivity = context as DashboardActivity
+        searchActivity = context as SearchActivity
     }
 
     fun showLoading() {
@@ -96,8 +96,8 @@ class FavouritesFragment : BaseDialogFragment(), FavouriteHeroesAdapter.HeroClic
     }
 
     override fun onSuperheroClicked(view: View, position: Int) {
-       // val superhero = dashboardActivity?.dashboardViewModel?.favSuperheroes?.value?.get(position)
-       // dashboardActivity?.viewSuperhero(superhero)
+       val superhero = searchActivity?.searchViewModel?.favSuperheroes?.value?.get(position)
+        searchActivity?.viewSuperhero(superhero)
         dismiss()
     }
 
