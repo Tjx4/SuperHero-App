@@ -1,5 +1,6 @@
 package co.za.immedia.search
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.Menu
@@ -66,7 +67,7 @@ class SearchActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
     }
 
     private fun onHeroAddedToFavourites(superhero: Superhero) {
-        Toast.makeText(this, "${superhero.name} added to favourites",  Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "${superhero.name} added to favourites", Toast.LENGTH_SHORT).show()
     }
 
     private fun onNoHeroesFound(message: String) {
@@ -97,7 +98,7 @@ class SearchActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
         //hideKeyboard(txtSearch)
         //rvHeroes.adapter?.notifyDataSetChanged()
 
-        val searchTypeLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false)
+        val searchTypeLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         searchTypeLayoutManager.initialPrefetchItemCount = superheroes?.size ?: 0
         rvHeroes?.layoutManager = searchTypeLayoutManager
         val superheroesAdapter =
@@ -131,7 +132,15 @@ class SearchActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
             R.id.action_favourites -> {
                 val favouritesFragment = FavouritesFragment.newInstance()
                 favouritesFragment?.isCancelable = true
-                showDialogFragment("Superheroes", R.layout.fragment_favourites, favouritesFragment)
+                showDialogFragment(
+                    "Superheroes",
+                    R.layout.fragment_favourites,
+                    favouritesFragment
+                ) //Todo: fix tittle
+            }
+            R.id.action_rating -> {
+               navigateToActivity("co.za.immedia.dynamicModule.RatingActivity", null, SLIDE_IN_ACTIVITY)
+
             }
         }
         return super.onOptionsItemSelected(item)

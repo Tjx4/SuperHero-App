@@ -8,4 +8,5 @@
     <string name="add_to_favourite">Add to favourite</string>
     <string name="speed">Speed:</string>
     <string name="unknown">Unknown</string>
+    <string name="dynamic_module_downloaded">Dynamic Module downloaded</string>
 </resources>

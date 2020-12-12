@@ -331,11 +331,19 @@
 
                 </androidx.cardview.widget.CardView>
 
-                <FrameLayout
+                <Button
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
+                    android:layout_height="wrap_content"
+                    android:text="More info"
+                    android:background="@color/lightBackground"
+                    android:textColor="@color/dark_text"
+                    android:elevation="2dp"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:layout_marginHorizontal="@dimen/xsmall_margin"
                     app:layout_constraintTop_toBottomOf="@+id/cvBiography"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:onClick="onViewMoreClicked"/>
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

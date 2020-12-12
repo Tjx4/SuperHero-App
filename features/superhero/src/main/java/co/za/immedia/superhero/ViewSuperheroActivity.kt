@@ -3,6 +3,7 @@ package co.za.immedia.superhero
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
@@ -73,6 +74,10 @@ class ViewSuperheroActivity : BaseChildActivity() {
 
     private fun onHeroAddedToFavourites(isAddToFav: Boolean) {
         Toast.makeText(this, "Added to favourites",  Toast.LENGTH_SHORT).show()
+    }
+
+    fun onViewMoreClicked(view: View){
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
