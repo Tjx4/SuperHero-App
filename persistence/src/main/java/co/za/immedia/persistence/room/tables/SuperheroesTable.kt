@@ -14,6 +14,23 @@ data class SuperheroesTable (
     var id:Long = 0L,
     @ColumnInfo(name = "name")
     var name:String? = null,
+
+    @ColumnInfo(name = "intelligence")
+    var intelligence:String? = null,
+    @ColumnInfo(name = "strength")
+    var strength:String? = null,
+    @ColumnInfo(name = "speed")
+    var speed:String? = null,
+
+    @ColumnInfo(name = "fullName")
+    var fullName:String? = null,
+    @ColumnInfo(name = "alterEgos")
+    var alterEgos:String? = null,
+    @ColumnInfo(name = "placeOfBirth")
+    var placeOfBirth:String? = null,
+    @ColumnInfo(name = "publisher")
+    var publisher:String? = null,
+
     @ColumnInfo(name = "imageUrl")
     var imageUrl:String? = null,
 ): Parcelable

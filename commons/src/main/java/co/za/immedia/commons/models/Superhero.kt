@@ -14,7 +14,8 @@ class Superhero(
         @SerializedName("work") var work: Work? = null,
         @SerializedName("connections")var connections: Connections? = null,
         @SerializedName("image")var image: Image? = null,
-        var isFav: Boolean? = false,
+        var rating: Double = 0.0,
+        var isFav: Boolean = false,
 ): Parcelable
 
 
