@@ -9,7 +9,10 @@ import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import co.za.immedia.commons.models.Appearance
+import co.za.immedia.commons.models.Connections
 import co.za.immedia.commons.models.Superhero
+import co.za.immedia.commons.models.Work
 import co.za.immedia.libraries.glide.loadImageFromInternet
 import co.za.immedia.superhero.databinding.ActivityViewSuperheroBinding
 import co.za.immedia.superheroapp.features.base.activities.BaseChildActivity
@@ -64,11 +67,21 @@ class ViewSuperheroActivity : BaseChildActivity() {
     }
 
     private fun addObservers() {
-        viewSuperheroViewModel.superhero.observe(this, Observer { onSuperheroSet(it) })
+        viewSuperheroViewModel.appearance.observe(this, Observer { onHeroAppearanceSet(it)})
+        viewSuperheroViewModel.work.observe(this, Observer { onHeroWorkSet(it)})
+        viewSuperheroViewModel.connections.observe(this, Observer { onHeroConnectionsSet(it)})
         viewSuperheroViewModel.isAddToFav.observe(this, Observer { onHeroAddedToFavourites(it) })
     }
 
-    fun onSuperheroSet(superhero: Superhero){
+    fun onHeroAppearanceSet(appearance: Appearance){
+
+    }
+
+    fun onHeroWorkSet(work: Work){
+
+    }
+
+    fun onHeroConnectionsSet(connections: Connections){
 
     }
 
@@ -77,7 +90,8 @@ class ViewSuperheroActivity : BaseChildActivity() {
     }
 
     fun onViewMoreClicked(view: View){
-
+        view.visibility = View.GONE
+        avlMoreInfoLoader.visibility = View.VISIBLE
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

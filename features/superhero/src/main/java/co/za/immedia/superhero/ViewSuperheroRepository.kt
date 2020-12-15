@@ -1,10 +1,8 @@
 package co.za.immedia.superhero
 
 import co.za.immedia.commons.extensions.toSuperheroesTable
+import co.za.immedia.commons.models.*
 import co.za.immedia.networking.RetrofitHelper
-import co.za.immedia.commons.models.DbOperation
-import co.za.immedia.commons.models.SearchResult
-import co.za.immedia.commons.models.Superhero
 import co.za.immedia.persistence.room.SuperheroDB
 
 class ViewSuperheroRepository(private val retrofit: RetrofitHelper, private val database: SuperheroDB) {
@@ -19,9 +17,27 @@ class ViewSuperheroRepository(private val retrofit: RetrofitHelper, private val 
         }
     }
 
-    suspend fun fetchSuperHeroWork(url: String): SearchResult?{
+    suspend fun fetchHeroAppearance(url: String): Appearance?{
         return try {
-            retrofit.getHeroWor(url)
+            retrofit.getHeroAppearance(url)
+        }
+        catch (ex: Exception){
+            null
+        }
+    }
+
+    suspend fun fetchHeroWork(url: String): Work?{
+        return try {
+            retrofit.getHeroWork(url)
+        }
+        catch (ex: Exception){
+            null
+        }
+    }
+
+    suspend fun fetchHeroConnections(url: String): Connections?{
+        return try {
+            retrofit.getHeroConnections(url)
         }
         catch (ex: Exception){
             null
