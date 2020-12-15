@@ -60,11 +60,8 @@ class ViewSuperheroViewModel(application: Application, private val viewSuperhero
     }
 
     fun showHeroAppearance(){
-       // busyMessage = "fetching outlets, please wait..."
-        // _showLoading.value = true
-
         ioScope.launch {
-            val url = "${Hosts.LiveHost.url}api/191417135981966/${_superhero.value?.id}/work"
+            val url = "${Hosts.LiveHost.url}api/191417135981966/${_superhero.value?.id}/appearance"
             var heroesAppearance = viewSuperheroRepository.fetchHeroAppearance(url)
 
             uiScope.launch {
@@ -79,9 +76,6 @@ class ViewSuperheroViewModel(application: Application, private val viewSuperhero
     }
 
     fun showHeroWork(){
-       // busyMessage = "fetching outlets, please wait..."
-        // _showLoading.value = true
-
         ioScope.launch {
             val url = "${Hosts.LiveHost.url}api/191417135981966/${_superhero.value?.id}/work"
             var superheroesWork = viewSuperheroRepository.fetchHeroWork(url)
@@ -98,9 +92,6 @@ class ViewSuperheroViewModel(application: Application, private val viewSuperhero
     }
 
     fun showHeroConnections(){
-        // busyMessage = "fetching outlets, please wait..."
-        // _showLoading.value = true
-
         ioScope.launch {
             val url = "${Hosts.LiveHost.url}api/191417135981966/${_superhero.value?.id}/connections"
             var heroesConnections = viewSuperheroRepository.fetchHeroConnections(url)

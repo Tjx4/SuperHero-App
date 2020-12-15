@@ -5,6 +5,8 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.cardview.widget.CardView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -17,6 +19,7 @@ import co.za.immedia.libraries.glide.loadImageFromInternet
 import co.za.immedia.superhero.databinding.ActivityViewSuperheroBinding
 import co.za.immedia.superheroapp.features.base.activities.BaseChildActivity
 import com.google.android.material.appbar.AppBarLayout
+import com.wang.avi.AVLoadingIndicatorView
 import kotlinx.android.synthetic.main.activity_view_superhero.*
 
 class ViewSuperheroActivity : BaseChildActivity() {
@@ -62,36 +65,50 @@ class ViewSuperheroActivity : BaseChildActivity() {
         })
 
         toolbar?.setNavigationOnClickListener { onBackPressed() }
-        //toolbar?.inflateMenu(R.menu.view_superhero_menu)
         setSupportActionBar(toolbar)
     }
 
     private fun addObservers() {
+        viewSuperheroViewModel.isAddToFav.observe(this, Observer { onHeroAddedToFavourites(it)})
         viewSuperheroViewModel.appearance.observe(this, Observer { onHeroAppearanceSet(it)})
+        viewSuperheroViewModel.appearanceErrorMessage.observe(this, Observer { onHeroAppearanceError(it)})
         viewSuperheroViewModel.work.observe(this, Observer { onHeroWorkSet(it)})
         viewSuperheroViewModel.connections.observe(this, Observer { onHeroConnectionsSet(it)})
-        viewSuperheroViewModel.isAddToFav.observe(this, Observer { onHeroAddedToFavourites(it) })
     }
 
-    fun onHeroAppearanceSet(appearance: Appearance){
-
+    private fun onHeroAppearanceSet(appearance: Appearance){
+        flAppearanceLoaderContainer.visibility = View.GONE
     }
 
-    fun onHeroWorkSet(work: Work){
-
+    private fun onHeroAppearanceError(errorMessage: String){
+        avlAppearaceLoader.visibility = View.GONE
     }
 
-    fun onHeroConnectionsSet(connections: Connections){
+    private fun onHeroWorkSet(work: Work){
+        // avlAppearanceLoader.visibility = View.GONE
+    }
 
+    private fun onHeroConnectionsSet(connections: Connections){
+       // avlAppearanceLoader.visibility = View.GONE
     }
 
     private fun onHeroAddedToFavourites(isAddToFav: Boolean) {
-        Toast.makeText(this, "Added to favourites",  Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, getString(R.string.added_to_fav),  Toast.LENGTH_SHORT).show()
     }
 
     fun onViewMoreClicked(view: View){
         view.visibility = View.GONE
-        avlMoreInfoLoader.visibility = View.VISIBLE
+
+        cvAppearance.visibility = View.VISIBLE
+        viewSuperheroViewModel.showHeroAppearance()
+
+        //cvWork.visibility = View.VISIBLE
+        //viewSuperheroViewModel.showHeroWork()
+
+        //cvConnections.visibility = View.VISIBLE
+        //viewSuperheroViewModel.showHeroConnections()
+
+        nsvContentScroll.fullScroll(View.FOCUS_DOWN)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
