@@ -26,21 +26,4 @@ class ViewSuperheroRepository(private val retrofit: RetrofitHelper, private val 
         }
     }
 
-    suspend fun fetchHeroWork(url: String): Work?{
-        return try {
-            retrofit.getHeroWork(url)
-        }
-        catch (ex: Exception){
-            null
-        }
-    }
-
-    suspend fun fetchHeroConnections(url: String): Connections?{
-        return try {
-            retrofit.getHeroConnections(url)
-        }
-        catch (ex: Exception){
-            null
-        }
-    }
 }

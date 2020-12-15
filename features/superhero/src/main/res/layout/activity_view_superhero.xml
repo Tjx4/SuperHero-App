@@ -353,7 +353,8 @@
                     app:cardCornerRadius="5dp"
                     android:elevation="1dp"
                     android:layout_margin="@dimen/xsmall_margin"
-                    app:layout_constraintTop_toBottomOf="@+id/btnMoreInfo">
+                    app:layout_constraintTop_toBottomOf="@+id/btnMoreInfo"
+                    app:layout_constraintBottom_toBottomOf="parent">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -442,12 +443,30 @@
                             app:layout_constraintLeft_toRightOf="@+id/tvHeightLabel"
                             app:layout_constraintTop_toTopOf="@+id/tvHeightLabel"/>
 
+                        <TextView
+                            style="@style/DarkMediumTextView"
+                            android:id="@+id/tvWeightLabel"
+                            android:layout_width="wrap_content"
+                            android:text="Weight:"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tvHeight"/>
+
+                        <TextView
+                            style="@style/GreyMediumTextView"
+                            android:id="@+id/tvWeight"
+                            android:layout_width="0dp"
+                            tools:text="0"
+                            android:text="@{StringExtension.nullToDefValue(viewSuperheroViewModel.appearance.weight[1], @string/unknown)}"
+                            android:layout_marginLeft="@dimen/xsmall_margin"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintLeft_toRightOf="@+id/tvWeightLabel"
+                            app:layout_constraintTop_toTopOf="@+id/tvWeightLabel"/>
+
                         <FrameLayout
                             android:id="@+id/flAppearanceLoaderContainer"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:background="@color/lightBackground"
-                            android:clickable="true"
                             app:layout_constraintLeft_toLeftOf="parent"
                             app:layout_constraintRight_toRightOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/flAppearanceDivider"

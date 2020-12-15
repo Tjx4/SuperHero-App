@@ -12,10 +12,4 @@ interface RetrofitHelper {
 
     @GET
     suspend fun getHeroAppearance(@Url url: String): Appearance?
-
-    @GET
-    suspend fun getHeroWork(@Url url: String): Work?
-
-    @GET
-    suspend fun getHeroConnections(@Url url: String): Connections?
 }

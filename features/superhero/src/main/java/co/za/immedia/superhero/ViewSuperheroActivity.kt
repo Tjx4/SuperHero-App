@@ -72,8 +72,6 @@ class ViewSuperheroActivity : BaseChildActivity() {
         viewSuperheroViewModel.isAddToFav.observe(this, Observer { onHeroAddedToFavourites(it)})
         viewSuperheroViewModel.appearance.observe(this, Observer { onHeroAppearanceSet(it)})
         viewSuperheroViewModel.appearanceErrorMessage.observe(this, Observer { onHeroAppearanceError(it)})
-        viewSuperheroViewModel.work.observe(this, Observer { onHeroWorkSet(it)})
-        viewSuperheroViewModel.connections.observe(this, Observer { onHeroConnectionsSet(it)})
     }
 
     private fun onHeroAppearanceSet(appearance: Appearance){
@@ -84,31 +82,15 @@ class ViewSuperheroActivity : BaseChildActivity() {
         avlAppearaceLoader.visibility = View.GONE
     }
 
-    private fun onHeroWorkSet(work: Work){
-        // avlAppearanceLoader.visibility = View.GONE
-    }
-
-    private fun onHeroConnectionsSet(connections: Connections){
-       // avlAppearanceLoader.visibility = View.GONE
-    }
-
     private fun onHeroAddedToFavourites(isAddToFav: Boolean) {
         Toast.makeText(this, getString(R.string.added_to_fav),  Toast.LENGTH_SHORT).show()
     }
 
     fun onViewMoreClicked(view: View){
         view.visibility = View.GONE
-
         cvAppearance.visibility = View.VISIBLE
         viewSuperheroViewModel.showHeroAppearance()
-
-        //cvWork.visibility = View.VISIBLE
-        //viewSuperheroViewModel.showHeroWork()
-
-        //cvConnections.visibility = View.VISIBLE
-        //viewSuperheroViewModel.showHeroConnections()
-
-        nsvContentScroll.fullScroll(View.FOCUS_DOWN)
+       nsvContentScroll.fullScroll(View.FOCUS_UP)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

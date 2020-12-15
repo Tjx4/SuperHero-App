@@ -75,36 +75,4 @@ class ViewSuperheroViewModel(application: Application, private val viewSuperhero
         }
     }
 
-    fun showHeroWork(){
-        ioScope.launch {
-            val url = "${Hosts.LiveHost.url}api/191417135981966/${_superhero.value?.id}/work"
-            var superheroesWork = viewSuperheroRepository.fetchHeroWork(url)
-
-            uiScope.launch {
-                if(superheroesWork != null){
-                    _superhero.value?.work = superheroesWork
-                }
-                else{
-                    _workErrorsMessage.value = "No info found"
-                }
-            }
-        }
-    }
-
-    fun showHeroConnections(){
-        ioScope.launch {
-            val url = "${Hosts.LiveHost.url}api/191417135981966/${_superhero.value?.id}/connections"
-            var heroesConnections = viewSuperheroRepository.fetchHeroConnections(url)
-
-            uiScope.launch {
-                if(heroesConnections != null){
-                    _connections.value = heroesConnections
-                }
-                else{
-                    _connectionsErrorsMessage.value = "No info found"
-                }
-            }
-        }
-    }
-
 }
