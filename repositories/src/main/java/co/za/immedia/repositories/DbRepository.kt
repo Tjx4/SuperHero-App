@@ -1,22 +1,12 @@
-package co.za.immedia.search
+package co.za.immedia.repositories
 
 import co.za.immedia.commons.extensions.toSuperhero
 import co.za.immedia.commons.extensions.toSuperheroesTable
-import co.za.immedia.commons.models.SearchResult
-import co.za.immedia.networking.RetrofitHelper
 import co.za.immedia.commons.models.DbOperation
 import co.za.immedia.commons.models.Superhero
 import co.za.immedia.persistence.room.SuperheroDB
 
-class SearchRepository(private val retrofit: RetrofitHelper, private val database: SuperheroDB) {
-    suspend fun searchForSuperHero(url: String): SearchResult?{
-        return try {
-            retrofit.searchSuperHero(url)
-        }
-        catch (ex: Exception){
-            null
-        }
-    }
+class DbRepository(private val database: SuperheroDB) {
 
     suspend fun addSuperheroToFavDB(superhero: Superhero): DbOperation {
         return try {

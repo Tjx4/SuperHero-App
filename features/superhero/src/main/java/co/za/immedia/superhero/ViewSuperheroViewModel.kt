@@ -8,23 +8,25 @@ import co.za.immedia.commons.models.Connections
 import co.za.immedia.commons.models.Superhero
 import co.za.immedia.commons.models.Work
 import co.za.immedia.networking.Hosts
+import co.za.immedia.repositories.DbRepository
+import co.za.immedia.repositories.SuperheroesRepository
 import kotlinx.coroutines.launch
 
-class ViewSuperheroViewModel(application: Application, private val viewSuperheroRepository: ViewSuperheroRepository) : BaseVieModel(application) {
+class ViewSuperheroViewModel(application: Application, private val dbRepository: DbRepository, private val superheroesRepository: SuperheroesRepository) : BaseVieModel(application) {
 
     private var _superhero: MutableLiveData<Superhero> = MutableLiveData()
     val superhero: MutableLiveData<Superhero>
         get() = _superhero
 
- private var _appearance: MutableLiveData<Appearance> = MutableLiveData()
+    private var _appearance: MutableLiveData<Appearance> = MutableLiveData()
     val appearance: MutableLiveData<Appearance>
         get() = _appearance
 
- private var _work: MutableLiveData<Work> = MutableLiveData()
+    private var _work: MutableLiveData<Work> = MutableLiveData()
     val work: MutableLiveData<Work>
         get() = _work
 
- private var _connections: MutableLiveData<Connections> = MutableLiveData()
+    private var _connections: MutableLiveData<Connections> = MutableLiveData()
     val connections: MutableLiveData<Connections>
         get() = _connections
 
@@ -47,7 +49,7 @@ class ViewSuperheroViewModel(application: Application, private val viewSuperhero
     fun addSuperheroToFavourites(){
         _superhero.value?.let { superhero ->
             ioScope.launch {
-                var saveOperation = viewSuperheroRepository.addSuperheroToFavDB(superhero)
+                var saveOperation = dbRepository.addSuperheroToFavDB(superhero)
 
                 uiScope.launch {
                     if(saveOperation.isSuccessful){
@@ -62,7 +64,7 @@ class ViewSuperheroViewModel(application: Application, private val viewSuperhero
     fun showHeroAppearance(){
         ioScope.launch {
             val url = "${Hosts.LiveHost.url}api/191417135981966/${_superhero.value?.id}/appearance"
-            var heroesAppearance = viewSuperheroRepository.fetchHeroAppearance(url)
+            var heroesAppearance = superheroesRepository.fetchHeroAppearance(url)
 
             uiScope.launch {
                 if(heroesAppearance != null){

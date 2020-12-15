@@ -4,10 +4,12 @@ import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import co.za.immedia.commons.base.viewmodels.BaseVieModel
 import co.za.immedia.commons.models.Superhero
+import co.za.immedia.repositories.DbRepository
+import co.za.immedia.repositories.SuperheroesRepository
 import co.za.immedia.networking.Hosts
 import kotlinx.coroutines.launch
 
-class SearchViewModel(application: Application, private val searchRepository: SearchRepository) : BaseVieModel(application) {
+class SearchViewModel(application: Application, private val dbRepository: DbRepository, private val superheroesRepository: SuperheroesRepository) : BaseVieModel(application) {
 
     private var _showLoading: MutableLiveData<Boolean> = MutableLiveData()
     val showLoading: MutableLiveData<Boolean>
@@ -41,7 +43,7 @@ class SearchViewModel(application: Application, private val searchRepository: Se
 
         ioScope.launch {
             val url = "${Hosts.LiveHost.url}api/191417135981966/search/$searchKeywords"
-            var superheroes = searchRepository.searchForSuperHero(url)
+            var superheroes = superheroesRepository.searchForSuperHero(url)
 
             uiScope.launch {
                 if(superheroes != null && !superheroes.results.isNullOrEmpty()){
@@ -56,7 +58,7 @@ class SearchViewModel(application: Application, private val searchRepository: Se
 
     fun addSuperheroToFavourites(superhero: Superhero){
         ioScope.launch {
-            var saveOperation = searchRepository.addSuperheroToFavDB(superhero)
+            var saveOperation = dbRepository.addSuperheroToFavDB(superhero)
 
             uiScope.launch {
                 if(saveOperation.isSuccessful){
@@ -72,7 +74,6 @@ class SearchViewModel(application: Application, private val searchRepository: Se
         }
     }
 
-
     fun setFavSuperheroes() {
         ioScope.launch {
             val favSuperheroes = getFavouriteHeroes()
@@ -84,6 +85,6 @@ class SearchViewModel(application: Application, private val searchRepository: Se
     }
 
     suspend fun getFavouriteHeroes(): List<Superhero?>?  {
-        return searchRepository.getFavHeroesFromDB()
+        return dbRepository.getFavHeroesFromDB()
     }
 }
