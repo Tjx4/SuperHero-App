@@ -139,7 +139,7 @@ class SearchActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
                 ) //Todo: fix tittle
             }
             R.id.action_rating -> {
-               navigateToActivity("co.za.immedia.dynamicModule.RatingActivity", null, SLIDE_IN_ACTIVITY)
+               navigateToActivity("co.za.immedia.herorating.RatingActivity", null, SLIDE_IN_ACTIVITY)
 
             }
         }

@@ -5,21 +5,16 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
-import androidx.cardview.widget.CardView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import co.za.immedia.commons.models.Appearance
-import co.za.immedia.commons.models.Connections
 import co.za.immedia.commons.models.Superhero
-import co.za.immedia.commons.models.Work
 import co.za.immedia.libraries.glide.loadImageFromInternet
 import co.za.immedia.superhero.databinding.ActivityViewSuperheroBinding
 import co.za.immedia.superheroapp.features.base.activities.BaseChildActivity
 import com.google.android.material.appbar.AppBarLayout
-import com.wang.avi.AVLoadingIndicatorView
 import kotlinx.android.synthetic.main.activity_view_superhero.*
 
 class ViewSuperheroActivity : BaseChildActivity() {

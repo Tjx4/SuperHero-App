@@ -1,12 +1,15 @@
 package co.za.immedia.herorating
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
+import co.za.immedia.commons.models.Superhero
 import co.za.immedia.herorating.databinding.ActivityRatingBinding
+import co.za.immedia.libraries.glide.loadImageFromInternet
+import co.za.immedia.superheroapp.features.base.activities.BaseChildActivity
+import kotlinx.android.synthetic.main.activity_rating.*
 
-class RatingActivity : AppCompatActivity() {
+class RatingActivity : BaseChildActivity()  {
     private lateinit var binding: ActivityRatingBinding
     lateinit var ratingViewModel: RatingViewModel
 
@@ -20,5 +23,13 @@ class RatingActivity : AppCompatActivity() {
         binding.ratingViewModel = ratingViewModel
         binding.lifecycleOwner = this
 
+        val superhero = intent.extras?.getBundle(co.za.immedia.commons.constants.PAYLOAD_KEY)?.getParcelable<Superhero>(
+            co.za.immedia.commons.constants.SUPERHERO
+        )
+        ratingViewModel.superhero.value = superhero
+
+        superhero?.image?.url?.let {
+            loadImageFromInternet(this, it, imgvHero, co.za.immedia.commons.R.drawable.ic_place_holde_dark)
+        }
     }
 }
