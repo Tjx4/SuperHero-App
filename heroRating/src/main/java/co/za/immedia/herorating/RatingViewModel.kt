@@ -5,11 +5,17 @@ import androidx.lifecycle.MutableLiveData
 import co.za.immedia.commons.base.viewmodels.BaseVieModel
 import co.za.immedia.commons.models.Superhero
 import co.za.immedia.repositories.DbRepository
+import kotlinx.coroutines.launch
 
-class RatingViewModel(application: Application, dbRepository: DbRepository) : BaseVieModel(application) {
+class RatingViewModel(application: Application, private val dbRepository: DbRepository) : BaseVieModel(application) {
 
     private var _superhero: MutableLiveData<Superhero> = MutableLiveData()
     val superhero: MutableLiveData<Superhero>
         get() = _superhero
 
+    fun updateHeroRating(){
+        ioScope.launch {
+            _superhero.value?.let { dbRepository.updateHeroDbRating(it) }
+        }
+    }
 }

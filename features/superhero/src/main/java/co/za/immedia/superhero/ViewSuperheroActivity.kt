@@ -43,8 +43,7 @@ class ViewSuperheroActivity : BaseChildActivity() {
         val superhero = intent.extras?.getBundle(co.za.immedia.commons.constants.PAYLOAD_KEY)?.getParcelable<Superhero>(SUPERHERO)
         viewSuperheroViewModel.superhero.value = superhero
 
-        var ab = supportActionBar
-        ab?.title = superhero?.name
+        supportActionBar?.title = superhero?.name
 
         superhero?.image?.url?.let {
             loadImageFromInternet(this, it, imgSuperheroPic, R.drawable.ic_place_holde_dark)

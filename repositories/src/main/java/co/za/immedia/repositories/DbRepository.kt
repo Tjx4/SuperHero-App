@@ -31,4 +31,14 @@ class DbRepository(private val database: SuperheroDB) {
             null
         }
     }
+
+    suspend fun updateHeroDbRating(superhero: Superhero) : DbOperation {
+        return try {
+            database.superheroesDAO.update(superhero.toSuperheroesTable())
+            DbOperation(true)
+        }
+        catch (ex: Exception){
+            DbOperation(false)
+        }
+    }
 }

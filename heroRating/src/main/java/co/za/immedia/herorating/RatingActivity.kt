@@ -28,8 +28,14 @@ class RatingActivity : BaseChildActivity()  {
         )
         ratingViewModel.superhero.value = superhero
 
+        supportActionBar?.title = superhero?.name
+
         superhero?.image?.url?.let {
             loadImageFromInternet(this, it, imgvHero, co.za.immedia.commons.R.drawable.ic_place_holde_dark)
+        }
+
+        rbRating.setOnRatingBarChangeListener { ratingBar, rating, fromUser ->
+            ratingViewModel.updateHeroRating()
         }
     }
 }
