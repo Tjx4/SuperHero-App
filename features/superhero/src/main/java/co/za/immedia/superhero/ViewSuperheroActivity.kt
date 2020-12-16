@@ -9,6 +9,10 @@ import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import co.za.immedia.commons.constants.RATE_SUPERHERO
+import co.za.immedia.commons.constants.SUPERHERO
+import co.za.immedia.commons.extensions.SLIDE_IN_ACTIVITY
+import co.za.immedia.commons.extensions.navigateToActivity
 import co.za.immedia.commons.models.Appearance
 import co.za.immedia.commons.models.Superhero
 import co.za.immedia.libraries.glide.loadImageFromInternet
@@ -21,6 +25,7 @@ class ViewSuperheroActivity : BaseChildActivity() {
     private lateinit var binding: ActivityViewSuperheroBinding
     private lateinit var viewSuperheroViewModel: ViewSuperheroViewModel
     var addFavourite: MenuItem? = null
+    var rateHero: MenuItem? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,9 +40,7 @@ class ViewSuperheroActivity : BaseChildActivity() {
 
         addObservers()
 
-        val superhero = intent.extras?.getBundle(co.za.immedia.commons.constants.PAYLOAD_KEY)?.getParcelable<Superhero>(
-            co.za.immedia.commons.constants.SUPERHERO
-        )
+        val superhero = intent.extras?.getBundle(co.za.immedia.commons.constants.PAYLOAD_KEY)?.getParcelable<Superhero>(SUPERHERO)
         viewSuperheroViewModel.superhero.value = superhero
 
         var ab = supportActionBar
@@ -93,6 +96,12 @@ class ViewSuperheroActivity : BaseChildActivity() {
             R.id.action_fav ->  {
                 viewSuperheroViewModel.addSuperheroToFavourites()
                 addFavourite?.isVisible = false
+                rateHero?.isVisible = true
+            }
+            R.id.action_rating -> {
+                val payload = Bundle()
+                payload.putParcelable(SUPERHERO, viewSuperheroViewModel.superhero.value)
+                navigateToActivity(RATE_SUPERHERO, payload, SLIDE_IN_ACTIVITY)
             }
         }
 
@@ -102,9 +111,11 @@ class ViewSuperheroActivity : BaseChildActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.view_superhero_menu, menu)
         addFavourite = menu.findItem(R.id.action_fav)
+        rateHero = menu.findItem(R.id.action_rating)
 
         viewSuperheroViewModel.superhero.value?.isFav?.let {
             addFavourite?.isVisible = !it
+            rateHero?.isVisible = it
         }
 
         return super.onCreateOptionsMenu(menu)

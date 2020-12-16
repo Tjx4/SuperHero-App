@@ -12,10 +12,8 @@ import java.lang.IllegalArgumentException
 class SearchViewModelFactory(private val application: Application) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if(modelClass.isAssignableFrom(SearchViewModel::class.java)){
-            val dbRepository =
-                co.za.immedia.repositories.DbRepository(SuperheroDB.getInstance(application))
-            val superheroesRepository =
-                co.za.immedia.repositories.SuperheroesRepository(API.retrofit)
+            val dbRepository = DbRepository(SuperheroDB.getInstance(application))
+            val superheroesRepository = SuperheroesRepository(API.retrofit)
 
             return SearchViewModel(application, dbRepository, superheroesRepository) as T
         }

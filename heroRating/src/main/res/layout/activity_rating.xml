@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
-            name="RatingViewModel"
+            name="ratingViewModel"
             type="co.za.immedia.herorating.RatingViewModel"/>
     </data>
 
@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:min="0"
-            android:rating="3"
+            android:rating="@={ratingViewModel.superhero.rating}"
             android:max="5"
             android:layout_margin="@dimen/medium_margin"
             app:layout_constraintTop_toBottomOf="@id/imgvHero"

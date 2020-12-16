@@ -138,10 +138,7 @@ class SearchActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
                     favouritesFragment
                 ) //Todo: fix tittle
             }
-            R.id.action_rating -> {
-               navigateToActivity("co.za.immedia.herorating.RatingActivity", null, SLIDE_IN_ACTIVITY)
 
-            }
         }
         return super.onOptionsItemSelected(item)
     }

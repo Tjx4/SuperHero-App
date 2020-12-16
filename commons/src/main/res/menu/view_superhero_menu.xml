@@ -8,4 +8,12 @@
         android:title="@string/add_to_favourite"
         app:showAsAction="always"/>
 
+
+    <item
+        android:visible="false"
+        android:id="@+id/action_rating"
+        android:icon="@drawable/ic_rate_light"
+        android:title="Rate superhero"
+        app:showAsAction="never"/>
+
 </menu>
