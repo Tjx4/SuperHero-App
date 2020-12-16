@@ -30,6 +30,8 @@ data class SuperheroesTable (
     var placeOfBirth:String? = null,
     @ColumnInfo(name = "publisher")
     var publisher:String? = null,
+    @ColumnInfo(name = "rating")
+    var rating:Float = 0f,
 
     @ColumnInfo(name = "imageUrl")
     var imageUrl:String? = null,

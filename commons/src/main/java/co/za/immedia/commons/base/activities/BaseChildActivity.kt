@@ -1,23 +1,23 @@
 package co.za.immedia.superheroapp.features.base.activities
 
+import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBar
 import co.za.immedia.commons.base.activities.BaseActivity
 import co.za.immedia.commons.extensions.SLIDE_OUT_ACTIVITY
 
 abstract class BaseChildActivity : BaseActivity() {
-    protected var childActionBar: ActionBar? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        supportActionBar?.setDisplayUseLogoEnabled(false)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
 
     override fun onResume() {
         super.onResume()
         if (isNewActivity) {
         }
-    }
-
-    protected fun setChildActionbarActivityDependencies(actionBar: ActionBar?) {
-        childActionBar = actionBar
-        childActionBar?.setDisplayUseLogoEnabled(false)
-        childActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

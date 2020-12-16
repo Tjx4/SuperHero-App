@@ -13,9 +13,13 @@ class RatingViewModel(application: Application, private val dbRepository: DbRepo
     val superhero: MutableLiveData<Superhero>
         get() = _superhero
 
-    fun updateHeroRating(){
+    fun updateHeroRating(rating: Float){
         ioScope.launch {
-            _superhero.value?.let { dbRepository.updateHeroDbRating(it) }
+            _superhero.value?.let {
+                it.rating = rating
+                dbRepository.updateHeroDbRating(it)
+            }
+
         }
     }
 }
