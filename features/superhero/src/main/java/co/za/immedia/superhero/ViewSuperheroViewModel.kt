@@ -58,7 +58,6 @@ class ViewSuperheroViewModel(application: Application, private val dbRepository:
                 }
             }
         }
-
     }
 
     fun showHeroAppearance(){

@@ -62,11 +62,8 @@ dependencies {
     implementation project(':features:intro')
     implementation project(':features:search')
     implementation project(':features:superhero')
+    //implementation project(':heroRating')
     implementation project(':commons')
     implementation project(':networking')
     implementation project(':persistence')
-
-    //Dagger
-    kapt 'com.google.dagger:dagger-compiler:2.14.1'
-    kapt 'com.google.dagger:dagger-android-processor:2.14.1'
 }
