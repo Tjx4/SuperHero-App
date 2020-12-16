@@ -3,6 +3,7 @@ package co.za.immedia.herorating
 import android.os.Bundle
 import android.widget.RatingBar.OnRatingBarChangeListener
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import co.za.immedia.commons.models.Superhero
 import co.za.immedia.herorating.databinding.ActivityRatingBinding
@@ -42,7 +43,14 @@ class RatingActivity : BaseChildActivity()  {
             )
         }
 
-        rbRating.rating = superhero?.rating ?: 0f
+         ratingViewModel.setCurrentRating()
+    }
+
+    private fun addObservers() {
+        ratingViewModel.rating.observe(this, Observer { onRatingSet(it)})
+    }
+
+    fun onRatingSet(rating: Float){
         rbRating.setOnRatingBarChangeListener { ratingBar, rating, fromUser ->
             ratingViewModel.updateHeroRating(rating)
         }

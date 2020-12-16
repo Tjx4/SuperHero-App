@@ -13,6 +13,10 @@ class RatingViewModel(application: Application, private val dbRepository: DbRepo
     val superhero: MutableLiveData<Superhero>
         get() = _superhero
 
+    private var _rating: MutableLiveData<Float> = MutableLiveData()
+    val rating: MutableLiveData<Float>
+        get() = _rating
+
     fun updateHeroRating(rating: Float){
         ioScope.launch {
             _superhero.value?.let {
@@ -20,6 +24,16 @@ class RatingViewModel(application: Application, private val dbRepository: DbRepo
                 dbRepository.updateHeroDbRating(it)
             }
 
+        }
+    }
+
+    fun setCurrentRating() {
+        ioScope.launch {
+           val superhero = _superhero.value?.id?.let { dbRepository.getHero(it) }
+
+            uiScope.launch {
+                _rating.value = superhero?.rating
+            }
         }
     }
 }

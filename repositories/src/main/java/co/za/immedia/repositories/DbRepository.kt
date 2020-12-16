@@ -41,4 +41,14 @@ class DbRepository(private val database: SuperheroDB) {
             DbOperation(false)
         }
     }
+
+    suspend fun getHero(id: Long) : Superhero? {
+        return try {
+            val superheroTable = database.superheroesDAO.get(id)
+            superheroTable?.toSuperhero()
+        }
+        catch (ex: Exception){
+            null
+        }
+    }
 }
