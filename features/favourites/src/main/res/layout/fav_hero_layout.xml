@@ -52,6 +52,8 @@
                 style="?android:attr/ratingBarStyleSmall"
                 android:min="0"
                 android:max="5"
+                android:isIndicator="true"
+                android:clickable="false"
                 android:layout_marginTop="@dimen/xxsmall_margin"
                 android:layout_marginBottom="@dimen/xsmall_margin"
                 app:layout_constraintTop_toBottomOf="@id/tvFavHeroName"
