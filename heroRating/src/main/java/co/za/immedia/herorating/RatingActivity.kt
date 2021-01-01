@@ -1,7 +1,6 @@
 package co.za.immedia.herorating
 
 import android.os.Bundle
-import android.widget.RatingBar.OnRatingBarChangeListener
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
