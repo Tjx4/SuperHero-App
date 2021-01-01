@@ -54,9 +54,11 @@ class ViewSuperheroActivity : BaseChildActivity() {
             if ((collapsing_toolbar!!.height + verticalOffset) < (2 * ViewCompat.getMinimumHeight(collapsing_toolbar))) {
                 toolbar?.setNavigationIcon(R.drawable.ic_action_back_dark)
                 addFavourite?.setIcon(R.drawable.ic_favourites_dark)
+                rateHero?.setIcon(R.drawable.ic_rate_dark)
             } else {
                 toolbar?.setNavigationIcon(R.drawable.ic_action_back_light)
                 addFavourite?.setIcon(R.drawable.ic_favourites_light)
+                rateHero?.setIcon(R.drawable.ic_rate_light)
             }
 
         })
