@@ -5,6 +5,7 @@
     <color name="colorAccent">#FFBB86</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
+    <color name="blue">#0088cc</color>
     <color name="black">#FF000000</color>
     <color name="transBlack">#2445484d</color>
     <color name="transBlack2">#cc45484d</color>

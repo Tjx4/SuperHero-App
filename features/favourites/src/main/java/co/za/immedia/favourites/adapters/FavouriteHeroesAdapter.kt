@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import co.za.immedia.commons.base.activities.BaseActivity
@@ -30,6 +31,8 @@ class FavouriteHeroesAdapter(context: Context, private val superheroes: List<Sup
             loadImageFromInternet(activity,  it, holder.heroImgv, R.drawable.ic_place_holde_dark)
         }
 
+        holder.ratingRb.rating = superHero?.rating ?: 0f
+
         superHero?.isFav = true
     }
 
@@ -41,6 +44,7 @@ class FavouriteHeroesAdapter(context: Context, private val superheroes: List<Sup
     inner class ViewHolder internal constructor(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
         internal var heroNameTv = itemView.findViewById<TextView>(R.id.tvFavHeroName)
         internal var heroImgv = itemView.findViewById<ImageView>(R.id.imgvFavHero)
+        internal var ratingRb = itemView.findViewById<RatingBar>(R.id.rbRating)
 
         init {
             itemView.setOnClickListener(this)

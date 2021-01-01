@@ -11,7 +11,6 @@ import co.za.immedia.libraries.glide.loadImageFromInternet
 import co.za.immedia.superheroapp.features.base.activities.BaseChildActivity
 import kotlinx.android.synthetic.main.activity_rating.*
 
-
 class RatingActivity : BaseChildActivity()  {
     private lateinit var binding: ActivityRatingBinding
     lateinit var ratingViewModel: RatingViewModel
@@ -26,9 +25,12 @@ class RatingActivity : BaseChildActivity()  {
         binding.ratingViewModel = ratingViewModel
         binding.lifecycleOwner = this
 
+        addObservers()
+
         val superhero = intent.extras?.getBundle(co.za.immedia.commons.constants.PAYLOAD_KEY)?.getParcelable<Superhero>(
             co.za.immedia.commons.constants.SUPERHERO
         )
+
         ratingViewModel.superhero.value = superhero
 
         supportActionBar?.title = superhero?.name
@@ -42,15 +44,14 @@ class RatingActivity : BaseChildActivity()  {
                 co.za.immedia.commons.R.drawable.ic_place_holde_dark
             )
         }
-
-         ratingViewModel.setCurrentRating()
     }
 
     private fun addObservers() {
-        ratingViewModel.rating.observe(this, Observer { onRatingSet(it)})
+        ratingViewModel.superhero.observe(this, Observer { onSuperheroSet(it)})
     }
 
-    fun onRatingSet(rating: Float){
+    fun onSuperheroSet(superhero: Superhero){
+        rbRating.rating = superhero.rating
         rbRating.setOnRatingBarChangeListener { ratingBar, rating, fromUser ->
             ratingViewModel.updateHeroRating(rating)
         }

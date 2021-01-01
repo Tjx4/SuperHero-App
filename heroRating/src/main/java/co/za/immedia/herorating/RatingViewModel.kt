@@ -26,14 +26,4 @@ class RatingViewModel(application: Application, private val dbRepository: DbRepo
 
         }
     }
-
-    fun setCurrentRating() {
-        ioScope.launch {
-           val superhero = _superhero.value?.id?.let { dbRepository.getHero(it) }
-
-            uiScope.launch {
-                _rating.value = superhero?.rating
-            }
-        }
-    }
 }
