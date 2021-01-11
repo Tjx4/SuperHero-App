@@ -38,6 +38,7 @@ class SuperheroesAdapter(context: Context, private val layout: Int, private val 
 
         if(isFavourite) {
             setFav(holder.setFavImg, holder.favouriteImg)
+            searchActivity.searchViewModel.setFavHeroRating(superheroes?.get(position))
         }
         else {
             setDef(holder.setFavImg, holder.favouriteImg)

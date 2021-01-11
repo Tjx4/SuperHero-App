@@ -38,7 +38,7 @@ class SearchViewModel(application: Application, private val dbRepository: DbRepo
     var busyMessage: String = ""
 
     fun searchForHero(searchKeywords: String){
-        busyMessage = "fetching outlets, please wait..."
+        busyMessage = "fetching superheroes, please wait..."
        _showLoading.value = true
 
         ioScope.launch {
@@ -87,4 +87,18 @@ class SearchViewModel(application: Application, private val dbRepository: DbRepo
     suspend fun getFavouriteHeroes(): List<Superhero?>?  {
         return dbRepository.getFavHeroesFromDB()
     }
+
+    fun setFavHeroRating(superhero: Superhero?)  {
+        superhero.let {
+            ioScope.launch {
+                val favSuperhero = dbRepository.getFavHeroFromDB(superhero?.id ?: 0)
+
+                uiScope.launch {
+                    superhero?.rating = favSuperhero?.rating ?: 0.0f
+                }
+            }
+        }
+    }
+
+
 }
