@@ -23,7 +23,7 @@ class IntroActivity : AppCompatActivity(){
         mediaPlayer = MediaPlayer.create(this, resID)
 
         try {
-            mediaPlayer?.setVolume(30f, 30f)
+            mediaPlayer?.setVolume(20f, 20f)
             mediaPlayer?.setOnPreparedListener {
                 Handler().postDelayed({
                     findViewById<TextView>(R.id.tvAppname).fadeIn(8000) {}
