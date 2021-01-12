@@ -42,34 +42,5 @@ abstract class BaseActivity : AppCompatActivity() {
         }
     }
 
-    var mySessionId: Int? = null
-
-    fun downloadDynamicModule(dynamicModule: String) {
-        var activity = this
-
-        val splitInstallManager: SplitInstallManager = SplitInstallManagerFactory.create(this)
-        val request: SplitInstallRequest = SplitInstallRequest
-                .newBuilder()
-                .addModule(dynamicModule)
-                .build()
-
-        val listener: SplitInstallStateUpdatedListener = SplitInstallStateUpdatedListener { splitInstallSessionState ->
-            if (splitInstallSessionState.sessionId() === mySessionId) {
-                when (splitInstallSessionState.status()) {
-                    SplitInstallSessionStatus.INSTALLED -> {
-                        Toast.makeText(activity, getString(R.string.dynamic_module_downloaded), Toast.LENGTH_SHORT).show()
-                    }
-                }
-            }
-        }
-        splitInstallManager.registerListener(listener)
-        splitInstallManager.startInstall(request)
-                .addOnFailureListener {
-                    print("Exception: $it")
-                }
-                .addOnSuccessListener { sessionId ->
-                    mySessionId = sessionId
-                }
-    }
 
 }

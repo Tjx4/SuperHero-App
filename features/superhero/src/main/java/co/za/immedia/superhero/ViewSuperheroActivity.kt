@@ -1,6 +1,7 @@
 package co.za.immedia.superhero
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -13,12 +14,17 @@ import co.za.immedia.commons.constants.RATE_SUPERHERO
 import co.za.immedia.commons.constants.SUPERHERO
 import co.za.immedia.commons.extensions.SLIDE_IN_ACTIVITY
 import co.za.immedia.commons.extensions.navigateToActivity
+import co.za.immedia.commons.helpers.showConfirmAlert
 import co.za.immedia.commons.models.Appearance
 import co.za.immedia.commons.models.Superhero
 import co.za.immedia.libraries.glide.loadImageFromInternet
 import co.za.immedia.superhero.databinding.ActivityViewSuperheroBinding
 import co.za.immedia.superheroapp.features.base.activities.BaseChildActivity
 import com.google.android.material.appbar.AppBarLayout
+import com.google.android.play.core.splitinstall.*
+import com.google.android.play.core.splitinstall.model.SplitInstallSessionStatus
+import com.google.android.play.core.tasks.OnFailureListener
+import com.google.android.play.core.tasks.OnSuccessListener
 import kotlinx.android.synthetic.main.activity_view_superhero.*
 
 class ViewSuperheroActivity : BaseChildActivity() {
@@ -26,6 +32,7 @@ class ViewSuperheroActivity : BaseChildActivity() {
     private lateinit var viewSuperheroViewModel: ViewSuperheroViewModel
     var addFavourite: MenuItem? = null
     var rateHero: MenuItem? = null
+    var mySessionId: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,14 +40,17 @@ class ViewSuperheroActivity : BaseChildActivity() {
         var viewModelFactory = ViewSuperheroViewModelFactory(application)
 
         viewSuperheroViewModel = ViewModelProviders.of(this, viewModelFactory).get(
-            ViewSuperheroViewModel::class.java)
+            ViewSuperheroViewModel::class.java
+        )
         binding = DataBindingUtil.setContentView(this, R.layout.activity_view_superhero)
         binding.viewSuperheroViewModel = viewSuperheroViewModel
         binding.lifecycleOwner = this
 
         addObservers()
 
-        val superhero = intent.extras?.getBundle(co.za.immedia.commons.constants.PAYLOAD_KEY)?.getParcelable<Superhero>(SUPERHERO)
+        val superhero = intent.extras?.getBundle(co.za.immedia.commons.constants.PAYLOAD_KEY)?.getParcelable<Superhero>(
+            SUPERHERO
+        )
         viewSuperheroViewModel.superhero.value = superhero
 
         supportActionBar?.title = superhero?.name
@@ -51,7 +61,10 @@ class ViewSuperheroActivity : BaseChildActivity() {
 
         app_bar_layout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
 
-            if ((collapsing_toolbar!!.height + verticalOffset) < (2 * ViewCompat.getMinimumHeight(collapsing_toolbar))) {
+            if ((collapsing_toolbar!!.height + verticalOffset) < (2 * ViewCompat.getMinimumHeight(
+                    collapsing_toolbar
+                ))
+            ) {
                 toolbar?.setNavigationIcon(R.drawable.ic_action_back_dark)
                 addFavourite?.setIcon(R.drawable.ic_favourites_dark)
                 rateHero?.setIcon(R.drawable.ic_rate_dark)
@@ -68,9 +81,13 @@ class ViewSuperheroActivity : BaseChildActivity() {
     }
 
     private fun addObservers() {
-        viewSuperheroViewModel.isAddToFav.observe(this, Observer { onHeroAddedToFavourites(it)})
-        viewSuperheroViewModel.appearance.observe(this, Observer { onHeroAppearanceSet(it)})
-        viewSuperheroViewModel.appearanceErrorMessage.observe(this, Observer { onHeroAppearanceError(it)})
+        viewSuperheroViewModel.isAddToFav.observe(this, Observer { onHeroAddedToFavourites(it) })
+        viewSuperheroViewModel.appearance.observe(this, Observer { onHeroAppearanceSet(it) })
+        viewSuperheroViewModel.appearanceErrorMessage.observe(this, Observer {
+            onHeroAppearanceError(
+                it
+            )
+        })
     }
 
     private fun onHeroAppearanceSet(appearance: Appearance){
@@ -82,7 +99,7 @@ class ViewSuperheroActivity : BaseChildActivity() {
     }
 
     private fun onHeroAddedToFavourites(isAddToFav: Boolean) {
-        Toast.makeText(this, getString(R.string.added_to_fav),  Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, getString(R.string.added_to_fav), Toast.LENGTH_SHORT).show()
     }
 
     fun onViewMoreClicked(view: View){
@@ -94,19 +111,86 @@ class ViewSuperheroActivity : BaseChildActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.action_fav ->  {
+            R.id.action_fav -> {
                 viewSuperheroViewModel.addSuperheroToFavourites()
                 addFavourite?.isVisible = false
                 rateHero?.isVisible = true
             }
             R.id.action_rating -> {
-                val payload = Bundle()
-                payload.putParcelable(SUPERHERO, viewSuperheroViewModel.superhero.value)
-                navigateToActivity(RATE_SUPERHERO, payload, SLIDE_IN_ACTIVITY)
+
+                try {
+                    navigateToDynamicFeature()
+
+                } catch (ex: Exception) {
+                    showDynamicFeatureAlert()
+                }
             }
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    fun showDynamicFeatureAlert() {
+
+        showConfirmAlert(this,
+            "Dynamic feature",
+            "This feature is currently unavailable, would you like to download it?",
+            "Download",
+            "",
+            "Cancel",
+            {
+                downloadDynamicModule()
+            }, {}, {
+
+            })
+    }
+
+    private fun navigateToDynamicFeature() {
+        val payload = Bundle()
+        payload.putParcelable(SUPERHERO, viewSuperheroViewModel.superhero.value)
+        navigateToActivity(RATE_SUPERHERO, payload, SLIDE_IN_ACTIVITY)
+    }
+
+    private fun downloadDynamicModule() {
+        val splitInstallManager: SplitInstallManager = SplitInstallManagerFactory.create(this)
+        val request: SplitInstallRequest = SplitInstallRequest
+            .newBuilder()
+            .addModule("heroRating")
+            .build()
+        val listener: SplitInstallStateUpdatedListener = SplitInstallStateUpdatedListener { splitInstallSessionState ->
+
+            if (splitInstallSessionState.sessionId() == mySessionId) {
+
+                    when (splitInstallSessionState.status()) {
+                        SplitInstallSessionStatus.INSTALLED -> {
+
+                            Log.d("TAG", "Dynamic Module downloaded")
+                            Toast.makeText(
+                                this@ViewSuperheroActivity,
+                                "Dynamic Module downloaded",
+                                Toast.LENGTH_SHORT
+                            ).show()
+
+                            navigateToDynamicFeature()
+                        }
+                    }
+                }
+            }
+
+        splitInstallManager.registerListener(listener)
+        splitInstallManager.startInstall(request)
+            .addOnFailureListener { e ->
+                Toast.makeText(
+                    this@ViewSuperheroActivity,
+                    "Error downloading feature",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+            .addOnSuccessListener {
+                fun onSuccess(sessionId: Int) {
+                    mySessionId = sessionId
+                }
+            }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
