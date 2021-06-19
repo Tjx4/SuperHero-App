@@ -78,16 +78,12 @@ class SearchViewModel(application: Application, private val superheroesRepositor
 
     fun setFavSuperheroes() {
         viewModelScope.launch(Dispatchers.IO) {
-            val favSuperheroes = getFavouriteHeroes()
+            val favSuperheroes = superheroesRepository.getFavHeroesFromDB()
 
             withContext(Dispatchers.Main) {
                 _favSuperheroes.value = favSuperheroes
             }
         }
-    }
-
-    suspend fun getFavouriteHeroes(): List<Superhero?>?  {
-        return superheroesRepository.getFavHeroesFromDB()
     }
 
     fun setFavHeroRating(superhero: Superhero?)  {
