@@ -3,6 +3,7 @@ package co.za.immedia.herorating
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import co.za.immedia.commons.models.Superhero
 import co.za.immedia.herorating.databinding.ActivityRatingBinding
 import co.za.immedia.libraries.glide.loadImageFromInternet
@@ -11,10 +12,13 @@ import kotlinx.android.synthetic.main.activity_rating.*
 
 class RatingActivity : BaseChildActivity()  {
     private lateinit var binding: ActivityRatingBinding
-    private val ratingViewModel: RatingViewModel
+    private lateinit var ratingViewModel: RatingViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        var application = requireNotNull(this).application
+        var viewModelFactory = ViewModelFactory(application)
+        ratingViewModel = ViewModelProviders.of(this, viewModelFactory).get(RatingViewModel::class.java)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_rating)
         binding.ratingViewModel = ratingViewModel
         binding.lifecycleOwner = this
