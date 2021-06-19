@@ -8,11 +8,10 @@ import co.za.immedia.herorating.databinding.ActivityRatingBinding
 import co.za.immedia.libraries.glide.loadImageFromInternet
 import co.za.immedia.commons.base.activities.BaseChildActivity
 import kotlinx.android.synthetic.main.activity_rating.*
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RatingActivity : BaseChildActivity()  {
     private lateinit var binding: ActivityRatingBinding
-    private val ratingViewModel: RatingViewModel by viewModel()
+    private val ratingViewModel: RatingViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
