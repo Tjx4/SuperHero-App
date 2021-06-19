@@ -1,4 +1,4 @@
-package co.za.immedia.superheroapp.features.base.activities
+package co.za.immedia.commons.base.activities
 
 import android.os.Bundle
 import android.view.MenuItem

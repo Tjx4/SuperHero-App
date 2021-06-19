@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModelProviders
 import co.za.immedia.commons.models.Superhero
 import co.za.immedia.herorating.databinding.ActivityRatingBinding
 import co.za.immedia.libraries.glide.loadImageFromInternet
-import co.za.immedia.superheroapp.features.base.activities.BaseChildActivity
+import co.za.immedia.commons.base.activities.BaseChildActivity
 import kotlinx.android.synthetic.main.activity_rating.*
 
 class RatingActivity : BaseChildActivity()  {

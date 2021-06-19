@@ -19,12 +19,10 @@ import co.za.immedia.commons.models.Appearance
 import co.za.immedia.commons.models.Superhero
 import co.za.immedia.libraries.glide.loadImageFromInternet
 import co.za.immedia.superhero.databinding.ActivityViewSuperheroBinding
-import co.za.immedia.superheroapp.features.base.activities.BaseChildActivity
+import co.za.immedia.commons.base.activities.BaseChildActivity
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.play.core.splitinstall.*
 import com.google.android.play.core.splitinstall.model.SplitInstallSessionStatus
-import com.google.android.play.core.tasks.OnFailureListener
-import com.google.android.play.core.tasks.OnSuccessListener
 import kotlinx.android.synthetic.main.activity_view_superhero.*
 
 class ViewSuperheroActivity : BaseChildActivity() {
