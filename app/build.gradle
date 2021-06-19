@@ -52,14 +52,24 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
-    //multidex
-    def multidex_version = "2.0.1"
     implementation "androidx.multidex:multidex:$multidex_version"
     //gson
     implementation 'com.google.code.gson:gson:2.8.6'
+    //koin
+    implementation "org.koin:koin-core:$koin_version"
+    implementation "org.koin:koin-core-ext:$koin_version"
+    testImplementation "org.koin:koin-test:$koin_version"
+    implementation "org.koin:koin-android:$koin_version"
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+    implementation "org.koin:koin-androidx-scope:$koin_version"
     //Modules
     implementation project(':features:splash')
     implementation project(':features:intro')
     implementation project(':features:search')
     implementation project(':features:superhero')
+    implementation project(':persistence')
+    implementation project(':networking')
+    implementation project(':repositories')
+
+    //implementation project(':heroRating')
 }

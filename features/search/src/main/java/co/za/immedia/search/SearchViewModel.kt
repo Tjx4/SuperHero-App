@@ -2,14 +2,16 @@ package co.za.immedia.search
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import co.za.immedia.commons.base.viewmodels.BaseVieModel
 import co.za.immedia.commons.models.Superhero
-import co.za.immedia.repositories.DbRepository
 import co.za.immedia.repositories.SuperheroesRepository
 import co.za.immedia.networking.Hosts
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class SearchViewModel(application: Application, private val dbRepository: DbRepository, private val superheroesRepository: SuperheroesRepository) : BaseVieModel(application) {
+class SearchViewModel(application: Application, private val superheroesRepository: SuperheroesRepository) : BaseVieModel(application) {
 
     private var _showLoading: MutableLiveData<Boolean> = MutableLiveData()
     val showLoading: MutableLiveData<Boolean>
@@ -38,14 +40,14 @@ class SearchViewModel(application: Application, private val dbRepository: DbRepo
     var busyMessage: String = ""
 
     fun searchForHero(searchKeywords: String){
-        busyMessage = "fetching superheroes, please wait..."
+        busyMessage = app.getString(R.string.fetching_heroes)
        _showLoading.value = true
 
-        ioScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             val url = "${Hosts.LiveHost.url}api/191417135981966/search/$searchKeywords"
             var superheroes = superheroesRepository.searchForSuperHero(url)
 
-            uiScope.launch {
+            withContext(Dispatchers.Main) {
                 if(superheroes != null && !superheroes.results.isNullOrEmpty()){
                     _superheroes.value = superheroes.results
                 }
@@ -57,10 +59,10 @@ class SearchViewModel(application: Application, private val dbRepository: DbRepo
     }
 
     fun addSuperheroToFavourites(superhero: Superhero){
-        ioScope.launch {
-            var saveOperation = dbRepository.addSuperheroToFavDB(superhero)
+        viewModelScope.launch(Dispatchers.IO) {
+            var saveOperation = superheroesRepository.addSuperheroToFavDB(superhero)
 
-            uiScope.launch {
+            withContext(Dispatchers.Main) {
                 if(saveOperation.isSuccessful){
                     _newFavHero.value = superhero
                     ((_favSuperheroes.value) as ArrayList)?.add(superhero)
@@ -75,30 +77,29 @@ class SearchViewModel(application: Application, private val dbRepository: DbRepo
     }
 
     fun setFavSuperheroes() {
-        ioScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             val favSuperheroes = getFavouriteHeroes()
 
-            uiScope.launch {
+            withContext(Dispatchers.Main) {
                 _favSuperheroes.value = favSuperheroes
             }
         }
     }
 
     suspend fun getFavouriteHeroes(): List<Superhero?>?  {
-        return dbRepository.getFavHeroesFromDB()
+        return superheroesRepository.getFavHeroesFromDB()
     }
 
     fun setFavHeroRating(superhero: Superhero?)  {
         superhero.let {
-            ioScope.launch {
-                val favSuperhero = dbRepository.getFavHeroFromDB(superhero?.id ?: 0)
+            viewModelScope.launch(Dispatchers.IO) {
+                val favSuperhero = superheroesRepository.getFavHeroFromDB(superhero?.id ?: 0)
 
-                uiScope.launch {
+                withContext(Dispatchers.Main) {
                     superhero?.rating = favSuperhero?.rating ?: 0.0f
                 }
             }
         }
     }
-
 
 }

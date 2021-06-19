@@ -2,80 +2,48 @@ package co.za.immedia.search.fragments
 
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.ImageButton
-import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import co.za.immedia.commons.base.activities.BaseActivity
 import co.za.immedia.superheroapp.features.base.fragments.BaseDialogFragment
 import co.za.immedia.commons.models.Superhero
 import co.za.immedia.favourites.adapters.FavouriteHeroesAdapter
-import co.za.immedia.search.R
 import co.za.immedia.search.SearchActivity
-import com.wang.avi.AVLoadingIndicatorView
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import kotlinx.android.synthetic.main.fragment_favourites.*
+import kotlinx.coroutines.*
 
 class FavouritesFragment : BaseDialogFragment(), FavouriteHeroesAdapter.HeroClickListener {
     private var searchActivity: SearchActivity? = null
-    private var parentCl: ConstraintLayout? = null
-    private var avlProgressBarLoading: AVLoadingIndicatorView? = null
-    private var btnCloseUsersImg: ImageButton? = null
-    lateinit var favouriteHeroesAdapter: FavouriteHeroesAdapter
-    private var titleTv: TextView? = null
-    private var noFavSuperheroes: TextView? = null
-    private var favSuperheroesRv: RecyclerView? = null
+    private lateinit var favouriteHeroesAdapter: FavouriteHeroesAdapter
     private var favSuperheroes: List<Superhero?>? = null
-    private val job =  Job()
-    private val ioScope = CoroutineScope(Dispatchers.IO + job)
-    private val uiScope = CoroutineScope(Dispatchers.Main + job)
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        val parentView = super.onCreateView(inflater, container, savedInstanceState)
-        initViews(parentView)
-        return parentView
-    }
-
-    private fun initViews(parentView: View) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         val  favouritesFragment = this
-        btnCloseUsersImg = parentView.findViewById(R.id.imgBtnCloseUsers)
-        btnCloseUsersImg?.setOnClickListener {
+        imgBtnCloseUsers?.setOnClickListener {
             dismiss()
         }
 
-        parentCl = parentView.findViewById(R.id.rlParent)
-        avlProgressBarLoading = parentView.findViewById(R.id.avlLoading)
-        titleTv = parentView.findViewById(R.id.tvFavHeroesHeading)
-
         showLoading()
 
-        ioScope.launch {
+       lifecycleScope.launch(Dispatchers.IO)  {
             favSuperheroes = searchActivity?.searchViewModel?.favSuperheroes?.value
 
-            uiScope.launch {
+            withContext(Dispatchers.Main)  {
                 hideLoading()
 
-                if(favSuperheroes.isNullOrEmpty()){
-                    noFavSuperheroes = parentView.findViewById(R.id.tvNoStats)
-                    noFavSuperheroes?.visibility = View.VISIBLE
-
-                    return@launch
+                when {
+                    favSuperheroes.isNullOrEmpty() -> {
+                        tvNoStats?.visibility = View.VISIBLE
+                    }
+                    else -> {
+                        tvFavHeroesHeading?.visibility = View.VISIBLE
+                        favouriteHeroesAdapter = FavouriteHeroesAdapter(searchActivity as Context, favSuperheroes)
+                        favouriteHeroesAdapter.setOnHeroClickListener(favouritesFragment)
+                        rvUsers?.layoutManager = GridLayoutManager(searchActivity, 2)
+                        rvUsers?.adapter = favouriteHeroesAdapter
+                    }
                 }
-
-                titleTv?.visibility = View.VISIBLE
-
-                favouriteHeroesAdapter = FavouriteHeroesAdapter(searchActivity as Context, favSuperheroes)
-                favouriteHeroesAdapter.setOnHeroClickListener(favouritesFragment)
-
-                favSuperheroesRv = parentView.findViewById(R.id.rvUsers)
-                favSuperheroesRv?.layoutManager = GridLayoutManager(searchActivity, 2)
-                favSuperheroesRv?.adapter = favouriteHeroesAdapter
             }
         }
     }
@@ -85,14 +53,14 @@ class FavouritesFragment : BaseDialogFragment(), FavouriteHeroesAdapter.HeroClic
         searchActivity = context as SearchActivity
     }
 
-    fun showLoading() {
-        parentCl?.visibility = View.INVISIBLE
-        avlProgressBarLoading?.visibility = View.VISIBLE
+    private fun showLoading() {
+        rlParent?.visibility = View.INVISIBLE
+        avlLoading?.visibility = View.VISIBLE
     }
 
-    fun hideLoading() {
-        parentCl?.visibility = View.VISIBLE
-        avlProgressBarLoading?.visibility = View.INVISIBLE
+    private fun hideLoading() {
+        rlParent?.visibility = View.VISIBLE
+        avlLoading?.visibility = View.INVISIBLE
     }
 
     override fun onSuperheroClicked(view: View, position: Int) {

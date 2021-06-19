@@ -1,6 +1,5 @@
 package co.za.immedia.search
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.Menu
@@ -9,7 +8,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import co.za.immedia.commons.base.activities.BaseActivity
 import co.za.immedia.commons.constants.SUPERHERO
@@ -22,25 +20,20 @@ import co.za.immedia.search.adapter.SuperheroesAdapter
 import co.za.immedia.search.databinding.ActivitySearchBinding
 import co.za.immedia.search.fragments.FavouritesFragment
 import kotlinx.android.synthetic.main.activity_search.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
     private lateinit var binding: ActivitySearchBinding
-    lateinit var searchViewModel: SearchViewModel
+    val searchViewModel: SearchViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var application = requireNotNull(this).application
-        var viewModelFactory = SearchViewModelFactory(application)
-
-        searchViewModel = ViewModelProviders.of(this, viewModelFactory).get(SearchViewModel::class.java)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_search)
         binding.searchViewModel = searchViewModel
         binding.lifecycleOwner = this
 
         addObservers()
-
         init()
-
         supportActionBar?.elevation = 0f
         supportActionBar?.title = getString(R.string.search_title)
         supportActionBar?.setDisplayShowHomeEnabled(true)
@@ -77,14 +70,6 @@ class SearchActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
     }
 
     private fun init() {
-/*
-        val searchTypeLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false)
-        //searchTypeLayoutManager.initialPrefetchItemCount = dashboardViewModel.superheroes.value?.size ?: 0
-        rvHeroes?.layoutManager = searchTypeLayoutManager
-        val superheroesAdapter = SuperheroesAdapter(this, R.layout.hero_layout, dashboardViewModel.superheroes.value)
-        superheroesAdapter.setOnHeroClickListener(this)
-        rvHeroes.adapter = superheroesAdapter
-*/
         txtSearch.onTextUpdatedCallBackFunction = {
             searchViewModel.searchForHero(it)
         }
@@ -95,14 +80,10 @@ class SearchActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
         tvNoMessage.visibility = View.GONE
         rvHeroes.visibility = View.VISIBLE
 
-        //hideKeyboard(txtSearch)
-        //rvHeroes.adapter?.notifyDataSetChanged()
-
         val searchTypeLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         searchTypeLayoutManager.initialPrefetchItemCount = superheroes?.size ?: 0
         rvHeroes?.layoutManager = searchTypeLayoutManager
-        val superheroesAdapter =
-            co.za.immedia.search.adapter.SuperheroesAdapter(this, R.layout.hero_layout, superheroes)
+        val superheroesAdapter = SuperheroesAdapter(this, R.layout.hero_layout, superheroes)
         superheroesAdapter.setOnHeroClickListener(this)
         rvHeroes.adapter = superheroesAdapter
     }
@@ -133,10 +114,10 @@ class SearchActivity : BaseActivity(), SuperheroesAdapter.HeroClickListener {
                 val favouritesFragment = FavouritesFragment.newInstance()
                 favouritesFragment?.isCancelable = true
                 showDialogFragment(
-                    "Superheroes",
+                    getString(R.string.superheroes),
                     R.layout.fragment_favourites,
                     favouritesFragment
-                ) //Todo: fix tittle
+                )
             }
 
         }

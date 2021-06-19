@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import co.za.immedia.commons.constants.RATE_SUPERHERO
 import co.za.immedia.commons.constants.SUPERHERO
 import co.za.immedia.commons.extensions.SLIDE_IN_ACTIVITY
@@ -24,22 +23,17 @@ import com.google.android.material.appbar.AppBarLayout
 import com.google.android.play.core.splitinstall.*
 import com.google.android.play.core.splitinstall.model.SplitInstallSessionStatus
 import kotlinx.android.synthetic.main.activity_view_superhero.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ViewSuperheroActivity : BaseChildActivity() {
     private lateinit var binding: ActivityViewSuperheroBinding
-    private lateinit var viewSuperheroViewModel: ViewSuperheroViewModel
-    var addFavourite: MenuItem? = null
-    var rateHero: MenuItem? = null
-    var mySessionId: Int? = null
+    private val viewSuperheroViewModel: ViewSuperheroViewModel by viewModel()
+    private var addFavourite: MenuItem? = null
+    private var rateHero: MenuItem? = null
+    private var mySessionId: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var application = requireNotNull(this).application
-        var viewModelFactory = ViewSuperheroViewModelFactory(application)
-
-        viewSuperheroViewModel = ViewModelProviders.of(this, viewModelFactory).get(
-            ViewSuperheroViewModel::class.java
-        )
         binding = DataBindingUtil.setContentView(this, R.layout.activity_view_superhero)
         binding.viewSuperheroViewModel = viewSuperheroViewModel
         binding.lifecycleOwner = this

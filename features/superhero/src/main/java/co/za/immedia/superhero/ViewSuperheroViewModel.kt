@@ -2,17 +2,19 @@ package co.za.immedia.superhero
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import co.za.immedia.commons.base.viewmodels.BaseVieModel
 import co.za.immedia.commons.models.Appearance
 import co.za.immedia.commons.models.Connections
 import co.za.immedia.commons.models.Superhero
 import co.za.immedia.commons.models.Work
 import co.za.immedia.networking.Hosts
-import co.za.immedia.repositories.DbRepository
 import co.za.immedia.repositories.SuperheroesRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class ViewSuperheroViewModel(application: Application, private val dbRepository: DbRepository, private val superheroesRepository: SuperheroesRepository) : BaseVieModel(application) {
+class ViewSuperheroViewModel(application: Application, private val superheroesRepository: SuperheroesRepository) : BaseVieModel(application) {
 
     private var _superhero: MutableLiveData<Superhero> = MutableLiveData()
     val superhero: MutableLiveData<Superhero>
@@ -48,10 +50,10 @@ class ViewSuperheroViewModel(application: Application, private val dbRepository:
 
     fun addSuperheroToFavourites(){
         _superhero.value?.let { superhero ->
-            ioScope.launch {
-                var saveOperation = dbRepository.addSuperheroToFavDB(superhero)
+            viewModelScope.launch(Dispatchers.IO) {
+                var saveOperation = superheroesRepository.addSuperheroToFavDB(superhero)
 
-                uiScope.launch {
+                withContext(Dispatchers.Main) {
                     if(saveOperation.isSuccessful){
                         _isAddToFav.value = true
                     }
@@ -61,11 +63,11 @@ class ViewSuperheroViewModel(application: Application, private val dbRepository:
     }
 
     fun showHeroAppearance(){
-        ioScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             val url = "${Hosts.LiveHost.url}api/191417135981966/${_superhero.value?.id}/appearance"
             var heroesAppearance = superheroesRepository.fetchHeroAppearance(url)
 
-            uiScope.launch {
+            withContext(Dispatchers.Main) {
                 if(heroesAppearance != null){
                     _appearance.value = heroesAppearance
                 }
