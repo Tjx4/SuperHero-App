@@ -65,4 +65,5 @@ dependencies {
     implementation project(':commons')
     implementation project(':libraries')
     implementation project(':repositories')
+    implementation project(':networking')
 }
