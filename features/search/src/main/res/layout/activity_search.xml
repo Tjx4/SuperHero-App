@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:text="@={searchViewModel.searchKeyWord}"
             android:hint="@string/search_for_heroes"
-            android:maxLines="1"
+            android:singleLine="true"
             android:layout_marginTop="@dimen/small_margin"
             android:layout_marginHorizontal="@dimen/xsmall_margin"
             app:layout_constraintLeft_toLeftOf="parent"
